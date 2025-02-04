@@ -1,15 +1,13 @@
 // eslint.config.mjs
+import eslintPluginAstro from 'eslint-plugin-astro';
 
 export default [
+  // add more generic rule sets here, such as:
+  // js.configs.recommended,
+  ...eslintPluginAstro.configs.recommended,
   {
-    ignores: [
-      "**/node_modules/",
-      "dist/",
-      "coverage/",
-      ".husky/",
-      ".vscode/",
-      "public/",
-      ".yarn/"
-    ]
-  },
+    rules: {
+      // override/add rules settings here, such as:
+    }
+  }
 ];
