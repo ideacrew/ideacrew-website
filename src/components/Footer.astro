@@ -1,4 +1,5 @@
 ---
+import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
 
@@ -16,16 +17,23 @@ const { noMarginTop = false } = Astro.props;
   <div class="footer-wrapper">
     <Socials centered />
     <div class="copyright-wrapper">
+      <a href="/" class="logo whitespace-nowrap">
+        <img
+          src={`/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
+          alt={SITE.title}
+          width={LOGO_IMAGE.width}
+          height={LOGO_IMAGE.height}
+        />
+      </a>
+      <span>{SITE.title}</span>
       <span>Copyright &#169; {currentYear}</span>
-      <span class="separator">&nbsp;|&nbsp;</span>
-      <span>All rights reserved.</span>
     </div>
   </div>
 </footer>
 
 <style>
   footer {
-    @apply w-full;
+    @apply h-[210px] w-full;
   }
   .footer-wrapper {
     @apply flex flex-col items-center justify-between py-6 sm:flex-row-reverse sm:py-4;
@@ -38,8 +46,5 @@ const { noMarginTop = false } = Astro.props;
   }
   .copyright-wrapper {
     @apply my-2 flex flex-col items-center whitespace-nowrap sm:flex-row;
-  }
-  .separator {
-    @apply hidden sm:inline;
   }
 </style>
