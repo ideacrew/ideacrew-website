@@ -33,3 +33,6 @@ pnpm-debug.log*
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+# cursor rules
+.cursor/rules/cursor-rules.mdc
