@@ -108,6 +108,12 @@ const socialImageURL = new URL(
     <ClientRouter />
 
     <script is:inline src="/toggle-theme.js"></script>
+
+    <style is:global>
+      main {
+        @apply mt-[72px]; /* Adjust this value based on your header height */
+      }
+    </style>
   </head>
   <body>
     <slot />
