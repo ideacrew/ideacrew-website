@@ -12,39 +12,46 @@ export interface Props {
 const { noMarginTop = false } = Astro.props;
 ---
 
-<footer class={`${noMarginTop ? "" : "mt-auto"}`}>
-  <Hr noPadding />
-  <div class="footer-wrapper">
-    <Socials centered />
-    <div class="copyright-wrapper">
-      <a href="/" class="logo whitespace-nowrap">
-        <img
-          src={`/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
-          alt={SITE.title}
-          width={LOGO_IMAGE.width}
-          height={LOGO_IMAGE.height}
-        />
-      </a>
-      <span>{SITE.title}</span>
-      <span>Copyright &#169; {currentYear}</span>
+<footer
+  class={`${noMarginTop ? "" : "mt-auto"} w-full min-w-full bg-[#0B2441] sm:h-[210px]`}
+>
+  <div class="mx-auto h-full w-full max-w-[916px] px-4 py-8 sm:py-4">
+    <div
+      class="flex h-full w-full flex-col items-center text-white sm:flex-row sm:items-center sm:justify-between"
+    >
+      <div class="flex flex-col items-center gap-4 sm:items-start">
+        <a href="/" class="logo">
+          <img
+            src="/assets/logo-white.svg"
+            alt="IdeaCrew Logo"
+            width="245.42px"
+            height="65.88px"
+          />
+        </a>
+        <div class="flex w-full justify-between text-xs">
+          <div>{SITE.title}</div>
+          <div>Copyright © {currentYear}</div>
+        </div>
+      </div>
+      <nav class="mt-8 sm:mt-0">
+        <ul class="flex flex-col items-center gap-6 text-sm sm:flex-row">
+          <li>
+            <a href="/" class="hover:text-skin-accent">Home</a>
+          </li>
+          <li>
+            <a href="/about" class="hover:text-skin-accent">About</a>
+          </li>
+          <li>
+            <a href="/work" class="hover:text-skin-accent">Work</a>
+          </li>
+          <li>
+            <a href="/contact" class="hover:text-skin-accent">Contact</a>
+          </li>
+          <li>
+            <a href="/careers" class="hover:text-skin-accent">Careers</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </footer>
-
-<style>
-  footer {
-    @apply h-[210px] w-full;
-  }
-  .footer-wrapper {
-    @apply flex flex-col items-center justify-between py-6 sm:flex-row-reverse sm:py-4;
-  }
-  .link-button {
-    @apply my-1 p-2 hover:rotate-6;
-  }
-  .link-button svg {
-    @apply scale-125;
-  }
-  .copyright-wrapper {
-    @apply my-2 flex flex-col items-center whitespace-nowrap sm:flex-row;
-  }
-</style>
