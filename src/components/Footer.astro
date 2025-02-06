@@ -2,6 +2,8 @@
 import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
+import { Image } from "astro:assets";
+import logoWhite from "/public/assets/logo-white.svg";
 
 const currentYear = new Date().getFullYear();
 
@@ -21,11 +23,12 @@ const { noMarginTop = false } = Astro.props;
     >
       <div class="flex flex-col items-center gap-4 sm:items-start">
         <a href="/" class="logo">
-          <img
-            src="/assets/logo-white.svg"
+          <Image
+            src={logoWhite}
             alt="IdeaCrew Logo"
-            width="245.42px"
-            height="65.88px"
+            width={245.42}
+            height={65.88}
+            loading="lazy"
           />
         </a>
         <div class="flex w-full justify-between text-xs">

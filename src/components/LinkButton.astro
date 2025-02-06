@@ -5,15 +5,32 @@ export interface Props {
   ariaLabel?: string;
   title?: string;
   disabled?: boolean;
+  variant?: "primary" | "secondary";
 }
 
-const { href, className, ariaLabel, title, disabled = false } = Astro.props;
+const {
+  href,
+  className,
+  ariaLabel,
+  title,
+  disabled = false,
+  variant = "primary",
+} = Astro.props;
+
+const variantStyles = {
+  primary: "bg-[#2C5282] text-white hover:bg-[#1A365D]",
+  secondary:
+    "border-2 border-[#466cb2] bg-transparent text-[#466cb2] hover:bg-[#0D2B46] hover:text-white",
+};
+
+const baseStyles = "px-4 py-2 rounded-md transition-colors duration-200";
+const buttonStyles = `${baseStyles} ${variantStyles[variant]} ${className || ""}`;
 ---
 
 {
   disabled ? (
     <span
-      class={`group inline-block ${className}`}
+      class={`${buttonStyles} cursor-not-allowed opacity-50`}
       aria-label={ariaLabel}
       title={title}
       aria-disabled={disabled}
@@ -21,12 +38,7 @@ const { href, className, ariaLabel, title, disabled = false } = Astro.props;
       <slot />
     </span>
   ) : (
-    <a
-      {href}
-      class={`group inline-block hover:text-skin-accent ${className}`}
-      aria-label={ariaLabel}
-      title={title}
-    >
+    <a {href} class={buttonStyles} aria-label={ariaLabel} title={title}>
       <slot />
     </a>
   )
