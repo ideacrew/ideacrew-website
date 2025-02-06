@@ -1,0 +1,35 @@
+---
+import LinkButton from "./LinkButton.astro";
+import { Image } from "astro:assets";
+import abstractVector from "/public/assets/abstractVector2.png";
+---
+
+<section
+  id="cta"
+  class="relative flex min-h-[154px] w-full min-w-full items-center bg-[#466CB2] p-4 sm:p-0"
+>
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={abstractVector}
+      alt=""
+      class="h-full w-full object-cover"
+      quality="max"
+      loading="eager"
+      priority
+    />
+  </div>
+
+  <div class="relative z-10 mx-auto w-full max-w-[916px]">
+    <div
+      class="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <h3
+        class="font-domine text-center text-[32px] font-normal leading-normal text-white sm:text-left sm:text-[48px]"
+      >
+        Ready to work together?
+      </h3>
+
+      <LinkButton href="/contact" variant="white"> Contact Us </LinkButton>
+    </div>
+  </div>
+</section>

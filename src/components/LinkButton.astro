@@ -5,7 +5,7 @@ export interface Props {
   ariaLabel?: string;
   title?: string;
   disabled?: boolean;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "white";
 }
 
 const {
@@ -21,6 +21,7 @@ const variantStyles = {
   primary: "bg-[#2C5282] text-white hover:bg-[#1A365D]",
   secondary:
     "border-2 border-[#466cb2] bg-transparent text-[#466cb2] hover:bg-[#0D2B46] hover:text-white",
+  white: "bg-white text-[#466CB2] hover:bg-white/90 transition-opacity",
 };
 
 const baseStyles = "px-4 py-2 rounded-md transition-colors duration-200";
