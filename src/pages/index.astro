@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
@@ -25,9 +26,51 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
   <Hero />
 
-  <main id="main-content">
-    <Hr />
+  <section class="services w-full min-w-full bg-[#ffffff]">
+    <div class="mx-auto w-full max-w-[916px] px-4 py-16">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        {/* Left Column */}
+        <div class="flex flex-col justify-start">
+          <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
+            Our Services
+          </h2>
+          <div class="flex flex-col space-y-6 bg-[#F6F6F6] p-6">
+            <div class="border-b border-gray-200 pb-4">
+              <h3 class="text-lg font-medium text-[#0D2B46]">
+                Management Consulting
+              </h3>
+            </div>
+            <div class="border-b border-gray-200 pb-4">
+              <h3 class="text-lg font-medium text-[#0D2B46]">
+                Software Development
+              </h3>
+            </div>
+            <div class="border-b border-gray-200 pb-4">
+              <h3 class="text-lg font-medium text-[#0D2B46]">
+                Data Integration
+              </h3>
+            </div>
+            <div class="pb-4">
+              <h3 class="text-lg font-medium text-[#0D2B46]">DevOps & Cloud</h3>
+            </div>
+          </div>
+        </div>
 
+        {/* Right Column - Services Image */}
+        <div class="flex items-center justify-center">
+          <Image
+            src="/assets/services1.svg"
+            alt="Our Services Illustration"
+            width={500}
+            height={500}
+            class="h-auto w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main-content">
     {
       featuredPosts.length > 0 && (
         <>
