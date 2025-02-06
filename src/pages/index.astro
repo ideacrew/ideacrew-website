@@ -77,6 +77,62 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     </div>
   </section>
 
+  <section class="w-full min-w-full bg-[#ffffff]">
+    <div class="mx-auto w-full max-w-[916px] px-4 py-16">
+      <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
+        State Based Marketplace Solutions
+      </h2>
+
+      <div class="mb-6 hidden sm:flex sm:items-center sm:justify-between">
+        <div class="font-medium text-[#0D2B46]">Individual</div>
+        <div class="text-gray-300">|</div>
+        <div class="font-medium text-[#0D2B46]">Employers</div>
+        <div class="text-gray-300">|</div>
+        <div class="font-medium text-[#0D2B46]">Employees</div>
+        <div class="text-gray-300">|</div>
+        <div class="font-medium text-[#0D2B46]">Brokers</div>
+      </div>
+
+      {/* Mobile Layout */}
+      <div class="mb-6 grid grid-cols-2 sm:hidden">
+        <div
+          class="border-b border-r border-gray-200 p-4 text-center font-medium text-[#0D2B46]"
+        >
+          Individual
+        </div>
+        <div
+          class="border-b border-gray-200 p-4 text-center font-medium text-[#0D2B46]"
+        >
+          Employers
+        </div>
+        <div
+          class="border-r border-gray-200 p-4 text-center font-medium text-[#0D2B46]"
+        >
+          Employees
+        </div>
+        <div class="p-4 text-center font-medium text-[#0D2B46]">Brokers</div>
+      </div>
+
+      <p
+        class="mb-3 font-['Open_Sans'] text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+      >
+        IdeaCrew's award winning State-based Marketplace (SBM) platform is a
+        cloud-based, complete end-to-end ACA-compliant solution for states,
+        employers, employees and individuals to sponsor, shop and enroll in
+        health insurance and other benefits. Our platform's modular, flexible
+        design supports different marketplace needs from Individuals to small
+        business to large group enrollments.
+      </p>
+
+      <a
+        href="/sbm/"
+        class="py-6 font-['Open_Sans'] text-sm font-bold text-[#466CB2] underline decoration-solid decoration-from-font underline-offset-auto"
+      >
+        Learn More About Our State Based Marketplace Solutions
+      </a>
+    </div>
+  </section>
+
   <main id="main-content">
     {
       featuredPosts.length > 0 && (
