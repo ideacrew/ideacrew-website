@@ -1,5 +1,6 @@
 ---
 import { SITE } from "@config";
+import { Image } from "astro:assets";
 import Breadcrumbs from "@components/Breadcrumbs.astro";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
@@ -18,14 +19,45 @@ const { frontmatter } = Astro.props;
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
   <Header activeNav="about" />
-  <Breadcrumbs />
-  <main id="main-content">
-    <section id="about" class="prose mb-28 max-w-3xl prose-img:border-0">
-      <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
-      <slot />
-    </section>
-  </main>
-  <Cta />
 
-  <Footer />
+  <Breadcrumbs />
+
+  <section class="mt-16 w-full min-w-full">
+    <div class="mx-auto w-full max-w-[916px] px-4 py-16">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div class="col-span-2">
+          <div
+            class="mb-3 font-['Open_Sans'] text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+          >
+            <h2
+              class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
+            >
+              {frontmatter.title}
+            </h2>
+
+            <div
+              class="font-['Open_Sans'] text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+            >
+              <slot />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-1 grid place-items-center">
+          <Image
+            src="/src/assets/images/about-us.svg"
+            alt="About IdeaCrew"
+            width={300}
+            height={192}
+            loading="eager"
+            priority
+          />
+        </div>
+      </div>
+    </div>
+
+    <Cta />
+
+    <Footer />
+  </section>
 </Layout>
