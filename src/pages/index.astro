@@ -11,6 +11,7 @@ import getSortedPosts from "@utils/getSortedPosts";
 import { SOCIALS } from "@config";
 import Hero from "@components/Hero.astro";
 import Cta from "@components/Cta.astro";
+import type { ImageMetadata } from "astro";
 
 const posts = await getCollection("blog");
 
@@ -19,6 +20,10 @@ const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
+
+const clientImages = await import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/clients/*.{jpg,jpeg,png,svg}"
+);
 ---
 
 <Layout>
@@ -71,13 +76,15 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             width={500}
             height={500}
             class="h-auto w-full"
+            loading="eager"
+            priority
           />
         </div>
       </div>
     </div>
   </section>
 
-  <section class="w-full min-w-full bg-[#ffffff]">
+  <section class="sbm w-full min-w-full bg-[#ffffff]">
     <div class="mx-auto w-full max-w-[916px] px-4 py-16">
       <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
         State Based Marketplace Solutions
@@ -133,58 +140,33 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     </div>
   </section>
 
-  <main id="main-content">
-    {
-      featuredPosts.length > 0 && (
-        <>
-          <section id="featured" class="pb-6 pt-12">
-            <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
-            <ul>
-              {featuredPosts.map(({ data, slug }) => (
-                <Card
-                  href={`/posts/${slug}/`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              ))}
-            </ul>
-          </section>
-          {recentPosts.length > 0 && <Hr />}
-        </>
-      )
-    }
+  <section class="clients mb-6 w-full min-w-full bg-[#ffffff]">
+    <div class="mx-auto w-full max-w-[916px] px-4 py-16">
+      <h2 class="mb-2 font-domine text-2xl font-normal text-[#0D2B46]">
+        Select Clients
+      </h2>
 
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pb-6 pt-12">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
-          <ul>
-            {recentPosts.map(
-              ({ data, slug }, index) =>
-                index < 4 && (
-                  <Card
-                    href={`/posts/${slug}/`}
-                    frontmatter={data}
-                    secHeading={false}
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
+        {
+          Promise.all(
+            Object.values(clientImages).map(async imageModule => {
+              const { default: image } = await imageModule();
+              return (
+                <div class="flex flex-col items-center justify-center">
+                  <Image
+                    src={image}
+                    alt="Client Logo"
+                    width={150}
+                    height={150}
                   />
-                )
-            )}
-          </ul>
-        </section>
-      )
-    }
-
-    <div class="my-8 text-center">
-      <LinkButton href="/posts/">
-        All Posts
-        <svg xmlns="http://www.w3.org/2000/svg"
-          ><path
-            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-          ></path>
-        </svg>
-      </LinkButton>
+                </div>
+              );
+            })
+          )
+        }
+      </div>
     </div>
-  </main>
+  </section>
 
   <Cta />
 
