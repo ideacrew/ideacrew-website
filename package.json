@@ -13,7 +13,9 @@
     "format": "prettier --write . --plugin=prettier-plugin-astro",
     "cz": "cz",
     "prepare": "husky install",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prebuild": "mkdir -p public/images && cp -r src/assets/images/* public/images/",
+    "build": "astro build"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

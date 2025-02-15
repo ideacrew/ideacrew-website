@@ -1,6 +1,6 @@
 media:
   input: src/assets/images
-  output: /assets/images
+  output: /images
   extensions: [svg, png, jpg, jpeg]
 content:
   - name: posts
