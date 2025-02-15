@@ -1,6 +1,7 @@
 media:
-  input: public
-  output: /
+  input: src/assets/images
+  output: /assets/images
+  extensions: [svg, png, jpg, jpeg]
 content:
   - name: posts
     label: Posts
@@ -33,6 +34,12 @@ content:
         fields:
           - { name: title, label: Title, type: string }
           - { name: description, label: Description, type: text }
+          - name: image
+            label: Image
+            type: object
+            fields:
+              - { name: src, label: Source, type: string }
+              - { name: alt, label: Alt Text, type: string }
       - name: services
         label: Services
         type: object
