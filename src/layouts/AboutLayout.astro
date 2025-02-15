@@ -8,21 +8,6 @@ import Layout from "./Layout.astro";
 import Cta from "@components/Cta.astro";
 import Careers from "@components/Careers.astro";
 
-// Import images
-import aboutUsImage from "@assets/images/about-us.svg";
-import dataIcon from "@assets/images/data.svg";
-import softwareIcon from "@assets/images/software.svg";
-import cloudIcon from "@assets/images/cloud.svg";
-import managementIcon from "@assets/images/management.svg";
-
-// Create an icon map
-const iconMap = {
-  data: dataIcon,
-  software: softwareIcon,
-  cloud: cloudIcon,
-  management: managementIcon,
-};
-
 export interface Props {
   frontmatter: {
     title: string;
@@ -52,7 +37,6 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props;
-console.log("Frontmatter data:", frontmatter);
 ---
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
@@ -83,12 +67,14 @@ console.log("Frontmatter data:", frontmatter);
 
         <div class="col-span-1 grid place-items-center">
           <Image
-            src={aboutUsImage}
+            src={frontmatter.about.image.src.replace(
+              "/images/",
+              "/src/assets/images/"
+            )}
             alt={frontmatter.about.image.alt}
             width={300}
             height={192}
             loading="eager"
-            priority
           />
         </div>
       </div>
@@ -109,7 +95,7 @@ console.log("Frontmatter data:", frontmatter);
             <div class="flex flex-col">
               <div class="mb-6 h-16 w-16">
                 <Image
-                  src={iconMap[service.icon]}
+                  src={service.icon.replace("/images/", "/src/assets/images/")}
                   alt={`${service.name} Icon`}
                   width={64}
                   height={64}
