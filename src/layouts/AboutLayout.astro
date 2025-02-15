@@ -16,13 +16,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 // Function with type safety
 const getImageFromPath = (path: string): ImageMetadata => {
-  const imagePath = path.replace("@assets", "../assets");
-  console.log("Available paths:", Object.keys(images));
-  console.log("Looking for path:", imagePath);
+  const imagePath = path.replace("/images/", "../assets/images/");
 
   if (!images[imagePath]) {
-    console.error(`Image not found: ${imagePath}`);
-    // Return a default image or throw error
     return images["../assets/images/about-us.svg"].default;
   }
 
