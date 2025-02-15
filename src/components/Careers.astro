@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  data: {
+    title: string;
+    description: string;
+    image: {
+      src: string;
+      alt: string;
+    };
+  };
+}
+
+const { data } = Astro.props;
+console.log("Careers data:", data);
+
+const defaultData = {
+  title: "Careers",
+  description: "Loading careers information...",
+  image: {
+    src: "remote-team",
+    alt: "Remote Team",
+  },
+};
+
+const careerData = data || defaultData;
+---
+
+<section class="w-full min-w-full">
+  <div class="mx-auto w-full max-w-[916px] px-4 py-8">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <div class="col-span-2">
+        <div
+          class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+        >
+          <h2
+            class="mb-4 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+          >
+            {careerData.title}
+          </h2>
+
+          <div
+            class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+          >
+            {careerData.description}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-1 grid place-items-center">
+        <Image
+          src={`/src/assets/images/${careerData.image.src}.svg`}
+          alt={careerData.image.alt}
+          width={300}
+          height={192}
+          loading="eager"
+          priority
+        />
+      </div>
+    </div>
+  </div>
+</section>

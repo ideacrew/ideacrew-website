@@ -6,20 +6,38 @@ import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import Layout from "./Layout.astro";
 import Cta from "@components/Cta.astro";
+import Careers from "@components/Careers.astro";
 
 export interface Props {
   frontmatter: {
     title: string;
     description?: string;
+    about: {
+      title: string;
+      description: string;
+      image: {
+        src: string;
+        alt: string;
+      };
+    };
     services: {
       name: string;
       icon: string;
       items: string[];
     }[];
+    careers: {
+      title: string;
+      description: string;
+      image: {
+        src: string;
+        alt: string;
+      };
+    };
   };
 }
 
 const { frontmatter } = Astro.props;
+console.log("Frontmatter data:", frontmatter);
 ---
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
@@ -37,21 +55,21 @@ const { frontmatter } = Astro.props;
             <h2
               class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
             >
-              {frontmatter.title}
+              {frontmatter.about.title}
             </h2>
 
             <div
               class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
             >
-              <slot />
+              {frontmatter.about.description}
             </div>
           </div>
         </div>
 
         <div class="col-span-1 grid place-items-center">
           <Image
-            src="/src/assets/images/about-us.svg"
-            alt="About IdeaCrew"
+            src={`/src/assets/images/${frontmatter.about.image.src}.svg`}
+            alt={frontmatter.about.image.alt}
             width={300}
             height={192}
             loading="eager"
@@ -98,6 +116,8 @@ const { frontmatter } = Astro.props;
       </div>
     </div>
   </section>
+
+  {frontmatter.careers && <Careers data={frontmatter.careers} />}
 
   <Cta />
 

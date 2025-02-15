@@ -27,4 +27,32 @@ content:
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
       - { name: title, label: Title, type: string }
-      - { name: body, label: Body, type: rich-text, options: { input: public/assets, output: /assets } }
+      - name: about
+        label: About Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: description, label: Description, type: text }
+      - name: services
+        label: Services
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Service Name, type: string }
+          - { name: icon, label: Icon Name, type: string }
+          - name: items
+            label: Service Items
+            type: string
+            list: true
+      - name: careers
+        label: Careers Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: description, label: Description, type: text }
+          - name: image
+            label: Image
+            type: object
+            fields:
+              - { name: src, label: Source, type: string }
+              - { name: alt, label: Alt Text, type: string }
