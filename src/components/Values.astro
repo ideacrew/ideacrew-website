@@ -1,0 +1,39 @@
+---
+interface Props {
+  data: {
+    title: string;
+    items: {
+      title: string;
+      description: string;
+    }[];
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="w-full min-w-full">
+  <div class="mx-auto w-full max-w-[916px] px-4 py-8">
+    <h2
+      class="mb-8 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+    >
+      {data.title}
+    </h2>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      {
+        data.items.map(value => (
+          <div class="relative pl-6">
+            <div class="absolute left-0 top-0 h-full w-1 bg-[#0D2B46]" />
+            <h3 class="mb-4 font-sans text-[18px] font-semibold leading-normal text-[#0D2B46]">
+              {value.title}
+            </h3>
+            <p class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]">
+              {value.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
