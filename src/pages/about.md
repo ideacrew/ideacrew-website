@@ -16,28 +16,28 @@ about:
     alt: About IdeaCrew
 services:
   - name: Data Integration
-    icon: data
+    icon: /images/data.svg
     items:
       - Electronic Data Interchange (EDI)
       - Journaling Database
       - Reporting
       - Analytics
   - name: Software Development
-    icon: software
+    icon: /images/software.svg
     items:
       - Agile Software Development
       - Continuous Delivery
       - Automated Testing
       - Human-Centered Design
   - name: DevOps & Cloud
-    icon: cloud
+    icon: /images/cloud.svg
     items:
       - Amazon Web Services
       - Security
       - Continuous Deployment
       - Performance Monitoring
   - name: Management Consulting
-    icon: management
+    icon: /images/management.svg
     items:
       - Clinical Consulting
       - Data Driven Consulting
@@ -54,6 +54,6 @@ careers:
     with like-minded professionals in a fast-paced, engaging, professional
     environment.
   image:
-    src: remote-team
+    src: /images/remote-team.svg
     alt: Remote Team at IdeaCrew
 ---
