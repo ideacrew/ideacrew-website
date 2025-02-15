@@ -38,7 +38,9 @@ content:
             label: Image
             type: object
             fields:
-              - { name: src, label: Source, type: string }
+              - name: src
+                label: Image
+                type: image
               - { name: alt, label: Alt Text, type: string }
       - name: services
         label: Services
@@ -46,7 +48,9 @@ content:
         list: true
         fields:
           - { name: name, label: Service Name, type: string }
-          - { name: icon, label: Icon Name, type: string }
+          - name: icon
+            label: Icon
+            type: image
           - name: items
             label: Service Items
             type: string
@@ -61,5 +65,7 @@ content:
             label: Image
             type: object
             fields:
-              - { name: src, label: Source, type: string }
+              - name: src
+                label: Image
+                type: image
               - { name: alt, label: Alt Text, type: string }
