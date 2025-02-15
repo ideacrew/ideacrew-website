@@ -44,6 +44,15 @@ services:
       - Data Driven Consulting
       - Strategic Planning
       - Project Management
+values:
+  title: Our Values
+  items:
+    - title: People
+      description: People first. We believe in respect for the individual. We value inclusion and diversity to foster an open and collaborative work environment that is customer focused.
+    - title: Technology
+      description: We innovate and learn, continuously.We embrace modern technologies and architectures that advance business objectives and customer experience.
+    - title: Purpose
+      description: We take action, driving value and building trust. We have the character to solve problems and deliver results, efficiently, by hiring and working with the best people... and technology.
 careers:
   title: Careers
   description:
@@ -58,13 +67,4 @@ careers:
   image:
     src: /images/remote-team.svg
     alt: Remote Team at IdeaCrew
-values:
-  title: Our Values
-  items:
-    - title: People
-      description: People first. We believe in respect for the individual. We value inclusion and diversity to foster an open and collaborative work environment that is customer focused.
-    - title: Technology
-      description: We innovate and learn, continuously.We embrace modern technologies and architectures that advance business objectives and customer experience.
-    - title: Purpose
-      description: We take action, driving value and building trust. We have the character to solve problems and deliver results, efficiently, by hiring and working with the best people... and technology.
 ---

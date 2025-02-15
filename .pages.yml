@@ -55,6 +55,18 @@ content:
             label: Service Items
             type: string
             list: true
+      - name: values
+        label: Values Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - name: items
+            label: Values
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: text }
       - name: careers
         label: Careers Section
         type: object
