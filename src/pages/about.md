@@ -3,7 +3,8 @@ layout: ../layouts/AboutLayout.astro
 title: About IdeaCrew
 about:
   title: About IdeaCrew
-  description: Established in 2002 with headquarters in Washington DC, IdeaCrew is
+  description:
+    Established in 2002 with headquarters in Washington DC, IdeaCrew is
     a full service IT and clinical consultancy. We offer a cadre of experienced
     former leaders who have served federal and state government at the highest
     levels. Our team has led agencies through challenging start-up phases,
@@ -12,32 +13,32 @@ about:
     we have a unique perspective on the role that IT plays in the delivery of
     the core mission.
   image:
-    src: /images/about-us.svg
+    src: "@assets/images/about-us.svg"
     alt: About IdeaCrew
 services:
   - name: Data Integration
-    icon: /images/data.svg
+    icon: "@assets/images/data.svg"
     items:
       - Electronic Data Interchange (EDI)
       - Journaling Database
       - Reporting
       - Analytics
   - name: Software Development
-    icon: /images/software.svg
+    icon: "@assets/images/software.svg"
     items:
       - Agile Software Development
       - Continuous Delivery
       - Automated Testing
       - Human-Centered Design
   - name: DevOps & Cloud
-    icon: /images/cloud.svg
+    icon: "@assets/images/cloud.svg"
     items:
       - Amazon Web Services
       - Security
       - Continuous Deployment
       - Performance Monitoring
   - name: Management Consulting
-    icon: /images/management.svg
+    icon: "@assets/images/management.svg"
     items:
       - Clinical Consulting
       - Data Driven Consulting
@@ -45,7 +46,8 @@ services:
       - Project Management
 careers:
   title: Careers
-  description: If you're looking for a company that works where technology touches
+  description:
+    If you're looking for a company that works where technology touches
     people's lives… a company that regularly turns "that's impossible" into "Got
     it - what's next?"… a company that rewards performance with generous pay,
     health insurance and other employee benefits… IdeaCrew may be right for you.
@@ -54,6 +56,6 @@ careers:
     with like-minded professionals in a fast-paced, engaging, professional
     environment.
   image:
-    src: /images/remote-team.svg
+    src: "@assets/images/remote-team.svg"
     alt: Remote Team at IdeaCrew
 ---

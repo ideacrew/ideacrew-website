@@ -8,6 +8,27 @@ import Layout from "./Layout.astro";
 import Cta from "@components/Cta.astro";
 import Careers from "@components/Careers.astro";
 
+// Dynamic image imports with type
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/images/*.svg",
+  { eager: true }
+);
+
+// Function with type safety
+const getImageFromPath = (path: string): ImageMetadata => {
+  const imagePath = path.replace("@assets", "../assets");
+  console.log("Available paths:", Object.keys(images));
+  console.log("Looking for path:", imagePath);
+
+  if (!images[imagePath]) {
+    console.error(`Image not found: ${imagePath}`);
+    // Return a default image or throw error
+    return images["../assets/images/about-us.svg"].default;
+  }
+
+  return images[imagePath].default;
+};
+
 export interface Props {
   frontmatter: {
     title: string;
@@ -67,10 +88,7 @@ const { frontmatter } = Astro.props;
 
         <div class="col-span-1 grid place-items-center">
           <Image
-            src={frontmatter.about.image.src.replace(
-              "/images/",
-              "/src/assets/images/"
-            )}
+            src={getImageFromPath(frontmatter.about.image.src)}
             alt={frontmatter.about.image.alt}
             width={300}
             height={192}
@@ -95,7 +113,7 @@ const { frontmatter } = Astro.props;
             <div class="flex flex-col">
               <div class="mb-6 h-16 w-16">
                 <Image
-                  src={service.icon.replace("/images/", "/src/assets/images/")}
+                  src={getImageFromPath(service.icon)}
                   alt={`${service.name} Icon`}
                   width={64}
                   height={64}
