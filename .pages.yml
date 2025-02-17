@@ -21,6 +21,27 @@ content:
       - { name: tags, label: Tags, type: string, list: true }
       - { name: description, label: Description, type: string }
       - { name: body, label: Body, type: rich-text }
+  - name: leaders
+    label: Leaders
+    type: collection
+    path: src/content/leaders
+    view:
+      fields: [ name, position, sortOrder ]
+      sort: [ sortOrder, name ]
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: position, label: Position, type: string, required: true }
+      - name: photo
+        label: Photo
+        type: object
+        fields:
+          - name: src
+            label: Photo
+            type: image
+          - { name: alt, label: Alt Text, type: string }
+      - { name: linkedin, label: LinkedIn URL, type: string, pattern: "^https://www\\.linkedin\\.com/.*$" }
+      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
+      - { name: body, label: Bio, type: rich-text }
   - name: about
     label: About page
     type: file
