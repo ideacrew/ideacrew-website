@@ -81,3 +81,9 @@ content:
                 label: Image
                 type: image
               - { name: alt, label: Alt Text, type: string }
+          - name: button
+            label: Button
+            type: object
+            fields:
+              - { name: href, label: Link, type: string }
+              - { name: text, label: Text, type: string }

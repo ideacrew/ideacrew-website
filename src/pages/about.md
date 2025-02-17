@@ -55,16 +55,11 @@ values:
       description: We take action, driving value and building trust. We have the character to solve problems and deliver results, efficiently, by hiring and working with the best people... and technology.
 careers:
   title: Careers
-  description:
-    If you're looking for a company that works where technology touches
-    people's lives… a company that regularly turns "that's impossible" into "Got
-    it - what's next?"… a company that rewards performance with generous pay,
-    health insurance and other employee benefits… IdeaCrew may be right for you.
-    We're smart, talented, solutions oriented, diverse, forward thinking and
-    fun. As a member of our crew you will have the opportunity to work closely
-    with like-minded professionals in a fast-paced, engaging, professional
-    environment.
+  description: If you’re looking for a company that works where technology touches people’s lives… a company that regularly turns “that’s impossible” into “Got it – what’s next?”… a company that rewards performance with generous pay, health insurance and other employee benefits… IdeaCrew may be right for you. We’re smart, talented, solutions oriented, diverse, forward thinking and fun. As a member of our crew you will have the opportunity to work closely with like-minded professionals in a fast-paced, engaging, professional environment.
   image:
     src: /images/remote-team.svg
     alt: Remote Team at IdeaCrew
+  button:
+    href: /careers
+    text: View Current Openings
 ---
