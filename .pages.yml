@@ -88,6 +88,11 @@ content:
             fields:
               - { name: title, label: Title, type: string }
               - { name: description, label: Description, type: text }
+      - name: leadership
+        label: Leadership Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
       - name: careers
         label: Careers Section
         type: object
@@ -108,24 +113,3 @@ content:
             fields:
               - { name: href, label: Link, type: string }
               - { name: text, label: Text, type: string }
-      - name: leadership
-        label: Leadership Section
-        type: object
-        fields:
-          - { name: title, label: Title, type: string }
-          - name: leaders
-            label: Leaders
-            type: object
-            list: true
-            fields:
-              - { name: name, label: Name, type: string }
-              - { name: position, label: Position, type: string }
-              - name: photo
-                label: Photo
-                type: object
-                fields:
-                  - name: src
-                    label: Photo
-                    type: image
-                  - { name: alt, label: Alt Text, type: string }
-              - { name: linkedin, label: LinkedIn URL, type: string, pattern: "^https://www\\.linkedin\\.com/.*$" }
