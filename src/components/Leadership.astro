@@ -1,21 +1,11 @@
 ---
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import placeholderImage from "../assets/images/about-us.svg";
-
-interface Leader {
-  name: string;
-  position: string;
-  photo: {
-    src: string;
-    alt: string;
-  };
-  linkedin: string;
-}
 
 interface Props {
   data: {
     title: string;
-    leaders: Leader[];
   };
 }
 
@@ -41,6 +31,11 @@ const getImageFromPath = (path: string): ImageMetadata => {
 
   return images[imagePath].default;
 };
+
+const leaders = await getCollection("leaders");
+const sortedLeaders = leaders.sort(
+  (a, b) => a.data.sortOrder - b.data.sortOrder
+);
 ---
 
 <section class="w-full min-w-full bg-[#F6F6F6]">
@@ -51,14 +46,17 @@ const getImageFromPath = (path: string): ImageMetadata => {
       {data.title}
     </h2>
 
-    <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+    <div class="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
       {
-        data.leaders.map(leader => (
-          <div class="flex flex-col overflow-hidden rounded-lg bg-white shadow">
+        sortedLeaders.map(leader => (
+          <a
+            href={`/leaders/${leader.slug}`}
+            class="flex flex-col overflow-hidden rounded-lg bg-white shadow transition-transform hover:-translate-y-1 hover:shadow-lg"
+          >
             <div class="h-[232px] w-full p-3">
               <Image
-                src={getImageFromPath(leader.photo.src)}
-                alt={leader.photo.alt}
+                src={getImageFromPath(leader.data.photo.src)}
+                alt={leader.data.photo.alt}
                 width={198}
                 height={232}
                 class="h-full w-full rounded-lg object-cover"
@@ -66,19 +64,14 @@ const getImageFromPath = (path: string): ImageMetadata => {
             </div>
             <div class="flex flex-1 flex-col px-3 pb-2">
               <h3 class="mb-2 font-sans text-[16px] font-semibold leading-normal text-[#0D2B46]">
-                {leader.name}
+                {leader.data.name}
               </h3>
               <p class="mb-4 font-sans text-[14px] font-normal leading-normal text-[#666]">
-                {leader.position}
+                {leader.data.position}
               </p>
               <div class="mt-auto">
                 <hr class="my-2" />
-                <a
-                  href={leader.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center text-[#0D2B46] hover:text-[#1a1a1a]"
-                >
+                <div class="inline-flex items-center text-[#0D2B46]">
                   <svg
                     class="h-5 w-5"
                     fill="currentColor"
@@ -87,10 +80,10 @@ const getImageFromPath = (path: string): ImageMetadata => {
                   >
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                   </svg>
-                </a>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         ))
       }
     </div>

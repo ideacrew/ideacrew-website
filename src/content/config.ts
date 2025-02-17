@@ -23,4 +23,21 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const leadersCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    name: z.string(),
+    position: z.string(),
+    photo: z.object({
+      src: z.string(),
+      alt: z.string(),
+    }),
+    linkedin: z.string().url(),
+    sortOrder: z.number().default(999),
+  }),
+});
+
+export const collections = {
+  blog,
+  leaders: leadersCollection,
+};
