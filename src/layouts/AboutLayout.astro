@@ -8,6 +8,7 @@ import Layout from "./Layout.astro";
 import Cta from "@components/Cta.astro";
 import Careers from "@components/Careers.astro";
 import Values from "@components/Values.astro";
+import Leadership from "@components/Leadership.astro";
 // Dynamic image imports with type
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "../assets/images/*.svg",
@@ -59,6 +60,18 @@ export interface Props {
       items: {
         title: string;
         description: string;
+      }[];
+    };
+    leadership: {
+      title: string;
+      leaders: {
+        name: string;
+        position: string;
+        photo: {
+          src: string;
+          alt: string;
+        };
+        linkedin: string;
       }[];
     };
   };
@@ -144,6 +157,8 @@ const { frontmatter } = Astro.props;
   </section>
 
   {frontmatter.values && <Values data={frontmatter.values} />}
+
+  {frontmatter.leadership && <Leadership data={frontmatter.leadership} />}
 
   {frontmatter.careers && <Careers data={frontmatter.careers} />}
 
