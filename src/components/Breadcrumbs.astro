@@ -1,10 +1,28 @@
 ---
+interface Props {
+  leaderName?: string;
+}
+
+const { leaderName } = Astro.props;
+
 // Remove current url path and remove trailing slash if exists
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
 
 // Get url array from path
 // eg: /tags/tailwindcss => ['tags', 'tailwindcss']
 const breadcrumbList = currentUrlPath.split("/").slice(1);
+
+// Replace 'leaders' with 'about' in the breadcrumb path
+if (breadcrumbList[0] === "leaders") {
+  breadcrumbList[0] = "about";
+  if (breadcrumbList[1] && leaderName) {
+    // Split the name into first and last name, capitalize first letter of each
+    breadcrumbList[1] = leaderName
+      .split(" ")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+  }
+}
 
 // if breadcrumb is Home > Posts > 1 <etc>
 // replace Posts with Posts (page number)
@@ -24,18 +42,27 @@ breadcrumbList[0] === "tags" &&
   );
 ---
 
-<nav class="breadcrumb" aria-label="breadcrumb">
+<nav
+  class="mx-auto mb-1 mt-[112px] w-full max-w-[916px] px-4"
+  aria-label="breadcrumb"
+>
   <ul>
-    <li>
-      <a href="/">Home</a>
-      <span aria-hidden="true">&raquo;</span>
+    <li class="inline">
+      <a href="/" class="capitalize opacity-70 hover:opacity-100">Home</a>
+      <span class="opacity-70" aria-hidden="true">&raquo;</span>
     </li>
     {
       breadcrumbList.map((breadcrumb, index) =>
         index + 1 === breadcrumbList.length ? (
-          <li>
+          <li class="inline">
             <span
-              class={`${index > 0 ? "lowercase" : "capitalize"}`}
+              class={`${
+                breadcrumbList[0] === "about" && index === 1
+                  ? ""
+                  : index > 0
+                    ? "lowercase"
+                    : "capitalize"
+              } opacity-70`}
               aria-current="page"
             >
               {/* make the last part lowercase in Home > Tags > some-tag */}
@@ -43,30 +70,19 @@ breadcrumbList[0] === "tags" &&
             </span>
           </li>
         ) : (
-          <li>
-            <a href={`/${breadcrumb}/`}>{breadcrumb}</a>
-            <span aria-hidden="true">&raquo;</span>
+          <li class="inline">
+            <a
+              href={`/${breadcrumb}/`}
+              class="capitalize opacity-70 hover:opacity-100"
+            >
+              {breadcrumb}
+            </a>
+            <span class="opacity-70" aria-hidden="true">
+              &raquo;
+            </span>
           </li>
         )
       )
     }
   </ul>
 </nav>
-
-<style>
-  .breadcrumb {
-    @apply mx-auto mb-1 mt-8 w-full max-w-3xl px-4;
-  }
-  .breadcrumb ul li {
-    @apply inline;
-  }
-  .breadcrumb ul li a {
-    @apply capitalize opacity-70;
-  }
-  .breadcrumb ul li span {
-    @apply opacity-70;
-  }
-  .breadcrumb ul li:not(:last-child) a {
-    @apply hover:opacity-100;
-  }
-</style>

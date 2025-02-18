@@ -36,7 +36,8 @@ const { frontmatter, leader } = Astro.props;
   <div class="flex min-h-screen flex-col">
     <div class="flex-1">
       <Header activeNav="about" />
-      <Breadcrumbs />
+
+      <Breadcrumbs leaderName={leader.data.name} />
 
       <article class="mx-auto max-w-[916px] px-4 py-16">
         <div
