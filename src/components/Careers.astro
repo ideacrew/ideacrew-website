@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import remoteTeamImage from "@assets/images/remote-team.svg";
+import remoteTeamImage from "@/assets/images/remote-team.svg";
 import LinkButton from "./LinkButton.astro";
 
 interface Props {
@@ -19,7 +19,6 @@ interface Props {
 }
 
 const { data } = Astro.props;
-console.log("Careers data:", data);
 
 const defaultData = {
   title: "Careers",

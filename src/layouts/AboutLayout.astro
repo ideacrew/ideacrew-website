@@ -1,14 +1,14 @@
 ---
-import { SITE } from "@config";
+import { SITE } from "@/config";
 import { Image } from "astro:assets";
-import Breadcrumbs from "@components/Breadcrumbs.astro";
-import Footer from "@components/Footer.astro";
-import Header from "@components/Header.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
 import Layout from "./Layout.astro";
-import Cta from "@components/Cta.astro";
-import Careers from "@components/Careers.astro";
-import Values from "@components/Values.astro";
-import Leadership from "@components/Leadership.astro";
+import Cta from "@/components/Cta.astro";
+import Careers from "@/components/Careers.astro";
+import Values from "@/components/Values.astro";
+import Leadership from "@/components/Leadership.astro";
 // Dynamic image imports with type
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "../assets/images/*.svg",

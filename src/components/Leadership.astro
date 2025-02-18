@@ -25,7 +25,6 @@ const getImageFromPath = (path: string): ImageMetadata => {
   );
 
   if (!images[imagePath]) {
-    console.warn(`Image not found: ${imagePath}, using placeholder`);
     return placeholderImage;
   }
 

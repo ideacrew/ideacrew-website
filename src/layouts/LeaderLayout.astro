@@ -1,12 +1,12 @@
 ---
-import { SITE } from "@config";
+import { SITE } from "@/config";
 import { Image } from "astro:assets";
-import Breadcrumbs from "@components/Breadcrumbs.astro";
-import Footer from "@components/Footer.astro";
-import Header from "@components/Header.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
 import Layout from "./Layout.astro";
 import placeholderImage from "../assets/images/about-us.svg";
-import Cta from "@components/Cta.astro";
+import Cta from "@/components/Cta.astro";
 
 // Dynamic image imports with type
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -22,7 +22,6 @@ const getImageFromPath = (path: string): ImageMetadata => {
   );
 
   if (!images[imagePath]) {
-    console.warn(`Image not found: ${imagePath}, using placeholder`);
     return placeholderImage;
   }
 

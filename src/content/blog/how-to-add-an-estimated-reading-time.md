@@ -69,7 +69,7 @@ export default defineConfig({
 Step (4) Add `readingTime` to blog schema (`src/content/config.ts`)
 
 ```ts
-import { SITE } from "@config";
+import { SITE } from "@/config";
 import { defineCollection, z } from "astro:content";
 
 const blog = defineCollection({
@@ -130,7 +130,7 @@ Step (6) Refactor `getStaticPaths` of `/src/pages/posts/[slug].astro` as the fol
 ```ts
 ---
 // other imports
-import getPostsWithRT from "@utils/getPostsWithRT";
+import getPostsWithRT from "@/utils/getPostsWithRT";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -233,7 +233,7 @@ But in this section, I'm gonna show you how I would display `readingTime` in my 
 Step (1) Update `Datetime` component to display `readingTime`
 
 ```tsx
-import { LOCALE } from "@config";
+import { LOCALE } from "@/config";
 
 export interface Props {
   datetime: string | Date;

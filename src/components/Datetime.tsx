@@ -1,4 +1,4 @@
-import { LOCALE } from "@config";
+import { LOCALE } from "@/config";
 
 interface DatetimesProps {
   pubDatetime: string | Date;
