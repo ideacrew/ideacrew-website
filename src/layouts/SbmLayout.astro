@@ -6,6 +6,7 @@ import Header from "@/components/Header.astro";
 import Layout from "./Layout.astro";
 import Cta from "@/components/Cta.astro";
 import { Button } from "@/components/ui/button";
+import { ModulesAccordion } from "@/components/ModulesAccordion";
 
 export interface Props {
   frontmatter: {
@@ -19,6 +20,13 @@ export interface Props {
       text: string;
       href: string;
     }[];
+    modules: {
+      heading: string;
+      items: {
+        title: string;
+        content: string;
+      }[];
+    };
   };
 }
 
@@ -34,11 +42,11 @@ const { frontmatter } = Astro.props;
       <div
         class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
       >
-        <h2
+        <h1
           class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
         >
           {frontmatter.title}
-        </h2>
+        </h1>
 
         <div
           class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
@@ -55,6 +63,22 @@ const { frontmatter } = Astro.props;
             </Button>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full min-w-full">
+    <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+      <div
+        class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+      >
+        <h2
+          class="mb-8 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+        >
+          {frontmatter.modules.heading}
+        </h2>
+
+        <ModulesAccordion client:load items={frontmatter.modules.items} />
       </div>
     </div>
   </section>

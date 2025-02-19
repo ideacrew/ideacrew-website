@@ -138,3 +138,16 @@ content:
         fields:
           - { name: text, label: Button Text, type: string, required: true }
           - { name: href, label: Button Link, type: string, required: true }
+      - name: modules
+        label: Modules Section
+        type: object
+        required: true
+        fields:
+          - { name: heading, label: Section Heading, type: string, required: true }
+          - name: items
+            label: Accordion Items
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Item Title, type: string, required: true }
+              - { name: content, label: Item Content, type: text, required: true }
