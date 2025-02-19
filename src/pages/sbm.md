@@ -10,12 +10,29 @@ buttons:
 modules:
   heading: Marketplace Modules
   items:
-    - title: Plan Management
-      content: Our Plan Management module enables health insurance carriers to submit and manage their plans efficiently. It includes features for plan certification, rate review, and benefit design.
+    - title: Anonymous Tools
+      content: Our Anonymous Tools allow consumers to browse and compare plans, check eligibility for Medicaid or subsidies, search providers and formulary through integration with Consumers' Checkbook. We also offer individuals an HRA affordability calculator and employer quoting tool that allows employers to explore their health insurance options quickly and simply.
+      buttons:
+        - text: DC Anonymous Browsing Tool
+          href: https://example.com
+        - text: MA Employer Quick Quote
+          href: https://example.com
+        - text: HRA Tool
+          href: https://example.com
     - title: Eligibility & Enrollment
       content: The core module that determines consumer eligibility for various programs and facilitates enrollment in health insurance plans.
+      buttons:
+        - text: Learn More
+          href: /eligibility
+        - text: Get Started
+          href: /enroll
     - title: Financial Management
       content: Handles premium billing, collection, and reconciliation with robust reporting capabilities.
+      buttons:
+        - text: Learn More
+          href: /financial
+        - text: Reports
+          href: /reports
 ---
 
 SBM page is empty

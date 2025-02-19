@@ -151,3 +151,10 @@ content:
             fields:
               - { name: title, label: Item Title, type: string, required: true }
               - { name: content, label: Item Content, type: text, required: true }
+              - name: buttons
+                label: Item Buttons
+                type: object
+                list: true
+                fields:
+                  - { name: text, label: Button Text, type: string, required: true }
+                  - { name: href, label: Button Link, type: string, required: true }
