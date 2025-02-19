@@ -8,7 +8,7 @@ description: IdeaCrew pioneered the modular approach to developing Health
   state survived depended on how it reacted to these failures. The DC Exchange
   chose IdeaCrew to build a replacement Exchange over time, module-by-module. As
   a result, DC can lay claim to the first modular Exchange, and IdeaCrew is the
-  vendor that built it. \[View our awards. \](https://example.com)
+  vendor that built it.
 about:
   title: test
   description: test
@@ -21,7 +21,8 @@ modules:
   heading: Marketplace Modules
   items:
     - title: Anonymous Tools
-      content: Our Anonymous Tools allow consumers to browse and compare plans, check
+      content:
+        Our Anonymous Tools allow consumers to browse and compare plans, check
         eligibility for Medicaid or subsidies, search providers and formulary
         through integration with Consumers' Checkbook. We also offer individuals
         an HRA affordability calculator and employer quoting tool that allows
@@ -42,7 +43,8 @@ modules:
         - text: Get Started
           href: /enroll
     - title: Financial Management
-      content: Handles premium billing, collection, and reconciliation with robust
+      content:
+        Handles premium billing, collection, and reconciliation with robust
         reporting capabilities.
       buttons:
         - text: Learn More
