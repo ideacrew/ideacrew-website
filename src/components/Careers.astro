@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import remoteTeamImage from "@/assets/images/remote-team.svg";
-import LinkButton from "./LinkButton.astro";
+import { Button } from "./ui/button";
 
 interface Props {
   data: {
@@ -55,9 +55,9 @@ const careerData = data || defaultData;
             {careerData.description}
           </div>
 
-          <LinkButton href={careerData.button.href} variant="secondary">
+          <Button variant="outline" size="lg">
             {careerData.button.text}
-          </LinkButton>
+          </Button>
         </div>
       </div>
 

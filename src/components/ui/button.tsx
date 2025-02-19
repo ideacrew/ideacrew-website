@@ -16,7 +16,7 @@ const buttonVariants = cva(
           "border-2 border-[#466CB2] bg-transparent text-[#466CB2] hover:bg-[#466CB2]/10",
         secondary: "bg-white text-[#466CB2] shadow-sm hover:bg-white/90",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "py-6 text-sm font-bold text-[#466CB2] underline decoration-solid decoration-from-font underline-offset-auto hover:text-[#466CB2]/80",
       },
       size: {
         default: "px-3 py-2",

@@ -1,7 +1,7 @@
 ---
-import LinkButton from "./LinkButton.astro";
 import { Image } from "astro:assets";
 import abstractVector from "/public/assets/abstractVector2.png";
+import { Button } from "./ui/button";
 ---
 
 <section
@@ -28,7 +28,9 @@ import abstractVector from "/public/assets/abstractVector2.png";
         Ready to work together?
       </h3>
 
-      <LinkButton href="/contact" variant="white"> Contact Us </LinkButton>
+      <Button variant="secondary" size="lg">
+        <a href="/contact">Contact Us</a>
+      </Button>
     </div>
   </div>
 </section>
