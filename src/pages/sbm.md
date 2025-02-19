@@ -13,13 +13,12 @@ buttons:
   - text: DC HealthLink
     href: /careers
   - text: MA Health Connector
-    href: /careers
+    href: /404
 modules:
   heading: Marketplace Modules
   items:
     - title: Anonymous Tools
-      content:
-        Our Anonymous Tools allow consumers to browse and compare plans, check
+      content: Our Anonymous Tools allow consumers to browse and compare plans, check
         eligibility for Medicaid or subsidies, search providers and formulary
         through integration with Consumers' Checkbook. We also offer individuals
         an HRA affordability calculator and employer quoting tool that allows
@@ -40,8 +39,7 @@ modules:
         - text: Get Started
           href: /enroll
     - title: Financial Management
-      content:
-        Handles premium billing, collection, and reconciliation with robust
+      content: Handles premium billing, collection, and reconciliation with robust
         reporting capabilities.
       buttons:
         - text: Learn More
