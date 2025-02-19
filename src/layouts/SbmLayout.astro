@@ -5,11 +5,20 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Layout from "./Layout.astro";
 import Cta from "@/components/Cta.astro";
+import { Button } from "@/components/ui/button";
 
 export interface Props {
   frontmatter: {
     title: string;
     description?: string;
+    about: {
+      title: string;
+      description: string;
+    };
+    buttons: {
+      text: string;
+      href: string;
+    }[];
   };
 }
 
@@ -19,15 +28,36 @@ const { frontmatter } = Astro.props;
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
   <Header activeNav="sbm" />
   <Breadcrumbs />
-  <main id="main-content">
-    <section
-      id="sbm"
-      class="prose mx-auto mb-28 max-w-[960px] prose-img:border-0"
-    >
-      <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
-      <slot />
-    </section>
-  </main>
+
+  <section class="w-full min-w-full">
+    <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+      <div
+        class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+      >
+        <h2
+          class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
+        >
+          {frontmatter.title}
+        </h2>
+
+        <div
+          class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+        >
+          {frontmatter.description}
+        </div>
+      </div>
+
+      <div class="grid max-w-[50%] grid-cols-1 gap-2 sm:grid-cols-2">
+        {
+          frontmatter.buttons.map(button => (
+            <Button variant="default" size="lg">
+              <a href={button.href}>{button.text}</a>
+            </Button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
   <Cta />
 

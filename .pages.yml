@@ -116,3 +116,25 @@ content:
             fields:
               - { name: href, label: Link, type: string }
               - { name: text, label: Text, type: string }
+  - name: sbm
+    label: SBM page
+    type: file
+    path: src/pages/sbm.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: "../layouts/SbmLayout.astro" }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: description, label: Description, type: text }
+      - name: about
+        label: About Section
+        type: object
+        required: true
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: description, label: Description, type: text, required: true }
+      - name: buttons
+        label: Buttons
+        type: object
+        list: true
+        fields:
+          - { name: text, label: Button Text, type: string, required: true }
+          - { name: href, label: Button Link, type: string, required: true }
