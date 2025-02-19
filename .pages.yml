@@ -123,7 +123,7 @@ content:
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/SbmLayout.astro" }
       - { name: title, label: Title, type: string, required: true }
-      - { name: description, label: Description, type: string, required: true }
+      - { name: description, label: Description, type: rich-text, required: true }
       - name: buttons
         label: SBM Buttons
         type: object
@@ -142,7 +142,8 @@ content:
           - name: items
             label: Accordion Items
             type: object
-            list: true
+            list:
+              min: 2
             fields:
               - { name: title, label: Item Title, type: string, required: true }
               - { name: content, label: Item Content, type: rich-text, required: true }
