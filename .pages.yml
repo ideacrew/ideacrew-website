@@ -123,14 +123,14 @@ content:
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/SbmLayout.astro" }
       - { name: title, label: Title, type: string, required: true }
-      - { name: description, label: Description, type: text }
+      - { name: description, label: Description, type: rich-text }
       - name: about
         label: About Section
         type: object
         required: true
         fields:
           - { name: title, label: Title, type: string, required: true }
-          - { name: description, label: Description, type: text, required: true }
+          - { name: description, label: Description, type: rich-text, required: true }
       - name: buttons
         label: Buttons
         type: object
@@ -150,7 +150,7 @@ content:
             list: true
             fields:
               - { name: title, label: Item Title, type: string, required: true }
-              - { name: content, label: Item Content, type: text, required: true }
+              - { name: content, label: Item Content, type: rich-text, required: true }
               - name: buttons
                 label: Item Buttons
                 type: object
