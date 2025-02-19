@@ -9,9 +9,6 @@ description: IdeaCrew pioneered the modular approach to developing Health
   chose IdeaCrew to build a replacement Exchange over time, module-by-module. As
   a result, DC can lay claim to the first modular Exchange, and IdeaCrew is the
   vendor that built it.
-about:
-  title: test
-  description: test
 buttons:
   - text: DC HealthLink
     href: /careers
