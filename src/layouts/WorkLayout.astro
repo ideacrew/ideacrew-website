@@ -28,7 +28,9 @@ const { frontmatter } = Astro.props;
       <slot />
     </section>
   </main>
-  <Cta />
 
-  <Footer />
+  <div class="mt-auto">
+    <Cta />
+    <Footer />
+  </div>
 </Layout>
