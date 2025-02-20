@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import careerImage from "@/assets/images/remote-team.svg";
+import { Button } from "./ui/button";
+
+interface Props {
+  heading: string;
+  buttonText: string;
+  buttonHref: string;
+}
+
+const { heading, buttonText, buttonHref } = Astro.props;
+---
+
+<section class="w-full min-w-full">
+  <div class="mx-auto w-full max-w-[960px] px-4">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <div class="col-span-2 flex flex-col justify-center">
+        <div class="space-y-6">
+          <h3
+            class="font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
+          >
+            {heading}
+          </h3>
+
+          <Button variant="outline" size="lg">
+            <a href={buttonHref}>{buttonText}</a>
+          </Button>
+        </div>
+      </div>
+
+      <div class="col-span-1 grid place-items-center">
+        <Image
+          src={careerImage}
+          alt="Career Image"
+          width={290}
+          height={256}
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>

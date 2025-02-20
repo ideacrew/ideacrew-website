@@ -5,13 +5,32 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Layout from "./Layout.astro";
 import { Image } from "astro:assets";
-import placeholderImage from "../assets/images/map.svg";
+import placeholderImage from "../assets/images/map.png";
 import { ContactForm } from "@/components/ContactForm";
+import CtaCareer from "@/components/Cta-career.astro";
 
 export interface Props {
   frontmatter: {
     title: string;
     description?: string;
+    contact: {
+      address: {
+        street: string;
+        suite: string;
+        city: string;
+        state: string;
+        zip: string;
+      };
+      phone: string;
+      email: string;
+    };
+    cta_career: {
+      heading: string;
+      button: {
+        text: string;
+        href: string;
+      };
+    };
   };
 }
 
@@ -48,9 +67,49 @@ const { frontmatter } = Astro.props;
               </div>
             </div>
           </div>
+
+          <div
+            class="mt-16 grid grid-cols-1 gap-8 font-sans text-[14px] leading-[250%] sm:grid-cols-3"
+          >
+            <div class="text-center sm:text-left">
+              <h3 class="font-bold text-[#0D2B46]">Address</h3>
+              <p class="text-[#666]">
+                {frontmatter.contact.address.street}{
+                  frontmatter.contact.address.suite &&
+                    `, ${frontmatter.contact.address.suite}`
+                }<br />
+                {frontmatter.contact.address.city}, {
+                  frontmatter.contact.address.state
+                }
+                {frontmatter.contact.address.zip}
+              </p>
+            </div>
+            <div class="text-center sm:text-left">
+              <h3 class="font-bold text-[#0D2B46]">Phone</h3>
+              <p class="text-[#666]">{frontmatter.contact.phone}</p>
+            </div>
+            <div class="text-center sm:text-left">
+              <h3 class="font-bold text-[#0D2B46]">Email</h3>
+              <p class="text-[#666]">
+                <a
+                  href={`mailto:${frontmatter.contact.email}`}
+                  class="transition-colors hover:text-[#0D2B46]"
+                >
+                  {frontmatter.contact.email}
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
-  <Footer />
+  <div class="mt-auto">
+    <CtaCareer
+      heading={frontmatter.cta_career.heading}
+      buttonText={frontmatter.cta_career.button.text}
+      buttonHref={frontmatter.cta_career.button.href}
+    />
+    <Footer />
+  </div>
 </Layout>

@@ -160,25 +160,36 @@ content:
         fields:
           - { name: text, label: SBM Link Text, type: string, required: true }
           - { name: href, label: SBM Link URL, type: string, required: true }
-      - name: modules
-        label: Marketplace Modules Section
+  - name: contact
+    label: Contact page
+    type: file
+    path: src/pages/contact.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: "../layouts/ContactLayout.astro" }
+      - { name: title, label: Title, type: string }
+      - name: contact
+        label: Contact Information
         type: object
-        required: true
         fields:
-          - { name: heading, label: Heading Text, type: string, required: true }
-          - name: items
-            label: Modules
+          - name: address
+            label: Address
             type: object
-            list:
-              min: 2
             fields:
-              - { name: title, label: Module Name, type: string, required: true }
-              - { name: content, label: Module Description, type: rich-text, required: true }
-              - name: buttons
-                label: Module Buttons
-                type: object
-                list:
-                  max: 3
-                fields:
-                  - { name: text, label: Button Text, type: string, required: true }
-                  - { name: href, label: Button Url, type: string, required: true }
+              - { name: street, label: Street Address, type: string }
+              - { name: suite, label: Suite/Unit, type: string }
+              - { name: city, label: City, type: string }
+              - { name: state, label: State, type: string }
+              - { name: zip, label: ZIP Code, type: string }
+          - { name: phone, label: Phone Number, type: string }
+          - { name: email, label: Email Address, type: string }
+      - name: cta_career
+        label: Careers CTA Section
+        type: object
+        fields:
+          - { name: heading, label: Heading Text, type: string }
+          - name: button
+            label: Button
+            type: object
+            fields:
+              - { name: text, label: Button Text, type: string }
+              - { name: href, label: Button URL, type: string }
