@@ -1,28 +1,29 @@
 ---
 title: Massachusetts Health Connector
 client: Massachusetts Health Connector
-description: Developing a comprehensive health insurance marketplace for Massachusetts residents
-summary: An intuitive health insurance marketplace platform enabling Massachusetts residents to find and enroll in affordable coverage.
+description: Developing a comprehensive health insurance marketplace for
+  Massachusetts residents
+summary: An intuitive health insurance marketplace platform enabling
+  Massachusetts residents to find and enroll in affordable coverage.
 image:
-  src: /images/work/mass-health.jpg
+  src: /images/clients/masshealth3.png
   alt: Massachusetts Health Connector Project
 sortOrder: 2
 ---
-
 IDC collaborated with the Massachusetts Health Connector to develop and maintain their health insurance marketplace platform. This system serves as the primary portal for Massachusetts residents to access affordable health insurance options.
 
 ## Key Achievements
 
-- Created an intuitive plan comparison tool
-- Implemented automated eligibility determination
-- Developed robust reporting capabilities
-- Enhanced system performance during open enrollment
-- Integrated with state and federal databases
+*   Created an intuitive plan comparison tool
+*   Implemented automated eligibility determination
+*   Developed robust reporting capabilities
+*   Enhanced system performance during open enrollment
+*   Integrated with state and federal databases
 
 ## Technical Details
 
-- Microservices architecture
-- Real-time data processing
-- Advanced analytics dashboard
-- High-availability infrastructure
-- Secure data transmission protocols
+*   Microservices architecture
+*   Real-time data processing
+*   Advanced analytics dashboard
+*   High-availability infrastructure
+*   Secure data transmission protocols
