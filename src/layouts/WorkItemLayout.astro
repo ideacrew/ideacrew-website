@@ -18,19 +18,36 @@ interface Props {
 
 // Dynamic image imports with type
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "../assets/images/work/*.{jpeg,jpg,png,gif}",
+  [
+    "../assets/images/work/*.{jpeg,jpg,png,gif}",
+    "../assets/images/clients/*.{jpeg,jpg,png,gif}",
+    "../assets/images/*.{jpeg,jpg,png,gif,svg}",
+  ],
   { eager: true }
 );
 
 // Function with type safety
 const getImageFromPath = (path: string): ImageMetadata => {
-  const imagePath = path.replace("/images/work/", "../assets/images/work/");
+  // Remove the leading slash if it exists
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
 
-  if (!images[imagePath]) {
-    return placeholderImage;
+  // Try different possible paths
+  const possiblePaths = [
+    `../assets/${cleanPath}`,
+    `../assets/images/work/${cleanPath.split("/").pop()}`,
+    `../assets/images/clients/${cleanPath.split("/").pop()}`,
+    `../assets/images/${cleanPath.split("/").pop()}`,
+  ];
+
+  // Find the first matching image
+  for (const tryPath of possiblePaths) {
+    if (images[tryPath]) {
+      return images[tryPath].default;
+    }
   }
 
-  return images[imagePath].default;
+  // Return placeholder if no match found
+  return placeholderImage;
 };
 
 const { frontmatter, work } = Astro.props;
