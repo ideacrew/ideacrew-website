@@ -66,28 +66,24 @@ const sortedWorkItems = workItems.sort(
                   href={`/work/${work.slug}`}
                   class="flex flex-col overflow-hidden rounded-lg bg-white shadow transition-transform hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div class="h-[200px] w-full p-3">
-                    <Image
-                      src={getImageFromPath(work.data.image.src)}
-                      alt={work.data.image.alt}
-                      width={300}
-                      height={200}
-                      class="h-full w-full rounded-lg object-cover"
-                    />
+                  <div class="flex h-[210px] w-full items-center justify-center p-4">
+                    <div class="h-[178px] w-[178px] overflow-hidden rounded-lg">
+                      <Image
+                        src={getImageFromPath(work.data.image.src)}
+                        alt={work.data.image.alt}
+                        width={178}
+                        height={178}
+                        class="h-full w-full object-cover"
+                      />
+                    </div>
                   </div>
                   <div class="flex flex-1 flex-col p-4">
                     <h3 class="mb-2 font-sans text-[20px] font-semibold leading-normal text-[#0D2B46]">
                       {work.data.title}
                     </h3>
-                    <p class="mb-4 font-sans text-[14px] font-normal leading-normal text-[#666]">
-                      {work.data.description}
+                    <p class="font-sans text-[14px] font-normal leading-normal text-[#666]">
+                      {work.data.summary}
                     </p>
-                    <div class="mt-auto">
-                      <hr class="my-2" />
-                      <p class="font-sans text-[14px] font-semibold text-[#0D2B46]">
-                        {work.data.client}
-                      </p>
-                    </div>
                   </div>
                 </a>
               ))

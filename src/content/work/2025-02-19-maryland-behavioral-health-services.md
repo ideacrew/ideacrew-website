@@ -2,8 +2,13 @@
 title: Maryland Behavioral Health Services
 client: Maryland
 description: A short description
-sortOrder: 999
+summary: A comprehensive health risk assessment tool that helps individuals track and improve their health outcomes.
+sortOrder: 4
+image:
+  src: /images/work/maryland-behavioral-health.png
+  alt: Maryland Behavioral Health Services
 ---
+
 Behavioral health focuses on the connection between mental well-being and daily habits. It emphasizes how thoughts, emotions, and actions impact overall health. Understanding this link can lead to better coping strategies and improved quality of life.
 
 Therapies and interventions play a crucial role in enhancing behavioral health. Techniques like cognitive-behavioral therapy (CBT) help individuals recognize and change negative thought patterns. This can lead to healthier behaviors and improved emotional regulation.

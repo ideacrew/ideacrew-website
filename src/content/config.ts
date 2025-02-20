@@ -6,6 +6,7 @@ const workCollection = defineCollection({
     title: z.string(),
     client: z.string(),
     description: z.string(),
+    summary: z.string().optional().default(""),
     image: z
       .object({
         src: z.string().default("/images/about-us.svg"),

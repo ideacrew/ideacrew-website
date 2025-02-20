@@ -2,6 +2,7 @@
 title: WorkRadar Platform
 client: WorkRadar
 description: Building an innovative workforce management and compliance platform
+summary: A cloud-native platform that revolutionizes workforce management with real-time compliance monitoring and analytics.
 image:
   src: /images/work/workradar.jpg
   alt: WorkRadar Platform Project

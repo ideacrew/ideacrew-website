@@ -2,6 +2,7 @@
 title: DC Health Benefit Exchange
 client: DC Health Benefit Exchange
 description: Modernizing healthcare access for DC residents through an integrated eligibility system
+summary: A modern, user-friendly healthcare marketplace that streamlines access to quality coverage for DC residents.
 image:
   src: /images/work/dchealthlink3.png
   alt: DC Health Benefit Exchange Project

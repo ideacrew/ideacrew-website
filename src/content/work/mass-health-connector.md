@@ -2,6 +2,7 @@
 title: Massachusetts Health Connector
 client: Massachusetts Health Connector
 description: Developing a comprehensive health insurance marketplace for Massachusetts residents
+summary: An intuitive health insurance marketplace platform enabling Massachusetts residents to find and enroll in affordable coverage.
 image:
   src: /images/work/mass-health.jpg
   alt: Massachusetts Health Connector Project
