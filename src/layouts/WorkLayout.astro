@@ -9,6 +9,7 @@ import Cta from "@/components/Cta.astro";
 import { getCollection } from "astro:content";
 import placeholderImage from "../assets/images/about-us.svg";
 import type { CollectionEntry } from "astro:content";
+import { Card, CardContent } from "@/components/ui/card";
 
 export interface Props {
   frontmatter: {
@@ -79,30 +80,29 @@ const sortedWorkItems = workItems.sort(
           >
             {
               sortedWorkItems.map(work => (
-                <a
-                  href={`/work/${work.slug}`}
-                  class="flex flex-col overflow-hidden rounded-lg bg-white shadow transition-transform hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div class="flex h-[210px] w-full items-center justify-center p-4">
-                    <div class="h-[178px] w-[178px] overflow-hidden rounded-lg">
-                      <Image
-                        src={getImageFromPath(work.data.image.src)}
-                        alt={work.data.image.alt}
-                        width={178}
-                        height={178}
-                        class="h-full w-full object-cover"
-                      />
+                <Card className="group overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lg">
+                  <a href={`/work/${work.slug}`}>
+                    <div class="flex h-[210px] w-full items-center justify-center p-4">
+                      <div class="h-[178px] w-[178px] overflow-hidden rounded-lg">
+                        <Image
+                          src={getImageFromPath(work.data.image.src)}
+                          alt={work.data.image.alt}
+                          width={178}
+                          height={178}
+                          class="h-full w-full object-cover"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="flex flex-1 flex-col p-4">
-                    <h3 class="mb-2 line-clamp-2 min-h-[48px] font-sans text-[18px] font-semibold leading-[24px] text-[#0D2B46]">
-                      {work.data.title}
-                    </h3>
-                    <p class="font-sans text-[12px] font-normal leading-[175%] text-[#666]">
-                      {work.data.summary}
-                    </p>
-                  </div>
-                </a>
+                    <CardContent className="p-4">
+                      <h3 class="mb-2 line-clamp-2 min-h-[48px] font-sans text-[18px] font-semibold leading-[24px] text-[#0D2B46]">
+                        {work.data.title}
+                      </h3>
+                      <p class="font-sans text-[12px] font-normal leading-[175%] text-[#666]">
+                        {work.data.summary}
+                      </p>
+                    </CardContent>
+                  </a>
+                </Card>
               ))
             }
           </div>
