@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/WorkLayout.astro
-title: Work
+title: Our Work
 ---
 
 Work page is empty

@@ -45,6 +45,30 @@ content:
       - { name: linkedin, label: LinkedIn URL, type: string, pattern: "^https://www\\.linkedin\\.com/.*$" }
       - { name: sortOrder, label: Sort Order, type: number, default: 999 }
       - { name: body, label: Bio, type: rich-text }
+  - name: work
+    label: Work
+    type: collection
+    path: src/content/work
+    view:
+      fields: [ title, client, image.src, sortOrder ]
+      sort: [ sortOrder, title ]
+      default:
+        sort: sortOrder
+        order: asc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: client, label: Client, type: string, required: true }
+      - { name: description, label: Short Description, type: string, required: true }
+      - name: image
+        label: Image
+        type: object
+        fields:
+          - name: src
+            label: Image
+            type: image
+          - { name: alt, label: Alt Text, type: string }
+      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
+      - { name: body, label: Content, type: rich-text }
   - name: about
     label: About page
     type: file

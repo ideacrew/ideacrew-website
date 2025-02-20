@@ -1,26 +1,17 @@
-import { SITE } from "@/config";
 import { defineCollection, z } from "astro:content";
 
-const blog = defineCollection({
+const workCollection = defineCollection({
   type: "content",
-  schema: ({ image }) =>
-    z.object({
-      author: z.string().default(SITE.author),
-      pubDatetime: z.date(),
-      modDatetime: z.date().optional().nullable(),
-      title: z.string(),
-      featured: z.boolean().optional(),
-      draft: z.boolean().optional(),
-      tags: z.array(z.string()).default(["others"]),
-      ogImage: image()
-        .refine(img => img.width >= 1200 && img.height >= 630, {
-          message: "OpenGraph image must be at least 1200 X 630 pixels!",
-        })
-        .or(z.string())
-        .optional(),
-      description: z.string(),
-      canonicalURL: z.string().optional(),
+  schema: z.object({
+    title: z.string(),
+    client: z.string(),
+    description: z.string(),
+    image: z.object({
+      src: z.string(),
+      alt: z.string(),
     }),
+    sortOrder: z.number().default(999),
+  }),
 });
 
 const leadersCollection = defineCollection({
@@ -37,7 +28,24 @@ const leadersCollection = defineCollection({
   }),
 });
 
+const blogCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    author: z.string(),
+    pubDatetime: z.date(),
+    title: z.string(),
+    tags: z.array(z.string()),
+    description: z.string(),
+    modDatetime: z.date().optional().nullable(),
+    featured: z.boolean().optional(),
+    draft: z.boolean().optional(),
+    ogImage: z.string().optional(),
+    canonicalURL: z.string().optional(),
+  }),
+});
+
 export const collections = {
-  blog,
+  work: workCollection,
   leaders: leadersCollection,
+  blog: blogCollection,
 };

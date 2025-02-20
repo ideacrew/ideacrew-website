@@ -1,0 +1,75 @@
+---
+import { SITE } from "@/config";
+import { Image } from "astro:assets";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Layout from "./Layout.astro";
+import placeholderImage from "../assets/images/about-us.svg";
+import Cta from "@/components/Cta.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  frontmatter: {
+    title: string;
+  };
+  work: CollectionEntry<"work">;
+}
+
+// Dynamic image imports with type
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/images/work/*.{jpeg,jpg,png,gif}",
+  { eager: true }
+);
+
+// Function with type safety
+const getImageFromPath = (path: string): ImageMetadata => {
+  const imagePath = path.replace("/images/work/", "../assets/images/work/");
+
+  if (!images[imagePath]) {
+    return placeholderImage;
+  }
+
+  return images[imagePath].default;
+};
+
+const { frontmatter, work } = Astro.props;
+---
+
+<Layout title={`${work.data.title} | ${SITE.title}`}>
+  <div class="flex min-h-screen flex-col">
+    <div class="flex-1">
+      <Header activeNav="work" />
+
+      <Breadcrumbs workName={work.data.title} />
+
+      <article class="mx-auto max-w-[960px] px-4 py-16">
+        <div class="mb-8 flex flex-col md:flex-row md:space-x-8">
+          <div class="mb-6 w-full md:mb-0 md:w-1/2">
+            <Image
+              src={getImageFromPath(work.data.image.src)}
+              alt={work.data.image.alt}
+              width={460}
+              height={306}
+              class="rounded-lg"
+            />
+          </div>
+          <div class="flex-1">
+            <h1 class="mb-2 font-domine text-3xl font-normal text-[#0D2B46]">
+              {work.data.title}
+            </h1>
+            <p class="mb-4 text-xl text-[#666]">{work.data.client}</p>
+            <p class="text-lg text-[#0D2B46]">{work.data.description}</p>
+          </div>
+        </div>
+
+        <div class="prose max-w-none">
+          <slot />
+        </div>
+      </article>
+    </div>
+
+    <Cta />
+    <Footer />
+  </div>
+</Layout>

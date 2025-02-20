@@ -1,10 +1,14 @@
 ---
 import { SITE } from "@/config";
+import { Image } from "astro:assets";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Layout from "@/layouts/Layout.astro";
 import Cta from "@/components/Cta.astro";
+import { getCollection } from "astro:content";
+import placeholderImage from "../assets/images/about-us.svg";
+import type { CollectionEntry } from "astro:content";
 
 export interface Props {
   frontmatter: {
@@ -14,18 +18,81 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props;
+
+// Dynamic image imports with type
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/images/work/*.{jpeg,jpg,png,gif}",
+  { eager: true }
+);
+
+// Function with type safety
+const getImageFromPath = (path: string): ImageMetadata => {
+  const imagePath = path.replace("/images/work/", "../assets/images/work/");
+
+  if (!images[imagePath]) {
+    return placeholderImage;
+  }
+
+  return images[imagePath].default;
+};
+
+const workItems = (await getCollection("work")) as CollectionEntry<"work">[];
+const sortedWorkItems = workItems.sort(
+  (a, b) => (a.data.sortOrder || 999) - (b.data.sortOrder || 999)
+);
 ---
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
   <Header activeNav="work" />
   <Breadcrumbs />
   <main id="main-content">
-    <section
-      id="work"
-      class="prose mx-auto mb-28 max-w-[960px] prose-img:border-0"
-    >
-      <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
-      <slot />
+    <section class="w-full min-w-full">
+      <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+        <div
+          class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+        >
+          <h1
+            class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
+          >
+            {frontmatter.title}
+          </h1>
+
+          <div class="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {
+              sortedWorkItems.map(work => (
+                <a
+                  href={`/work/${work.slug}`}
+                  class="flex flex-col overflow-hidden rounded-lg bg-white shadow transition-transform hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div class="h-[200px] w-full p-3">
+                    <Image
+                      src={getImageFromPath(work.data.image.src)}
+                      alt={work.data.image.alt}
+                      width={300}
+                      height={200}
+                      class="h-full w-full rounded-lg object-cover"
+                    />
+                  </div>
+                  <div class="flex flex-1 flex-col p-4">
+                    <h3 class="mb-2 font-sans text-[20px] font-semibold leading-normal text-[#0D2B46]">
+                      {work.data.title}
+                    </h3>
+                    <p class="mb-4 font-sans text-[14px] font-normal leading-normal text-[#666]">
+                      {work.data.description}
+                    </p>
+                    <div class="mt-auto">
+                      <hr class="my-2" />
+                      <p class="font-sans text-[14px] font-semibold text-[#0D2B46]">
+                        {work.data.client}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
