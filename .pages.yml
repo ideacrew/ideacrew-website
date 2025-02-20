@@ -193,3 +193,50 @@ content:
             fields:
               - { name: text, label: Button Text, type: string }
               - { name: href, label: Button URL, type: string }
+  - name: careers
+    label: Careers page
+    type: file
+    path: src/pages/careers.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: "../layouts/CareersLayout.astro" }
+      - { name: title, label: Title, type: string }
+      - { name: description, label: Description, type: string }
+      - name: hero
+        label: Hero Section
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: description, label: Description, type: text }
+          - name: image
+            label: Hero Image
+            type: object
+            fields:
+              - { name: src, label: Image, type: image }
+              - { name: alt, label: Alt Text, type: string }
+      - name: benefits
+        label: Benefits Section
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - name: items
+            label: Benefits
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: text }
+      - name: positions
+        label: Open Positions Section
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - name: items
+            label: Positions
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Position Title, type: string }
+              - { name: type, label: Employment Type, type: string }
+              - { name: location, label: Location, type: string }
+              - { name: description, label: Description, type: text }
+              - { name: link, label: Application Link, type: string }
