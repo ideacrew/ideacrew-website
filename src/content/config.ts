@@ -6,10 +6,16 @@ const workCollection = defineCollection({
     title: z.string(),
     client: z.string(),
     description: z.string(),
-    image: z.object({
-      src: z.string(),
-      alt: z.string(),
-    }),
+    image: z
+      .object({
+        src: z.string().default("/images/about-us.svg"),
+        alt: z.string().default("Placeholder image"),
+      })
+      .optional()
+      .default({
+        src: "/images/about-us.svg",
+        alt: "Placeholder image",
+      }),
     sortOrder: z.number().default(999),
   }),
 });
