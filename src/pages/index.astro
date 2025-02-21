@@ -1,65 +1,143 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import { Button } from "@/components/ui/button";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Hero from "@/components/Hero.astro";
 import Cta from "@/components/Cta.astro";
-import getSortedPosts from "@/utils/getSortedPosts";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import { SOCIALS } from "@/config";
-import { Button } from "@/components/ui/button";
-import type { ImageMetadata } from "astro";
+import abstractVector from "/public/assets/abstractVector.png";
 
-const posts = await getCollection("blog");
+// Import client images
+import colorado3 from "@/assets/images/clients/colorado3.png";
+import dchealthlink3 from "@/assets/images/clients/dchealthlink3.png";
 
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+interface ServiceItem {
+  name: string;
+}
 
-const socialCount = SOCIALS.filter(social => social.active).length;
+interface ServiceButton {
+  text: string;
+  href: string;
+}
 
-const clientImages = await import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/images/clients/*.{jpg,jpeg,png,svg}"
-);
+interface HeroButton {
+  text: string;
+  href: string;
+  variant: "default" | "outline";
+}
+
+interface ClientImage {
+  image: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+// Create an image mapping
+const imageMapping: Record<string, ImageMetadata> = {
+  "colorado3.png": colorado3,
+  "dchealthlink3.png": dchealthlink3,
+};
+
+interface HomeContent {
+  hero: {
+    title: string;
+    description: string;
+    buttons: HeroButton[];
+  };
+  services: {
+    title: string;
+    items: ServiceItem[];
+    button: ServiceButton;
+  };
+  sbm: {
+    title: string;
+    description: string;
+    categories: string[];
+    button: ServiceButton;
+  };
+  clients: {
+    title: string;
+    images: ClientImage[];
+  };
+}
+
+// Get home page content
+const home = await import("../pages/home.md");
+const { hero, services, sbm, clients } = home.frontmatter as HomeContent;
+
+// Process client images
+const clientImages = clients.images.map(image => ({
+  ...image,
+  src: imageMapping[image.image.split("/").pop() as string],
+}));
 ---
 
 <Layout>
   <Header />
 
-  <Hero />
+  <section
+    id="hero"
+    class="relative min-h-[calc(734px+var(--header-height))] w-full min-w-full sm:min-h-[734px]"
+  >
+    <div class="absolute inset-0 z-0">
+      <Image
+        src={abstractVector}
+        alt=""
+        class="h-full w-full object-cover"
+        quality="max"
+        loading="eager"
+        priority
+      />
+    </div>
 
-  <section class="services w-full min-w-full bg-[#ffffff]">
-    <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+    <div
+      class="relative z-10 mx-auto max-w-[960px]"
+      style="padding-top: calc(var(--header-height) + 160px)"
+    >
+      <div class="max-w-[826px] bg-white/80 p-8">
+        <h1
+          class="font-domine text-[32px] font-normal leading-[200%] text-[#0D2B46]"
+        >
+          {hero.title}
+        </h1>
+        <p class="mt-4 text-lg text-[#0D2B46]">{hero.description}</p>
+        <div class="mt-8 flex gap-4">
+          {
+            hero.buttons.map(button => (
+              <Button variant={button.variant} size="lg">
+                <a href={button.href}>{button.text}</a>
+              </Button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services w-full min-w-full bg-[#ffffff]">
+    <div class="mx-auto w-full max-w-[960px] px-4 pb-16">
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {/* Left Column */}
         <div class="flex flex-col justify-start">
           <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
-            Our Services
+            {services.title}
           </h2>
           <div class="flex flex-col space-y-6 rounded-md bg-[#F6F6F6] p-6">
-            <div class="border-b border-gray-200 pb-4">
-              <h3 class="text-lg font-medium text-[#0D2B46]">
-                Management Consulting
-              </h3>
-            </div>
-            <div class="border-b border-gray-200 pb-4">
-              <h3 class="text-lg font-medium text-[#0D2B46]">
-                Software Development
-              </h3>
-            </div>
-            <div class="border-b border-gray-200 pb-4">
-              <h3 class="text-lg font-medium text-[#0D2B46]">
-                Data Integration
-              </h3>
-            </div>
-            <div class="pb-4">
-              <h3 class="text-lg font-medium text-[#0D2B46]">DevOps & Cloud</h3>
-            </div>
+            {
+              services.items.map((service: ServiceItem) => (
+                <div class="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+                  <h3 class="text-lg font-medium text-[#0D2B46]">
+                    {service.name}
+                  </h3>
+                </div>
+              ))
+            }
           </div>
           <div class="mt-6">
             <Button variant="link">
-              <a href="/services/"> Learn More About Our Services </a>
+              <a href={services.button.href}>{services.button.text}</a>
             </Button>
           </div>
         </div>
@@ -80,86 +158,75 @@ const clientImages = await import.meta.glob<{ default: ImageMetadata }>(
     </div>
   </section>
 
-  <section class="sbm w-full min-w-full bg-[#ffffff]">
+  <section id="sbm" class="sbm w-full min-w-full bg-[#ffffff]">
     <div class="mx-auto w-full max-w-[960px] px-4 py-16">
       <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
-        State Based Marketplace Solutions
+        {sbm.title}
       </h2>
 
       <div class="mb-6 hidden sm:flex sm:items-center sm:justify-between">
-        <div class="font-medium text-[#0D2B46]">Individual</div>
-        <div class="text-gray-300">|</div>
-        <div class="font-medium text-[#0D2B46]">Employers</div>
-        <div class="text-gray-300">|</div>
-        <div class="font-medium text-[#0D2B46]">Employees</div>
-        <div class="text-gray-300">|</div>
-        <div class="font-medium text-[#0D2B46]">Brokers</div>
+        {
+          sbm.categories.map((category: string, index: number) => (
+            <>
+              <div class="font-medium text-[#0D2B46]">{category}</div>
+              {index < sbm.categories.length - 1 && (
+                <div class="text-gray-300">|</div>
+              )}
+            </>
+          ))
+        }
       </div>
 
       {/* Mobile Layout */}
       <div class="mb-6 grid grid-cols-2 sm:hidden">
-        <div
-          class="border-b border-r border-gray-200 p-4 text-center font-medium text-[#0D2B46]"
-        >
-          Individual
-        </div>
-        <div
-          class="border-b border-gray-200 p-4 text-center font-medium text-[#0D2B46]"
-        >
-          Employers
-        </div>
-        <div
-          class="border-r border-gray-200 p-4 text-center font-medium text-[#0D2B46]"
-        >
-          Employees
-        </div>
-        <div class="p-4 text-center font-medium text-[#0D2B46]">Brokers</div>
+        {
+          sbm.categories.map((category: string, index: number) => (
+            <div
+              class={`p-4 text-center font-medium text-[#0D2B46] ${
+                index < 2 ? "border-b" : ""
+              } ${index % 2 === 0 ? "border-r" : ""} border-gray-200`}
+            >
+              {category}
+            </div>
+          ))
+        }
       </div>
 
       <p
         class="mb-3 font-['Open_Sans'] text-[18px] font-normal leading-[200%] text-[#0D2B46]"
       >
-        IdeaCrew's award winning State-based Marketplace (SBM) platform is a
-        cloud-based, complete end-to-end ACA-compliant solution for states,
-        employers, employees and individuals to sponsor, shop and enroll in
-        health insurance and other benefits. Our platform's modular, flexible
-        design supports different marketplace needs from Individuals to small
-        business to large group enrollments.
+        {sbm.description}
       </p>
 
       <div class="mt-6">
         <Button variant="link">
-          <a href="/sbm/">
-            Learn More About Our State Based Marketplace Solutions
+          <a href={sbm.button.href}>
+            {sbm.button.text}
           </a>
         </Button>
       </div>
     </div>
   </section>
 
-  <section class="clients mb-6 w-full min-w-full bg-[#ffffff]">
+  <section id="clients" class="clients mb-6 w-full min-w-full bg-[#ffffff]">
     <div class="mx-auto w-full max-w-[960px] px-4 py-16">
       <h2 class="mb-2 font-domine text-2xl font-normal text-[#0D2B46]">
-        Select Clients
+        {clients.title}
       </h2>
 
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
         {
-          Promise.all(
-            Object.values(clientImages).map(async imageModule => {
-              const { default: image } = await imageModule();
-              return (
-                <div class="flex flex-col items-center justify-center">
-                  <Image
-                    src={image}
-                    alt="Client Logo"
-                    width={150}
-                    height={150}
-                  />
-                </div>
-              );
-            })
-          )
+          clients.images.map(image => (
+            <div class="flex flex-col items-center justify-center">
+              <img
+                src={image.image}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                class="h-auto w-full"
+              />
+            </div>
+          ))
         }
       </div>
     </div>
