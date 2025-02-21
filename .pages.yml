@@ -15,6 +15,14 @@ content:
         order: desc
     fields:
       - { name: title, label: Job Title, type: string, required: true }
+      - name: type
+        label: Employment Type
+        type: select
+        options:
+          full-time: Full-time
+          part-time: Part-time
+          contract: Contract
+        required: true      
       - { name: location, label: Location, type: string, required: true }
       - { name: department, label: Department, type: string, required: true }
       - { name: active, label: Active Posting, type: boolean, default: true }
