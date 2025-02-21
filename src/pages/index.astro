@@ -83,7 +83,7 @@ const clientImages: ClientImage[] = clients.images
   .filter((image): image is ClientImage => image !== null);
 ---
 
-<Layout>
+<Layout title={home.frontmatter.title}>
   <Header />
 
   <main id="main-content">

@@ -364,3 +364,43 @@ content:
                 label: Photo
                 type: image
               - { name: alt, label: Alt Text, type: string }
+  - name: site-config
+    label: Site Configuration
+    type: file
+    path: src/config.ts
+    fields:
+      - name: SITE
+        label: Site Settings
+        type: object
+        fields:
+          - { name: website, label: Website URL, type: string, pattern: "^https?://.*$", description: "The deployed domain of your website" }
+          - { name: author, label: Author, type: string }
+          - { name: desc, label: Description, type: text }
+          - { name: title, label: Site Title, type: string }
+          - { name: ogImage, label: Default Social Image, type: string }
+          - { name: lightAndDarkMode, label: Enable Light/Dark Mode, type: boolean }
+          - { name: postPerPage, label: Posts Per Page, type: number }
+          - { name: scheduledPostMargin, label: Scheduled Post Margin (ms), type: number }
+      - name: LOCALE
+        label: Locale Settings
+        type: object
+        fields:
+          - { name: lang, label: Language Code, type: string }
+          - { name: langTag, label: Language Tags, type: string, list: true }
+      - name: LOGO_IMAGE
+        label: Logo Settings
+        type: object
+        fields:
+          - { name: enable, label: Enable Logo, type: boolean }
+          - { name: svg, label: Is SVG, type: boolean }
+          - { name: width, label: Width, type: number }
+          - { name: height, label: Height, type: number }
+      - name: SOCIALS
+        label: Social Media Links
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Platform Name, type: string }
+          - { name: href, label: URL, type: string, pattern: "^https?://.*$" }
+          - { name: linkTitle, label: Link Title, type: string }
+          - { name: active, label: Active, type: boolean }
