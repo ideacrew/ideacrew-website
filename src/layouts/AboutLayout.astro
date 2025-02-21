@@ -9,22 +9,7 @@ import Cta from "@/components/Cta.astro";
 import Careers from "@/components/Careers.astro";
 import Values from "@/components/Values.astro";
 import Leadership from "@/components/Leadership.astro";
-// Dynamic image imports with type
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "../assets/images/*.svg",
-  { eager: true }
-);
-
-// Function with type safety
-const getImageFromPath = (path: string): ImageMetadata => {
-  const imagePath = path.replace("/images/", "../assets/images/");
-
-  if (!images[imagePath]) {
-    return images["../assets/images/about-us.svg"].default;
-  }
-
-  return images[imagePath].default;
-};
+import { getImageFromPath } from "@/utils/images";
 
 export interface Props {
   frontmatter: {
@@ -33,14 +18,16 @@ export interface Props {
     about: {
       title: string;
       description: string;
-      image: {
+      image?: {
         src: string;
         alt: string;
       };
     };
     services: {
       name: string;
-      icon: string;
+      icon: {
+        src: string;
+      };
       items: string[];
     }[];
     careers: {
@@ -99,13 +86,17 @@ const { frontmatter } = Astro.props;
           </div>
 
           <div class="col-span-1 grid place-items-center">
-            <Image
-              src={getImageFromPath(frontmatter.about.image.src)}
-              alt={frontmatter.about.image.alt}
-              width={300}
-              height={192}
-              loading="eager"
-            />
+            {
+              frontmatter.about.image && (
+                <Image
+                  src={getImageFromPath(frontmatter.about.image.src)}
+                  alt={frontmatter.about.image.alt}
+                  width={300}
+                  height={192}
+                  loading="eager"
+                />
+              )
+            }
           </div>
         </div>
       </div>
@@ -125,7 +116,7 @@ const { frontmatter } = Astro.props;
               <div class="flex flex-col">
                 <div class="mb-6 h-16 w-16">
                   <Image
-                    src={getImageFromPath(service.icon)}
+                    src={getImageFromPath(service.icon.src)}
                     alt={`${service.name} Icon`}
                     width={64}
                     height={64}

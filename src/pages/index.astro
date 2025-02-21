@@ -8,6 +8,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Cta from "@/components/Cta.astro";
 import abstractVector from "/public/assets/abstractVector.png";
+import { getImageFromPath } from "@/utils/images";
 
 interface ServiceItem {
   name: string;
@@ -52,10 +53,9 @@ const home = await import("../pages/home.md");
 const { hero, services, sbm, clients } = home.frontmatter as HomeContent;
 
 // Process client images to use correct paths
-const clientImages = clients.images.map(imagePath => {
-  // Convert CMS path to asset path
-  return imagePath.replace("/images/", "/src/assets/images/");
-});
+const clientImages = clients.images.map(imagePath =>
+  getImageFromPath(imagePath)
+);
 ---
 
 <Layout title={SITE.title}>

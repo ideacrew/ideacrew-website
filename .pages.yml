@@ -188,13 +188,13 @@ content:
     path: src/pages/about.md
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
-      - { name: title, label: Page Title, type: string }
+      - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }
       - name: about
         label: About Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string }
-          - { name: description, label: Description, type: text }
+          - { name: title, label: Heading Text, type: string, description: "This will be used as the heading text in the about section", required: true }
+          - { name: description, label: Description, type: text, description: "This will be used as the description in the about section", required: true }
           - name: image
             hidden: true
             label: Image
@@ -207,9 +207,11 @@ content:
       - name: services
         label: Services
         type: object
-        list: true
+        list:
+          min: 4
+          max: 4
         fields:
-          - { name: name, label: Service Name, type: string }
+          - { name: name, label: Service Name, type: string, description: "This will be used as the service name in the about section", required: true }
           - name: icon
             label: Icon
             type: object
