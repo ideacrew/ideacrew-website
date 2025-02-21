@@ -341,6 +341,7 @@ content:
           - { name: heading, label: Heading Text, type: string }
           - name: button
             label: CTA Button
+            required: true
             type: object
             fields:
               - { name: text, label: Button Text, type: string, required: true }
@@ -357,8 +358,8 @@ content:
         label: Hero Section
         type: object
         fields:
-          - { name: heading, label: Heading, type: string }
-          - { name: description, label: Description, type: text }
+          - { name: heading, label: Heading, type: string, required: true }
+          - { name: description, label: Description, type: text, required: true }
           - name: image
             label: Hero Image
             type: object
@@ -372,19 +373,19 @@ content:
         label: Benefits Section
         type: object
         fields:
-          - { name: heading, label: Heading, type: string }
+          - { name: heading, label: Heading, type: string, required: true }
           - name: items
             label: Benefits
             type: object
             list: true
             fields:
-              - { name: title, label: Title, type: string }
-              - { name: description, label: Description, type: text }
+              - { name: title, label: Title, type: string, required: true }
+              - { name: description, label: Description, type: text, required: true }
       - name: positions
         label: Open Positions Section
         type: object
         fields:
-          - { name: heading, label: Heading, type: string }
+          - { name: heading, label: Heading, type: string, required: true }
       - name: teamPhotos
         label: Team Photos Section
         type: object
