@@ -142,12 +142,10 @@ content:
           - name: images
             label: Client Logos
             type: object
-            list: true
+            list:
+              max: 12
             fields:
-              - name: src
-                label: Logo Image
-                type: image
-                required: true
+              - { name: src, label: Logo Image, type: image, required: true }
               - { name: alt, label: Alt Text, type: string, required: true }
               - { name: width, label: Width, type: number, default: 150 }
               - { name: height, label: Height, type: number, default: 150 }
