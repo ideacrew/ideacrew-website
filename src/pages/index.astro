@@ -9,12 +9,6 @@ import Footer from "@/components/Footer.astro";
 import Cta from "@/components/Cta.astro";
 import abstractVector from "/public/assets/abstractVector.png";
 
-// Import client images
-import colorado3 from "@/assets/images/clients/colorado3.png";
-import dchealthlink3 from "@/assets/images/clients/dchealthlink3.png";
-import dodea3 from "@/assets/images/clients/dodea3.png";
-import dcgov3 from "@/assets/images/clients/dcgov3.png";
-
 interface ServiceItem {
   name: string;
 }
@@ -29,18 +23,6 @@ interface HeroButton {
   href: string;
   variant: "default" | "outline";
 }
-
-interface ClientImage {
-  src: ImageMetadata;
-}
-
-// Create an image mapping
-const imageMapping: Record<string, ImageMetadata> = {
-  "colorado3.png": colorado3,
-  "dchealthlink3.png": dchealthlink3,
-  "dodea3.png": dodea3,
-  "dcgov3.png": dcgov3,
-};
 
 interface HomeContent {
   hero: {
@@ -69,19 +51,11 @@ interface HomeContent {
 const home = await import("../pages/home.md");
 const { hero, services, sbm, clients } = home.frontmatter as HomeContent;
 
-// Process client images
-const clientImages: ClientImage[] = clients.images
-  .map(imagePath => {
-    const filename = imagePath.split("/").pop();
-    if (!filename || !imageMapping[filename]) {
-      console.warn(`Missing image mapping for ${filename}`);
-      return null;
-    }
-    return {
-      src: imageMapping[filename],
-    };
-  })
-  .filter((image): image is ClientImage => image !== null);
+// Process client images to use correct paths
+const clientImages = clients.images.map(imagePath => {
+  // Convert CMS path to asset path
+  return imagePath.replace("/images/", "/src/assets/images/");
+});
 ---
 
 <Layout title={SITE.title}>
@@ -227,10 +201,10 @@ const clientImages: ClientImage[] = clients.images
 
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
           {
-            clientImages.map(image => (
+            clientImages.map(imagePath => (
               <div class="flex flex-col items-center justify-center">
                 <Image
-                  src={image.src}
+                  src={imagePath}
                   alt="Client Logo"
                   width={150}
                   height={150}
