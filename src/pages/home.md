@@ -3,7 +3,6 @@ layout: "../layouts/Layout.astro"
 
 hero:
   title: "Strategy & technology solutions that help our clients solve their most important challenges"
-  description:
   buttons:
     - text: "Get in Touch"
       href: "/contact"

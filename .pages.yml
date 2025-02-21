@@ -116,8 +116,7 @@ content:
         label: Hero Section
         type: object
         fields:
-          - { name: title, label: Hero Title, type: string, required: true }
-          - { name: description, label: Hero Description, type: text }
+          - { name: title, label: Hero Text, type: string, required: true }
           - name: buttons
             label: Hero Buttons
             type: object
@@ -141,7 +140,7 @@ content:
         label: Services Section
         type: object
         fields:
-          - { name: title, label: Title, type: string }
+          - { name: title, label: Heading Text, type: string }
           - name: items
             label: Services
             type: object
@@ -150,34 +149,34 @@ content:
             fields:
               - { name: name, label: Service Name, type: string, required: true }
           - name: button
-            label: Link Button
+            label: Learn More Link
             type: object
             fields:
-              - { name: text, label: Button Text, type: string, required: true }
-              - { name: href, label: Button URL, type: string, required: true }
+              - { name: text, label: Link Text, type: string, required: true }
+              - { name: href, label: Link URL, type: string, required: true }
       - name: sbm
         label: SBM Section
         type: object
         fields:
-          - { name: title, label: Title, type: string }
+          - { name: title, label: Heading Text, type: string }
           - { name: description, label: Description, type: text }
           - name: categories
-            label: Categories
+            label: Module Types
             type: string
             list:
               min: 4
               max: 4
           - name: button
-            label: Link Button
+            label: Learn More Link
             type: object
             fields:
-              - { name: text, label: Button Text, type: string, required: true }
-              - { name: href, label: Button URL, type: string, required: true }
+              - { name: text, label: Link Text, type: string, required: true }
+              - { name: href, label: Link URL, type: string, required: true }
       - name: clients
         label: Clients Section
         type: object
         fields:
-          - { name: title, label: Title, type: string }
+          - { name: title, label: Heading Text, type: string }
           - name: images
             label: Client Logos
             type: image
@@ -226,7 +225,7 @@ content:
         label: Values Section
         type: object
         fields:
-          - { name: title, label: Title, type: string }
+          - { name: title, label: Heading Text, type: string }
           - name: items
             label: Values
             type: object
@@ -243,7 +242,7 @@ content:
         label: Careers Section
         type: object
         fields:
-          - { name: title, label: Title, type: string }
+          - { name: title, label: Heading Text, type: string }
           - { name: description, label: Description, type: text }
           - name: image
             label: Image
