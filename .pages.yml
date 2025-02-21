@@ -19,9 +19,9 @@ content:
         label: Employment Type
         type: select
         options:
-          - Full-time
-          - Part-time
-          - Contract
+          full-time: Full-time
+          part-time: Part-time
+          contract: Contract
         required: true
       - { name: location, label: Location, type: string, required: true }
       - { name: department, label: Department, type: string, required: true }
