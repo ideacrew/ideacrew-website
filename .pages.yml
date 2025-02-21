@@ -37,7 +37,7 @@ content:
       - { name: applicationUrl, label: Application URL, type: string, pattern: "^https?://.*$" }
       - { name: sortOrder, label: Sort Order, type: number, default: 999 }
       - { name: body, label: Full Description, type: rich-text, required: true }
-  - name: work
+  - name: our-work
     label: Our Work
     type: collection
     path: src/content/work
@@ -304,6 +304,14 @@ content:
                 fields:
                   - { name: text, label: Button Text, type: string, required: true }
                   - { name: href, label: Button URL, type: string, required: true, pattern: "^https?://.*$" }
+  - name: work
+    label: Work page
+    type: file
+    path: src/pages/work.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: "../layouts/WorkLayout.astro" }
+      - { name: title, label: Page Title, type: string, required: true }
+      - { name: description, label: Page Description, type: text }                  
   - name: contact
     label: Contact page
     type: file
