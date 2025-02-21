@@ -46,8 +46,4 @@ modules:
           href: https://example.com
         - text: Reports
           href: https://example.com
-    - title: Test Module
-      content: This is a test module. It will be deleted. quis culpa pariatur nulla
-        excepteur qui quis consectetur enim quis ipsum et quis officia do
-        consectetur reprehenderit est aute ad nisi
 ---
