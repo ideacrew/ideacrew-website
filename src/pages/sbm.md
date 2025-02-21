@@ -35,15 +35,19 @@ modules:
         programs and facilitates enrollment in health insurance plans.
       buttons:
         - text: Learn More
-          href: /eligibility
+          href: https://example.com
         - text: Get Started
-          href: /enroll
+          href: https://example.com
     - title: Financial Management
       content: Handles premium billing, collection, and reconciliation with robust
         reporting capabilities.
       buttons:
         - text: Learn More
-          href: /financial
+          href: https://example.com
         - text: Reports
-          href: /reports
+          href: https://example.com
+    - title: Test Module
+      content: This is a test module. It will be deleted. quis culpa pariatur nulla
+        excepteur qui quis consectetur enim quis ipsum et quis officia do
+        consectetur reprehenderit est aute ad nisi
 ---
