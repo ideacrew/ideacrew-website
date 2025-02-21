@@ -8,20 +8,13 @@ content:
     type: collection
     path: src/content/careers
     view:
-      fields: [ title, type, location, active ]
+      fields: [ title, location, active ]
       sort: [ active, title ]
       default:
         sort: active
         order: desc
     fields:
       - { name: title, label: Job Title, type: string, required: true }
-      - name: type
-        label: Employment Type
-        type: select
-        options:
-          full-time: Full-time
-          part-time: Part-time
-          contract: Contract
       - { name: location, label: Location, type: string, required: true }
       - { name: department, label: Department, type: string, required: true }
       - { name: active, label: Active Posting, type: boolean, default: true }
