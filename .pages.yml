@@ -3,6 +3,36 @@ media:
   output: /images
   extensions: [svg, png, jpg, jpeg]
 content:
+  - name: job-postings
+    label: Job Postings
+    type: collection
+    path: src/content/careers
+    view:
+      fields: [ title, type, location, active ]
+      sort: [ active, title ]
+      default:
+        sort: active
+        order: desc
+    fields:
+      - { name: title, label: Job Title, type: string, required: true }
+      - name: type
+        label: Employment Type
+        type: select
+        options:
+          - Full-time
+          - Part-time
+          - Contract
+        required: true
+      - { name: location, label: Location, type: string, required: true }
+      - { name: department, label: Department, type: string, required: true }
+      - { name: active, label: Active Posting, type: boolean, default: true }
+      - { name: description, label: Short Description, type: string, required: true }
+      - { name: responsibilities, label: Responsibilities, type: string, list: true }
+      - { name: requirements, label: Requirements, type: string, list: true }
+      - { name: benefits, label: Benefits, type: string, list: true }
+      - { name: applicationUrl, label: Application URL, type: string }
+      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
+      - { name: body, label: Full Description, type: rich-text }
   - name: posts
     label: Posts
     type: collection
@@ -45,33 +75,82 @@ content:
       - { name: linkedin, label: LinkedIn URL, type: string, pattern: "^https://www\\.linkedin\\.com/.*$" }
       - { name: sortOrder, label: Sort Order, type: number, default: 999 }
       - { name: body, label: Bio, type: rich-text }
-  - name: work
-    label: Work
-    type: collection
-    path: src/content/work
-    view:
-      fields: [ title, client, summary, sortOrder ]
-      sort: [ sortOrder, title ]
-      default:
-        sort: sortOrder
-        order: asc
+  - name: home
+    label: Home page
+    type: file
+    path: src/pages/home.md
     fields:
-      - { name: title, label: Title, type: string, required: true }
-      - { name: client, label: Client, type: string, required: true }
-      - { name: description, label: Full Description, type: string, required: true }
-      - { name: summary, label: Card Summary, type: string, description: "A brief summary that appears on the work item card" }
-      - name: image
-        label: Image
+      - { name: layout, type: string, hidden: true, default: "../layouts/Layout.astro" }
+      - { name: title, label: Title, type: string }
+      - name: hero
+        label: Hero Section
         type: object
-        required: false
         fields:
-          - name: src
-            label: Image
-            type: image
-            default: "/images/about-us.svg"
-          - { name: alt, label: Alt Text, type: string, default: "Placeholder image" }
-      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
-      - { name: body, label: Content, type: rich-text }
+          - { name: title, label: Hero Title, type: string, required: true }
+          - { name: description, label: Hero Description, type: text }
+          - name: buttons
+            label: Hero Buttons
+            type: object
+            list:
+              min: 1
+              max: 2
+            fields:
+              - { name: text, label: Button Text, type: string, required: true }
+              - { name: href, label: Button URL, type: string, required: true }
+              - { name: variant, label: Button Style, type: select, options: ["default", "outline"], default: "default" }
+      - name: services
+        label: Services Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - name: items
+            label: Services
+            type: object
+            list:
+              max: 4
+            fields:
+              - { name: name, label: Service Name, type: string, required: true }
+          - name: button
+            label: Link Button
+            type: object
+            fields:
+              - { name: text, label: Button Text, type: string, required: true }
+              - { name: href, label: Button URL, type: string, required: true }
+      - name: sbm
+        label: SBM Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: description, label: Description, type: text }
+          - name: categories
+            label: Categories
+            type: string
+            list:
+              min: 4
+              max: 4
+          - name: button
+            label: Link Button
+            type: object
+            fields:
+              - { name: text, label: Button Text, type: string, required: true }
+              - { name: href, label: Button URL, type: string, required: true }
+      - name: clients
+        label: Clients Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - name: images
+            label: Client Logos
+            type: object
+            list: true
+            fields:
+              - name: src
+                label: Logo Image
+                type: image
+                required: true
+              - { name: alt, label: Alt Text, type: string, required: true }
+              - { name: width, label: Width, type: number, default: 150 }
+              - { name: height, label: Height, type: number, default: 150 }
   - name: about
     label: About page
     type: file
@@ -160,6 +239,33 @@ content:
         fields:
           - { name: text, label: SBM Link Text, type: string, required: true }
           - { name: href, label: SBM Link URL, type: string, required: true }
+  - name: work
+    label: Work
+    type: collection
+    path: src/content/work
+    view:
+      fields: [ title, client, summary, sortOrder ]
+      sort: [ sortOrder, title ]
+      default:
+        sort: sortOrder
+        order: asc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: client, label: Client, type: string, required: true }
+      - { name: description, label: Full Description, type: string, required: true }
+      - { name: summary, label: Card Summary, type: string, description: "A brief summary that appears on the work item card" }
+      - name: image
+        label: Image
+        type: object
+        required: false
+        fields:
+          - name: src
+            label: Image
+            type: image
+            default: "/images/about-us.svg"
+          - { name: alt, label: Alt Text, type: string, default: "Placeholder image" }
+      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
+      - { name: body, label: Content, type: rich-text }
   - name: contact
     label: Contact page
     type: file
@@ -257,110 +363,3 @@ content:
                 label: Photo
                 type: image
               - { name: alt, label: Alt Text, type: string }
-  - name: job-postings
-    label: Job Postings
-    type: collection
-    path: src/content/careers
-    view:
-      fields: [ title, type, location, active ]
-      sort: [ active, title ]
-      default:
-        sort: active
-        order: desc
-    fields:
-      - { name: title, label: Job Title, type: string, required: true }
-      - name: type
-        label: Employment Type
-        type: select
-        options:
-          - Full-time
-          - Part-time
-          - Contract
-        required: true
-      - { name: location, label: Location, type: string, required: true }
-      - { name: department, label: Department, type: string, required: true }
-      - { name: active, label: Active Posting, type: boolean, default: true }
-      - { name: description, label: Short Description, type: string, required: true }
-      - { name: responsibilities, label: Responsibilities, type: string, list: true }
-      - { name: requirements, label: Requirements, type: string, list: true }
-      - { name: benefits, label: Benefits, type: string, list: true }
-      - { name: applicationUrl, label: Application URL, type: string }
-      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
-      - { name: body, label: Full Description, type: rich-text }
-  - name: home
-    label: Home page
-    type: file
-    path: src/pages/home.md
-    fields:
-      - { name: layout, type: string, hidden: true, default: "../layouts/Layout.astro" }
-      - { name: title, label: Title, type: string }
-      - name: hero
-        label: Hero Section
-        type: object
-        fields:
-          - { name: title, label: Hero Title, type: string, required: true }
-          - { name: description, label: Hero Description, type: text }
-          - name: buttons
-            label: Hero Buttons
-            type: object
-            list:
-              min: 1
-              max: 2
-            fields:
-              - { name: text, label: Button Text, type: string, required: true }
-              - { name: href, label: Button URL, type: string, required: true }
-              - { name: variant, label: Button Style, type: select, options: ["default", "outline"], default: "default" }
-      - name: services
-        label: Services Section
-        type: object
-        fields:
-          - { name: title, label: Title, type: string }
-          - name: items
-            label: Services
-            type: object
-            list:
-              max: 4
-            fields:
-              - { name: name, label: Service Name, type: string, required: true }
-          - name: button
-            label: Link Button
-            type: object
-            fields:
-              - { name: text, label: Button Text, type: string, required: true }
-              - { name: href, label: Button URL, type: string, required: true }
-      - name: sbm
-        label: SBM Section
-        type: object
-        fields:
-          - { name: title, label: Title, type: string }
-          - { name: description, label: Description, type: text }
-          - name: categories
-            label: Categories
-            type: string
-            list:
-              min: 4
-              max: 4
-          - name: button
-            label: Link Button
-            type: object
-            fields:
-              - { name: text, label: Button Text, type: string, required: true }
-              - { name: href, label: Button URL, type: string, required: true }
-      - name: clients
-        label: Clients Section
-        type: object
-        fields:
-          - { name: title, label: Title, type: string }
-          - name: images
-            label: Client Logos
-            type: object
-            list:
-              max: 12
-            fields:
-              - name: image
-                label: Logo Image
-                type: image
-                required: true
-              - { name: alt, label: Alt Text, type: string, required: true }
-              - { name: width, label: Width, type: number, default: 150 }
-              - { name: height, label: Height, type: number, default: 150 }

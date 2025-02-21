@@ -28,7 +28,7 @@ interface HeroButton {
 }
 
 interface ClientImage {
-  image: string;
+  src: string;
   alt: string;
   width: number;
   height: number;
@@ -70,7 +70,7 @@ const { hero, services, sbm, clients } = home.frontmatter as HomeContent;
 // Process client images
 const clientImages = clients.images.map(image => ({
   ...image,
-  src: imageMapping[image.image.split("/").pop() as string],
+  src: imageMapping[image.src.split("/").pop() as string],
 }));
 ---
 
@@ -219,7 +219,7 @@ const clientImages = clients.images.map(image => ({
           clients.images.map(image => (
             <div class="flex flex-col items-center justify-center">
               <img
-                src={image.image}
+                src={image.src}
                 alt={image.alt}
                 width={image.width}
                 height={image.height}
