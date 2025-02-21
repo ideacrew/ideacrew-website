@@ -1,6 +1,6 @@
 ---
 title: Senior Software Engineer
-type: Full-time
+type: full-time
 location: Remote
 department: Engineering
 active: true
