@@ -188,14 +188,15 @@ content:
     path: src/pages/about.md
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
-      - { name: title, label: Title, type: string }
+      - { name: title, label: Page Title, type: string }
       - name: about
         label: About Section
         type: object
         fields:
-          - { name: title, label: Title, type: string }
+          - { name: title, label: Heading Text, type: string }
           - { name: description, label: Description, type: text }
           - name: image
+            hidden: true
             label: Image
             type: object
             fields:
