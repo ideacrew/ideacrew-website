@@ -26,13 +26,13 @@ content:
       - { name: location, label: Location, type: string, required: true }
       - { name: department, label: Department, type: string, required: true }
       - { name: active, label: Active Posting, type: boolean, default: true }
-      - { name: description, label: Short Description, type: string, required: true }
+      - { name: description, label: Short Description, type: text, required: true }
       - { name: responsibilities, label: Responsibilities, type: string, list: true }
       - { name: requirements, label: Requirements, type: string, list: true }
       - { name: benefits, label: Benefits, type: string, list: true }
-      - { name: applicationUrl, label: Application URL, type: string }
+      - { name: applicationUrl, label: Application URL, type: string, pattern: "^https?://.*$" }
       - { name: sortOrder, label: Sort Order, type: number, default: 999 }
-      - { name: body, label: Full Description, type: rich-text }
+      - { name: body, label: Full Description, type: rich-text, required: true }
   - name: posts
     label: Posts
     type: collection
@@ -40,17 +40,17 @@ content:
     view:
       fields: [ title, draft, date ]
     fields:
-      - { name: author, label: Author, type: string }
-      - { name: pubDatetime, label: Date, type: date }
-      - { name: modDatetime, label: Date, type: date }
+      - { name: author, label: Author, type: string, required: true }
+      - { name: pubDatetime, label: Publication Date, type: date, required: true }
+      - { name: modDatetime, label: Modified Date, type: date }
       - { name: title, label: Title, type: string, required: true }
-      - { name: ogImage, label: Title, type: string }
+      - { name: ogImage, label: Open Graph Image, type: string }
       - { name: slug, label: Slug, type: string }
       - { name: featured, label: Featured, type: boolean }
       - { name: draft, label: Draft, type: boolean }
       - { name: tags, label: Tags, type: string, list: true }
-      - { name: description, label: Description, type: string }
-      - { name: body, label: Body, type: rich-text }
+      - { name: description, label: Description, type: text }
+      - { name: body, label: Body, type: rich-text, required: true }
   - name: leaders
     label: Leaders
     type: collection
@@ -97,7 +97,7 @@ content:
             fields:
               - { name: text, label: Button Text, type: string, required: true }
               - { name: href, label: Button URL, type: string, required: true }
-              - { name: variant, label: Button Style, type: select, options: ["default", "outline"], default: "default" }
+              - { name: variant, label: Button Style, type: select, options: {"default": "default", "outline": "outline"}, default: "default" }
       - name: services
         label: Services Section
         type: object
@@ -178,7 +178,12 @@ content:
           - { name: name, label: Service Name, type: string }
           - name: icon
             label: Icon
-            type: image
+            type: object
+            fields:
+              - name: src
+                label: Icon Image
+                type: image
+              - { name: alt, label: Alt Text, type: string }
           - name: items
             label: Service Items
             type: string
@@ -250,8 +255,8 @@ content:
     fields:
       - { name: title, label: Title, type: string, required: true }
       - { name: client, label: Client, type: string, required: true }
-      - { name: description, label: Full Description, type: string, required: true }
-      - { name: summary, label: Card Summary, type: string, description: "A brief summary that appears on the work item card" }
+      - { name: description, label: Full Description, type: text, required: true }
+      - { name: summary, label: Card Summary, type: text, description: "A brief summary that appears on the work item card" }
       - name: image
         label: Image
         type: object
@@ -285,7 +290,7 @@ content:
               - { name: state, label: State, type: string }
               - { name: zip, label: ZIP Code, type: string }
           - { name: phone, label: Phone Number, type: string }
-          - { name: email, label: Email Address, type: string }
+          - { name: email, label: Email Address, type: string, pattern: "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$" }
       - name: cta_career
         label: Careers CTA Section
         type: object
@@ -304,7 +309,7 @@ content:
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/CareersLayout.astro" }
       - { name: title, label: Title, type: string }
-      - { name: description, label: Description, type: string }
+      - { name: description, label: Description, type: text }
       - name: hero
         label: Hero Section
         type: object
@@ -343,10 +348,17 @@ content:
             list: true
             fields:
               - { name: title, label: Position Title, type: string }
-              - { name: type, label: Employment Type, type: string }
+              - name: type
+                label: Employment Type
+                type: select
+                options:
+                  full-time: Full-time
+                  part-time: Part-time
+                  contract: Contract
+                required: true
               - { name: location, label: Location, type: string }
               - { name: description, label: Description, type: text }
-              - { name: link, label: Application Link, type: string }
+              - { name: link, label: Application Link, type: string, pattern: "^https?://.*$" }
       - name: teamPhotos
         label: Team Photos Section
         type: object
