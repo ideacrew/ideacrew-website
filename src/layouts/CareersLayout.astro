@@ -36,6 +36,15 @@ export interface Props {
         link: string;
       }[];
     };
+    teamPhotos: {
+      heading: string;
+      photos: {
+        image: {
+          src: string;
+          alt: string;
+        };
+      }[];
+    };
   };
 }
 
@@ -130,6 +139,29 @@ const sortedJobs = activeJobs.sort((a, b) => {
             }
           </div>
         </div>
+
+        {
+          frontmatter.teamPhotos && frontmatter.teamPhotos.photos && (
+            <div class="mt-16">
+              <h2 class="mb-8 font-domine text-[24px] font-normal text-[#0D2B46]">
+                {frontmatter.teamPhotos.heading}
+              </h2>
+              <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {frontmatter.teamPhotos.photos.map(photo => (
+                  <div class="aspect-square w-full overflow-hidden rounded-lg">
+                    <Image
+                      src={photo.image.src}
+                      alt={photo.image.alt}
+                      width={400}
+                      height={400}
+                      class="h-full w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
       </div>
     </section>
   </main>

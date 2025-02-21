@@ -41,4 +41,19 @@ positions:
       location: Remote
       description: Create intuitive user experiences that make healthcare technology accessible to everyone.
       link: /careers/ux-designer
+teamPhotos:
+  heading: Team Photos
+  photos:
+    - image:
+        src: /images/team/placeholder-1.jpg
+        alt: Team member working remotely
+    - image:
+        src: /images/team/placeholder-2.jpg
+        alt: Team collaboration session
+    - image:
+        src: /images/team/placeholder-3.jpg
+        alt: Team building activity
+    - image:
+        src: /images/team/placeholder-4.jpg
+        alt: Office culture
 ---

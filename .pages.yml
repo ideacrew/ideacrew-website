@@ -240,6 +240,20 @@ content:
               - { name: location, label: Location, type: string }
               - { name: description, label: Description, type: text }
               - { name: link, label: Application Link, type: string }
+      - name: teamPhotos
+        label: Team Photos Section
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string, default: "Team Photos" }
+          - name: photos
+            label: Photos
+            type: object
+            list: true
+            fields:
+              - name: image
+                label: Photo
+                type: image
+              - { name: alt, label: Alt Text, type: string }
   - name: job-postings
     label: Job Postings
     type: collection
