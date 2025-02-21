@@ -240,3 +240,33 @@ content:
               - { name: location, label: Location, type: string }
               - { name: description, label: Description, type: text }
               - { name: link, label: Application Link, type: string }
+  - name: job-postings
+    label: Job Postings
+    type: collection
+    path: src/content/careers
+    view:
+      fields: [ title, type, location, active ]
+      sort: [ active, title ]
+      default:
+        sort: active
+        order: desc
+    fields:
+      - { name: title, label: Job Title, type: string, required: true }
+      - name: type
+        label: Employment Type
+        type: select
+        options:
+          - Full-time
+          - Part-time
+          - Contract
+        required: true
+      - { name: location, label: Location, type: string, required: true }
+      - { name: department, label: Department, type: string, required: true }
+      - { name: active, label: Active Posting, type: boolean, default: true }
+      - { name: description, label: Short Description, type: string, required: true }
+      - { name: responsibilities, label: Responsibilities, type: string, list: true }
+      - { name: requirements, label: Requirements, type: string, list: true }
+      - { name: benefits, label: Benefits, type: string, list: true }
+      - { name: applicationUrl, label: Application URL, type: string }
+      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
+      - { name: body, label: Full Description, type: rich-text }

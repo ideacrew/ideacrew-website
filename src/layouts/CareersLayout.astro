@@ -5,6 +5,7 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Layout from "./Layout.astro";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 
 export interface Props {
   frontmatter: {
@@ -39,6 +40,19 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props;
+
+// Fetch active job postings
+const activeJobs = await getCollection("careers", ({ data }) => {
+  return data.active === true;
+});
+
+// Sort jobs by sortOrder and title
+const sortedJobs = activeJobs.sort((a, b) => {
+  if (a.data.sortOrder === b.data.sortOrder) {
+    return a.data.title.localeCompare(b.data.title);
+  }
+  return a.data.sortOrder - b.data.sortOrder;
+});
 ---
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
@@ -93,23 +107,24 @@ const { frontmatter } = Astro.props;
           </h2>
           <div class="space-y-6">
             {
-              frontmatter.positions.items.map(position => (
+              sortedJobs.map(job => (
                 <div class="rounded-lg border border-gray-200 p-6">
                   <div class="mb-4 flex items-center justify-between">
                     <div>
-                      <h3 class="font-bold text-[#0D2B46]">{position.title}</h3>
+                      <h3 class="font-bold text-[#0D2B46]">{job.data.title}</h3>
                       <p class="text-sm text-[#666]">
-                        {position.type} · {position.location}
+                        {job.data.type} · {job.data.location} ·{" "}
+                        {job.data.department}
                       </p>
                     </div>
                     <a
-                      href={position.link}
+                      href={`/careers/${job.slug}`}
                       class="rounded-md bg-[#0D2B46] px-4 py-2 text-white hover:bg-[#0D2B46]/90"
                     >
-                      Apply Now
+                      Details
                     </a>
                   </div>
-                  <p class="text-[#666]">{position.description}</p>
+                  <p class="text-[#666]">{job.data.description}</p>
                 </div>
               ))
             }

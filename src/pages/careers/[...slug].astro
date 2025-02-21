@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { SITE } from "@/config";
+
+export async function getStaticPaths() {
+  const careers = await getCollection("careers");
+  return careers.map(career => ({
+    params: { slug: career.slug },
+    props: { career },
+  }));
+}
+
+const { career } = Astro.props;
+const { Content } = await career.render();
+---
+
+<Layout title={`${career.data.title} | ${SITE.title}`}>
+  <Header />
+  <Breadcrumbs />
+  <main id="main-content">
+    <article class="mx-auto max-w-[960px] px-4 py-16">
+      <div class="mb-8">
+        <h1 class="mb-4 font-domine text-[36px] font-normal text-[#0D2B46]">
+          {career.data.title}
+        </h1>
+        <p class="text-sm text-[#666]">
+          {career.data.type} · {career.data.location} · {career.data.department}
+        </p>
+      </div>
+
+      <div class="prose max-w-none">
+        <Content />
+      </div>
+
+      <div class="mt-8">
+        <a
+          href={career.data.applicationUrl}
+          class="rounded-md bg-[#0D2B46] px-6 py-3 text-white hover:bg-[#0D2B46]/90"
+        >
+          Apply Now
+        </a>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

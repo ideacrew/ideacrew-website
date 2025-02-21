@@ -51,8 +51,26 @@ const blogCollection = defineCollection({
   }),
 });
 
+const jobPostings = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    type: z.string(),
+    location: z.string(),
+    department: z.string(),
+    active: z.boolean(),
+    description: z.string(),
+    responsibilities: z.array(z.string()),
+    requirements: z.array(z.string()),
+    benefits: z.array(z.string()),
+    applicationUrl: z.string(),
+    sortOrder: z.number(),
+  }),
+});
+
 export const collections = {
   work: workCollection,
   leaders: leadersCollection,
   blog: blogCollection,
+  careers: jobPostings,
 };
