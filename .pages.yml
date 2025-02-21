@@ -223,31 +223,36 @@ content:
           - name: items
             label: Service Items
             type: string
-            list: true
+            list:
+              min: 3
+              max: 4
       - name: values
         label: Values Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string }
+          - { name: title, label: Heading Text, type: string, description: "This will be used as the heading text in the values section", required: true }
           - name: items
             label: Values
             type: object
-            list: true
+            list:
+              min: 3
+              max: 3
             fields:
-              - { name: title, label: Title, type: string }
-              - { name: description, label: Description, type: text }
+              - { name: title, label: Value Name, type: string, description: "This will be used as the title in the values section", required: true }
+              - { name: description, label: Description, type: text, description: "This will be used as the description in the values section", required: true }
       - name: leadership
         label: Leadership Section
         type: object
         fields:
-          - { name: title, label: Title, type: string }
+          - { name: title, label: Title, type: string, description: "This will be used as the title in the leadership section", required: true }
       - name: careers
         label: Careers Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string }
-          - { name: description, label: Description, type: text }
+          - { name: title, label: Heading Text, type: string, description: "This will be used as the heading text in the careers section", required: true }
+          - { name: description, label: Description, type: text, description: "This will be used as the description in the careers section", required: true }
           - name: image
+            hidden: true
             label: Image
             type: object
             fields:
@@ -259,8 +264,8 @@ content:
             label: Button
             type: object
             fields:
-              - { name: href, label: Link, type: string }
-              - { name: text, label: Text, type: string }
+              - { name: href, label: Button URL, type: string, required: true }
+              - { name: text, label: Button Text, type: string, required: true }
   - name: sbm
     label: SBM page
     type: file
