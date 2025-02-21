@@ -39,20 +39,8 @@ sbm:
 clients:
   title: "Select Clients"
   images:
-    - src: "/src/assets/images/clients/colorado3.png"
-      alt: "Colorado Logo"
-      width: 150
-      height: 150
-    - src: "/src/assets/images/clients/dchealthlink3.png"
-      alt: "DC Health Link Logo"
-      width: 150
-      height: 150
-    - src: "/src/assets/images/clients/dodea3.png"
-      alt: "DoDEA Logo"
-      width: 150
-      height: 150
-    - src: "/src/assets/images/clients/dcgov3.png"
-      alt: "DC Government Logo"
-      width: 150
-      height: 150
+    - "/src/assets/images/clients/colorado3.png"
+    - "/src/assets/images/clients/dchealthlink3.png"
+    - "/src/assets/images/clients/dodea3.png"
+    - "/src/assets/images/clients/dcgov3.png"
 ---

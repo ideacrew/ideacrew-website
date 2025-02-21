@@ -11,6 +11,8 @@ import abstractVector from "/public/assets/abstractVector.png";
 // Import client images
 import colorado3 from "@/assets/images/clients/colorado3.png";
 import dchealthlink3 from "@/assets/images/clients/dchealthlink3.png";
+import dodea3 from "@/assets/images/clients/dodea3.png";
+import dcgov3 from "@/assets/images/clients/dcgov3.png";
 
 interface ServiceItem {
   name: string;
@@ -28,16 +30,15 @@ interface HeroButton {
 }
 
 interface ClientImage {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
+  src: ImageMetadata;
 }
 
 // Create an image mapping
 const imageMapping: Record<string, ImageMetadata> = {
   "colorado3.png": colorado3,
   "dchealthlink3.png": dchealthlink3,
+  "dodea3.png": dodea3,
+  "dcgov3.png": dcgov3,
 };
 
 interface HomeContent {
@@ -59,7 +60,7 @@ interface HomeContent {
   };
   clients: {
     title: string;
-    images: ClientImage[];
+    images: string[];
   };
 }
 
@@ -68,10 +69,18 @@ const home = await import("../pages/home.md");
 const { hero, services, sbm, clients } = home.frontmatter as HomeContent;
 
 // Process client images
-const clientImages = clients.images.map(image => ({
-  ...image,
-  src: imageMapping[image.src.split("/").pop() as string],
-}));
+const clientImages: ClientImage[] = clients.images
+  .map(imagePath => {
+    const filename = imagePath.split("/").pop();
+    if (!filename || !imageMapping[filename]) {
+      console.warn(`Missing image mapping for ${filename}`);
+      return null;
+    }
+    return {
+      src: imageMapping[filename],
+    };
+  })
+  .filter((image): image is ClientImage => image !== null);
 ---
 
 <Layout>
@@ -216,13 +225,13 @@ const clientImages = clients.images.map(image => ({
 
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
         {
-          clients.images.map(image => (
+          clientImages.map(image => (
             <div class="flex flex-col items-center justify-center">
-              <img
+              <Image
                 src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
+                alt="Client Logo"
+                width={150}
+                height={150}
                 class="h-auto w-full"
               />
             </div>

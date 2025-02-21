@@ -141,14 +141,9 @@ content:
           - { name: title, label: Title, type: string }
           - name: images
             label: Client Logos
-            type: object
+            type: image
             list:
               max: 12
-            fields:
-              - { name: src, label: Logo Image, type: image, required: true }
-              - { name: alt, label: Alt Text, type: string, required: true }
-              - { name: width, label: Width, type: number, default: 150 }
-              - { name: height, label: Height, type: number, default: 150 }
   - name: about
     label: About page
     type: file
