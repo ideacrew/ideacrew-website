@@ -18,11 +18,11 @@ content:
       - name: type
         label: Employment Type
         type: select
+        required: true
         options:
-          full-time: Full-time
-          part-time: Part-time
-          contract: Contract
-        required: true      
+          "full-time": "Full-time"
+          "part-time": "Part-time"
+          "contract": "Contract"  
       - { name: location, label: Location, type: string, required: true }
       - { name: department, label: Department, type: string, required: true }
       - { name: active, label: Active Posting, type: boolean, default: true }
