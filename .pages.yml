@@ -299,7 +299,8 @@ content:
               - name: buttons
                 label: Module Buttons
                 type: object
-                list: true
+                list:
+                  max: 3
                 fields:
                   - { name: text, label: Button Text, type: string, required: true }
                   - { name: href, label: Button URL, type: string, required: true, pattern: "^https?://.*$" }
