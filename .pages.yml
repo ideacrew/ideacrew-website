@@ -362,6 +362,7 @@ content:
           - { name: description, label: Description, type: text, required: true }
           - name: image
             label: Hero Image
+            hidden: true
             type: object
             fields:
               - name: src
