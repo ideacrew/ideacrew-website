@@ -86,6 +86,52 @@ content:
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/Layout.astro" }
       - { name: title, label: Title, type: string }
+      - name: services
+        label: Services Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - name: items
+            label: Services
+            type: object
+            list:
+              max: 4
+            fields:
+              - { name: name, label: Service Name, type: string, required: true }
+          - name: button
+            label: Link Button
+            type: object
+            fields:
+              - { name: text, label: Button Text, type: string, required: true }
+              - { name: href, label: Button URL, type: string, required: true }
+      - name: sbm
+        label: SBM Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: description, label: Description, type: text }
+          - name: categories
+            label: Categories
+            type: string
+            list:
+              min: 4
+              max: 4
+          - name: button
+            label: Link Button
+            type: object
+            fields:
+              - { name: text, label: Button Text, type: string, required: true }
+              - { name: href, label: Button URL, type: string, required: true }
+      - name: clients
+        label: Clients Section
+        type: object
+        fields:
+          - { name: title, label: Title, type: string }
+          - name: images
+            label: Client Logos
+            type: image
+            list:
+              max: 12
   - name: about
     label: About page
     type: file
