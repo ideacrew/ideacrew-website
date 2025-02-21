@@ -1,6 +1,5 @@
 ---
 layout: "../layouts/Layout.astro"
-title: "IdeaCrew - Technology Solutions"
 
 hero:
   title: "Strategy & technology solutions that help our clients solve their most important challenges"

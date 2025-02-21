@@ -4,7 +4,7 @@ export const SITE: Site = {
   website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
   author: "IdeaCrew, Inc.",
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "IdeaCrew, Inc.",
+  title: "IdeaCrew",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: false,
   postPerPage: 3,
