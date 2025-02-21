@@ -174,10 +174,9 @@ content:
               - { name: href, label: Link URL, type: string, required: true }
       - name: clients
         label: Clients Section
-        description: "Add up to 12 client logos"
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string }
+          - { name: title, label: Heading Text, type: string, description: "Add up to 12 client logos" }
           - name: images
             label: Client Logos
             type: image
