@@ -251,7 +251,7 @@ content:
           - { name: text, label: SBM Link Text, type: string, required: true }
           - { name: href, label: SBM Link URL, type: string, required: true }
   - name: work
-    label: Work
+    label: Our Work
     type: collection
     path: src/content/work
     view:
