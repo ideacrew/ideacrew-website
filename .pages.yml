@@ -350,28 +350,6 @@ content:
         type: object
         fields:
           - { name: heading, label: Heading, type: string }
-          - name: items
-            label: Positions
-            type: object
-            list: true
-            fields:
-              - { name: title, label: Position Title, type: string }
-              - name: type
-                label: Employment Type
-                type: select
-                required: true
-                options:
-                  values:
-                  - value: full-time
-                    label: Full-time
-                  - value: part-time
-                    label: Part-time
-                  - value: contract
-                    label: Contract
-                default: full-time
-              - { name: location, label: Location, type: string }
-              - { name: description, label: Description, type: text }
-              - { name: link, label: Application Link, type: string, pattern: "^https?://.*$" }
       - name: teamPhotos
         label: Team Photos Section
         type: object

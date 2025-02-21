@@ -86,160 +86,162 @@ const clientImages: ClientImage[] = clients.images
 <Layout>
   <Header />
 
-  <section
-    id="hero"
-    class="relative min-h-[calc(734px+var(--header-height))] w-full min-w-full sm:min-h-[734px]"
-  >
-    <div class="absolute inset-0 z-0">
-      <Image
-        src={abstractVector}
-        alt=""
-        class="h-full w-full object-cover"
-        quality="max"
-        loading="eager"
-        priority
-      />
-    </div>
-
-    <div
-      class="relative z-10 mx-auto max-w-[960px]"
-      style="padding-top: calc(var(--header-height) + 160px)"
+  <main id="main-content">
+    <section
+      id="hero"
+      class="relative min-h-[calc(734px+var(--header-height))] w-full min-w-full sm:min-h-[734px]"
     >
-      <div class="max-w-[826px] bg-white/80 p-8">
-        <h1
-          class="font-domine text-[32px] font-normal leading-[200%] text-[#0D2B46]"
-        >
-          {hero.title}
-        </h1>
-        <p class="mt-4 text-lg text-[#0D2B46]">{hero.description}</p>
-        <div class="mt-8 flex gap-4">
-          {
-            hero.buttons.map(button => (
-              <Button variant={button.variant} size="lg">
-                <a href={button.href}>{button.text}</a>
+      <div class="absolute inset-0 z-0">
+        <Image
+          src={abstractVector}
+          alt=""
+          class="h-full w-full object-cover"
+          quality="max"
+          loading="eager"
+          priority
+        />
+      </div>
+
+      <div
+        class="relative z-10 mx-auto max-w-[960px]"
+        style="padding-top: calc(var(--header-height) + 160px)"
+      >
+        <div class="max-w-[826px] bg-white/80 p-8">
+          <h1
+            class="font-domine text-[32px] font-normal leading-[200%] text-[#0D2B46]"
+          >
+            {hero.title}
+          </h1>
+          <p class="mt-4 text-lg text-[#0D2B46]">{hero.description}</p>
+          <div class="mt-8 flex gap-4">
+            {
+              hero.buttons.map(button => (
+                <Button variant={button.variant} size="lg">
+                  <a href={button.href}>{button.text}</a>
+                </Button>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services w-full min-w-full bg-[#ffffff]">
+      <div class="mx-auto w-full max-w-[960px] px-4 pb-16">
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          {/* Left Column */}
+          <div class="flex flex-col justify-start">
+            <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
+              {services.title}
+            </h2>
+            <div class="flex flex-col space-y-6 rounded-md bg-[#F6F6F6] p-6">
+              {
+                services.items.map((service: ServiceItem) => (
+                  <div class="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+                    <h3 class="text-lg font-medium text-[#0D2B46]">
+                      {service.name}
+                    </h3>
+                  </div>
+                ))
+              }
+            </div>
+            <div class="mt-6">
+              <Button variant="link">
+                <a href={services.button.href}>{services.button.text}</a>
               </Button>
+            </div>
+          </div>
+
+          {/* Right Column - Services Image */}
+          <div class="flex items-center justify-center">
+            <Image
+              src="/assets/services1.svg"
+              alt="Our Services Illustration"
+              width={500}
+              height={500}
+              class="h-auto w-full"
+              loading="eager"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sbm" class="sbm w-full min-w-full bg-[#ffffff]">
+      <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+        <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
+          {sbm.title}
+        </h2>
+
+        <div class="mb-6 hidden sm:flex sm:items-center sm:justify-between">
+          {
+            sbm.categories.map((category: string, index: number) => (
+              <>
+                <div class="font-medium text-[#0D2B46]">{category}</div>
+                {index < sbm.categories.length - 1 && (
+                  <div class="text-gray-300">|</div>
+                )}
+              </>
+            ))
+          }
+        </div>
+
+        {/* Mobile Layout */}
+        <div class="mb-6 grid grid-cols-2 sm:hidden">
+          {
+            sbm.categories.map((category: string, index: number) => (
+              <div
+                class={`p-4 text-center font-medium text-[#0D2B46] ${
+                  index < 2 ? "border-b" : ""
+                } ${index % 2 === 0 ? "border-r" : ""} border-gray-200`}
+              >
+                {category}
+              </div>
+            ))
+          }
+        </div>
+
+        <p
+          class="mb-3 font-['Open_Sans'] text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+        >
+          {sbm.description}
+        </p>
+
+        <div class="mt-6">
+          <Button variant="link">
+            <a href={sbm.button.href}>
+              {sbm.button.text}
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <section id="clients" class="clients mb-6 w-full min-w-full bg-[#ffffff]">
+      <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+        <h2 class="mb-2 font-domine text-2xl font-normal text-[#0D2B46]">
+          {clients.title}
+        </h2>
+
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
+          {
+            clientImages.map(image => (
+              <div class="flex flex-col items-center justify-center">
+                <Image
+                  src={image.src}
+                  alt="Client Logo"
+                  width={150}
+                  height={150}
+                  class="h-auto w-full"
+                />
+              </div>
             ))
           }
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="services" class="services w-full min-w-full bg-[#ffffff]">
-    <div class="mx-auto w-full max-w-[960px] px-4 pb-16">
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
-        {/* Left Column */}
-        <div class="flex flex-col justify-start">
-          <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
-            {services.title}
-          </h2>
-          <div class="flex flex-col space-y-6 rounded-md bg-[#F6F6F6] p-6">
-            {
-              services.items.map((service: ServiceItem) => (
-                <div class="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                  <h3 class="text-lg font-medium text-[#0D2B46]">
-                    {service.name}
-                  </h3>
-                </div>
-              ))
-            }
-          </div>
-          <div class="mt-6">
-            <Button variant="link">
-              <a href={services.button.href}>{services.button.text}</a>
-            </Button>
-          </div>
-        </div>
-
-        {/* Right Column - Services Image */}
-        <div class="flex items-center justify-center">
-          <Image
-            src="/assets/services1.svg"
-            alt="Our Services Illustration"
-            width={500}
-            height={500}
-            class="h-auto w-full"
-            loading="eager"
-            priority
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="sbm" class="sbm w-full min-w-full bg-[#ffffff]">
-    <div class="mx-auto w-full max-w-[960px] px-4 py-16">
-      <h2 class="mb-6 font-domine text-2xl font-normal text-[#0D2B46]">
-        {sbm.title}
-      </h2>
-
-      <div class="mb-6 hidden sm:flex sm:items-center sm:justify-between">
-        {
-          sbm.categories.map((category: string, index: number) => (
-            <>
-              <div class="font-medium text-[#0D2B46]">{category}</div>
-              {index < sbm.categories.length - 1 && (
-                <div class="text-gray-300">|</div>
-              )}
-            </>
-          ))
-        }
-      </div>
-
-      {/* Mobile Layout */}
-      <div class="mb-6 grid grid-cols-2 sm:hidden">
-        {
-          sbm.categories.map((category: string, index: number) => (
-            <div
-              class={`p-4 text-center font-medium text-[#0D2B46] ${
-                index < 2 ? "border-b" : ""
-              } ${index % 2 === 0 ? "border-r" : ""} border-gray-200`}
-            >
-              {category}
-            </div>
-          ))
-        }
-      </div>
-
-      <p
-        class="mb-3 font-['Open_Sans'] text-[18px] font-normal leading-[200%] text-[#0D2B46]"
-      >
-        {sbm.description}
-      </p>
-
-      <div class="mt-6">
-        <Button variant="link">
-          <a href={sbm.button.href}>
-            {sbm.button.text}
-          </a>
-        </Button>
-      </div>
-    </div>
-  </section>
-
-  <section id="clients" class="clients mb-6 w-full min-w-full bg-[#ffffff]">
-    <div class="mx-auto w-full max-w-[960px] px-4 py-16">
-      <h2 class="mb-2 font-domine text-2xl font-normal text-[#0D2B46]">
-        {clients.title}
-      </h2>
-
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
-        {
-          clientImages.map(image => (
-            <div class="flex flex-col items-center justify-center">
-              <Image
-                src={image.src}
-                alt="Client Logo"
-                width={150}
-                height={150}
-                class="h-auto w-full"
-              />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <Cta />
 

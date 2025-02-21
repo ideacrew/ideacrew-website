@@ -76,82 +76,84 @@ const { frontmatter } = Astro.props;
 
   <Breadcrumbs />
 
-  <section class="w-full min-w-full">
-    <div class="mx-auto w-full max-w-[960px] px-4 py-16">
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
-        <div class="col-span-2">
-          <div
-            class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
-          >
-            <h2
-              class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
-            >
-              {frontmatter.about.title}
-            </h2>
-
+  <main id="main-content">
+    <section class="w-full min-w-full">
+      <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div class="col-span-2">
             <div
-              class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+              class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
             >
-              {frontmatter.about.description}
+              <h2
+                class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
+              >
+                {frontmatter.about.title}
+              </h2>
+
+              <div
+                class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+              >
+                {frontmatter.about.description}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-span-1 grid place-items-center">
-          <Image
-            src={getImageFromPath(frontmatter.about.image.src)}
-            alt={frontmatter.about.image.alt}
-            width={300}
-            height={192}
-            loading="eager"
-          />
+          <div class="col-span-1 grid place-items-center">
+            <Image
+              src={getImageFromPath(frontmatter.about.image.src)}
+              alt={frontmatter.about.image.alt}
+              width={300}
+              height={192}
+              loading="eager"
+            />
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="w-full min-w-full bg-[#F6F6F6]">
-    <div class="mx-auto w-full max-w-[960px] px-4 py-8">
-      <h2
-        class="mb-8 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
-      >
-        Our Services
-      </h2>
+    <section class="w-full min-w-full bg-[#F6F6F6]">
+      <div class="mx-auto w-full max-w-[960px] px-4 py-8">
+        <h2
+          class="mb-8 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+        >
+          Our Services
+        </h2>
 
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-4">
-        {
-          frontmatter.services.map(service => (
-            <div class="flex flex-col">
-              <div class="mb-6 h-16 w-16">
-                <Image
-                  src={getImageFromPath(service.icon)}
-                  alt={`${service.name} Icon`}
-                  width={64}
-                  height={64}
-                  class="h-full w-full"
-                />
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-4">
+          {
+            frontmatter.services.map(service => (
+              <div class="flex flex-col">
+                <div class="mb-6 h-16 w-16">
+                  <Image
+                    src={getImageFromPath(service.icon)}
+                    alt={`${service.name} Icon`}
+                    width={64}
+                    height={64}
+                    class="h-full w-full"
+                  />
+                </div>
+
+                <h3 class="mb-4 font-sans text-[16px] font-semibold leading-[200%] text-[#0D2B46]">
+                  {service.name}
+                </h3>
+                <ul class="space-y-2 font-sans text-[14px] font-normal leading-[150%] text-[#0D2B46]">
+                  {service.items.map(item => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
               </div>
-
-              <h3 class="mb-4 font-sans text-[16px] font-semibold leading-[200%] text-[#0D2B46]">
-                {service.name}
-              </h3>
-              <ul class="space-y-2 font-sans text-[14px] font-normal leading-[150%] text-[#0D2B46]">
-                {service.items.map(item => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  {frontmatter.values && <Values data={frontmatter.values} />}
+    {frontmatter.values && <Values data={frontmatter.values} />}
 
-  {frontmatter.leadership && <Leadership data={frontmatter.leadership} />}
+    {frontmatter.leadership && <Leadership data={frontmatter.leadership} />}
 
-  {frontmatter.careers && <Careers data={frontmatter.careers} />}
+    {frontmatter.careers && <Careers data={frontmatter.careers} />}
+  </main>
 
   <div class="mt-auto">
     <Cta />
