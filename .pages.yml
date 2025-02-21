@@ -37,10 +37,10 @@ content:
       - { name: applicationUrl, label: Application URL, type: string, pattern: "^https?://.*$" }
       - { name: sortOrder, label: Sort Order, type: number, default: 999 }
       - { name: body, label: Full Description, type: rich-text, required: true }
-  - name: posts
-    label: Posts
+  - name: news
+    label: News
     type: collection
-    path: src/content/blog
+    path: src/content/news
     view:
       fields: [ title, draft, date ]
     fields:
