@@ -214,6 +214,7 @@ content:
           - { name: name, label: Service Name, type: string, description: "This will be used as the service name in the about section", required: true }
           - name: icon
             label: Icon
+            hidden: true
             type: object
             fields:
               - name: src
