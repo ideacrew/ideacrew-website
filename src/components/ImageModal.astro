@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  id: string;
+  image: ImageMetadata;
+  alt: string;
+}
+
+const { id, image, alt } = Astro.props;
+---
+
+<dialog
+  id={id}
+  class="fixed inset-0 m-auto h-[800px] w-[800px] rounded-lg bg-transparent p-4 backdrop:bg-black/50"
+>
+  <div class="relative h-full w-full">
+    <button
+      onclick="this.closest('dialog').close()"
+      class="absolute -right-2 -top-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#0D2B46] hover:bg-gray-100"
+      aria-label="Close modal"
+    >
+      ✕
+    </button>
+    <img
+      src={image.src}
+      alt={alt}
+      class="h-full w-full rounded-lg object-contain"
+      loading="lazy"
+    />
+  </div>
+</dialog>
+
+<script>
+  // Add click event listeners to all dialog close buttons
+  document.querySelectorAll("dialog button").forEach(button => {
+    button.addEventListener("click", () => {
+      const dialog = button.closest("dialog");
+      if (dialog) {
+        dialog.close();
+      }
+    });
+  });
+
+  // Close dialog when clicking outside
+  document.querySelectorAll("dialog").forEach(dialog => {
+    dialog.addEventListener("click", e => {
+      const rect = dialog.getBoundingClientRect();
+      const isInDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
+      if (!isInDialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>

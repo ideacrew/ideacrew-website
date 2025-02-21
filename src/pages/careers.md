@@ -6,7 +6,7 @@ hero:
   heading: Join Our Team
   description: We're looking for talented individuals who are passionate about making a difference in healthcare technology. At IdeaCrew, you'll work on meaningful projects that impact millions of lives while growing your career alongside industry experts.
   image:
-    src: /images/careers-hero.jpg
+    src: /src/assets/images/teamwork.svg
     alt: IdeaCrew team collaboration
 benefits:
   heading: Why Work With Us
@@ -43,17 +43,4 @@ positions:
       link: /careers/ux-designer
 teamPhotos:
   heading: Team Photos
-  photos:
-    - image:
-        src: /images/team/placeholder-1.jpg
-        alt: Team member working remotely
-    - image:
-        src: /images/team/placeholder-2.jpg
-        alt: Team collaboration session
-    - image:
-        src: /images/team/placeholder-3.jpg
-        alt: Team building activity
-    - image:
-        src: /images/team/placeholder-4.jpg
-        alt: Office culture
 ---
