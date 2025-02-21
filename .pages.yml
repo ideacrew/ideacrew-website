@@ -37,6 +37,33 @@ content:
       - { name: applicationUrl, label: Application URL, type: string, pattern: "^https?://.*$" }
       - { name: sortOrder, label: Sort Order, type: number, default: 999 }
       - { name: body, label: Full Description, type: rich-text, required: true }
+  - name: work
+    label: Our Work
+    type: collection
+    path: src/content/work
+    view:
+      fields: [ title, client, summary, sortOrder ]
+      sort: [ sortOrder, title ]
+      default:
+        sort: sortOrder
+        order: asc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: client, label: Client, type: string, required: true }
+      - { name: description, label: Full Description, type: text, required: true }
+      - { name: summary, label: Card Summary, type: text, description: "A brief summary that appears on the work item card" }
+      - name: image
+        label: Image
+        type: object
+        required: false
+        fields:
+          - name: src
+            label: Image
+            type: image
+            default: "/images/about-us.svg"
+          - { name: alt, label: Alt Text, type: string, default: "Placeholder image" }
+      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
+      - { name: body, label: Content, type: rich-text }
   - name: news
     label: News
     type: collection
@@ -250,33 +277,6 @@ content:
         fields:
           - { name: text, label: SBM Link Text, type: string, required: true }
           - { name: href, label: SBM Link URL, type: string, required: true }
-  - name: work
-    label: Our Work
-    type: collection
-    path: src/content/work
-    view:
-      fields: [ title, client, summary, sortOrder ]
-      sort: [ sortOrder, title ]
-      default:
-        sort: sortOrder
-        order: asc
-    fields:
-      - { name: title, label: Title, type: string, required: true }
-      - { name: client, label: Client, type: string, required: true }
-      - { name: description, label: Full Description, type: text, required: true }
-      - { name: summary, label: Card Summary, type: text, description: "A brief summary that appears on the work item card" }
-      - name: image
-        label: Image
-        type: object
-        required: false
-        fields:
-          - name: src
-            label: Image
-            type: image
-            default: "/images/about-us.svg"
-          - { name: alt, label: Alt Text, type: string, default: "Placeholder image" }
-      - { name: sortOrder, label: Sort Order, type: number, default: 999 }
-      - { name: body, label: Content, type: rich-text }
   - name: contact
     label: Contact page
     type: file
