@@ -293,7 +293,7 @@ content:
         label: Marketplace Modules
         type: object
         fields:
-          - { name: heading, label: Section Heading, type: string, required: true }
+          - { name: heading, label: Section Heading, type: string, required: true, hidden: true }
           - name: items
             label: Module Items
             type: object
@@ -316,7 +316,7 @@ content:
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/WorkLayout.astro" }
       - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }      
-      - { name: description, label: Page Description, type: text }                  
+      - { name: description, label: Page Description, type: text, description: "Work items are managed in the Our Work collection." }                  
   - name: contact
     label: Contact page
     type: file
@@ -357,8 +357,12 @@ content:
     path: src/pages/careers.md
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/CareersLayout.astro" }
-      - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }
-      - { name: description, label: Description, type: text }
+      - name: seo
+        label: SEO Settings
+        type: object
+        fields:
+          - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }
+          - { name: description, label: Description, description: "This will be used as the page description for SEO. If not provided, the default description from the site configuration will be used.", type: text }
       - name: hero
         label: Hero Section
         type: object
