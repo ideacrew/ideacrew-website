@@ -161,7 +161,7 @@ content:
         type: object
         fields:
           - { name: title, label: Heading Text, type: string, required: true, hidden: true }
-          - { name: description, label: Description, type: text }
+          - { name: description, label: Description, type: text, required: true }
           - name: categories
             label: Module Types
             type: string
@@ -193,13 +193,13 @@ content:
     path: src/pages/about.md
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
-      - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }
+      - { name: title, label: Page Title, type: string, description: "This is used as the page title in the browser", required: true }
       - name: about
         label: About Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string, description: "This will be used as the heading text in the about section", required: true }
-          - { name: description, label: Description, type: text, description: "This will be used as the description in the about section", required: true }
+          - { name: title, label: Heading Text, type: string, description: "This is used as the heading text in the about section", required: true, hidden: true }
+          - { name: description, label: Description, type: text, description: "This is used as the description in the about section", required: true }
           - name: image
             hidden: true
             label: Image
@@ -216,7 +216,7 @@ content:
           min: 4
           max: 4
         fields:
-          - { name: name, label: Service Name, type: string, description: "This will be used as the service name in the about section", required: true }
+          - { name: name, label: Service Name, type: string, description: "This is used as the service name in the about section", required: true }
           - name: icon
             label: Icon
             hidden: true
@@ -236,7 +236,7 @@ content:
         label: Values Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string, description: "This will be used as the heading text in the values section", required: true }
+          - { name: title, label: Heading Text, type: string, description: "This is used as the heading text in the values section", required: true, hidden: true }
           - name: items
             label: Values
             type: object
@@ -244,19 +244,19 @@ content:
               min: 3
               max: 3
             fields:
-              - { name: title, label: Value Name, type: string, description: "This will be used as the title in the values section", required: true }
-              - { name: description, label: Description, type: text, description: "This will be used as the description in the values section", required: true }
+              - { name: title, label: Value Name, type: string, description: "This is used as the title in the values section", required: true }
+              - { name: description, label: Description, type: text, description: "This is used as the description in the values section", required: true }
       - name: leadership
         label: Leadership Section
         type: object
         fields:
-          - { name: title, label: Title, type: string, description: "This will be used as the title in the leadership section", required: true }
+          - { name: title, label: Title, type: string, description: "The leadership section is not editable here. Leaders are managed in the Leaders collection.", required: true, readonly: true }
       - name: careers
         label: Careers Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string, description: "This will be used as the heading text in the careers section", required: true }
-          - { name: description, label: Description, type: text, description: "This will be used as the description in the careers section", required: true }
+          - { name: title, label: Heading Text, type: string, description: "The careers section is not editable here. Job postings are managed in the Job Postings collection.", required: true, readonly: true }
+          - { name: description, label: Description, type: text, description: "This is used as the description in the careers section", required: true }
           - name: image
             hidden: true
             label: Image
