@@ -140,7 +140,6 @@ content:
         label: Services Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string }
           - name: items
             label: Services
             type: object
@@ -148,17 +147,10 @@ content:
               max: 4
             fields:
               - { name: name, label: Service Name, type: string, required: true }
-          - name: button
-            label: Learn More Link
-            type: object
-            fields:
-              - { name: text, label: Link Text, type: string, required: true }
-              - { name: href, label: Link URL, type: string, required: true }
       - name: sbm
         label: SBM Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string }
           - { name: description, label: Description, type: text }
           - name: categories
             label: Module Types
@@ -166,19 +158,13 @@ content:
             list:
               min: 4
               max: 4
-          - name: button
-            label: Learn More Link
-            type: object
-            fields:
-              - { name: text, label: Link Text, type: string, required: true }
-              - { name: href, label: Link URL, type: string, required: true }
       - name: clients
         label: Clients Section
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string, description: "Add up to 12 client logos" }
           - name: images
             label: Client Logos
+            description: "Add up to 12 client logos"
             type: image
             list:
               max: 12
