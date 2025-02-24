@@ -24,10 +24,10 @@ const workCollection = defineCollection({
 const leadersCollection = defineCollection({
   type: "content",
   schema: z.object({
+    name: z.string(),
     seo: z.object({
       description: z.string(),
     }),
-    name: z.string(),
     position: z.string(),
     photo: z.object({
       src: z.string(),
