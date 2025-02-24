@@ -93,12 +93,12 @@ content:
         sort: sortOrder
         order: asc
     fields:
+      - { name: name, label: Name, type: string, required: true }
       - name: seo,
         label: SEO Settings
         type: object
         fields:
           - { name: description, label: Description, description: "This is used as the page description for SEO. If not provided, the default description from the site configuration will be used.", type: text }
-      - { name: name, label: Name, type: string, required: true }
       - { name: position, label: Position, type: string, required: true }
       - name: photo
         label: Photo
