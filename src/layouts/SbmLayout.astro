@@ -10,12 +10,18 @@ import { ModulesAccordion } from "@/components/ModulesAccordion";
 
 export interface Props {
   frontmatter: {
-    title: string;
-    description?: string;
-    buttons: {
-      text: string;
-      href: string;
-    }[];
+    seo: {
+      title: string;
+      description?: string;
+    };
+    hero: {
+      title: string;
+      description: string;
+      buttons: {
+        text: string;
+        href: string;
+      }[];
+    };
     modules: {
       heading: string;
       items: {
@@ -29,7 +35,10 @@ export interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={`${frontmatter.title} | ${SITE.title}`}>
+<Layout
+  title={`${frontmatter.seo.title} | ${SITE.title}`}
+  description={frontmatter.seo.description || SITE.desc}
+>
   <div class="flex min-h-screen flex-col">
     <Header activeNav="sbm" />
     <Breadcrumbs />
@@ -43,19 +52,19 @@ const { frontmatter } = Astro.props;
             <h1
               class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
             >
-              {frontmatter.title}
+              {frontmatter.hero.title}
             </h1>
 
             <div
               class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
             >
-              {frontmatter.description}
+              {frontmatter.hero.description}
             </div>
           </div>
 
           <div class="grid max-w-[50%] grid-cols-1 gap-2 sm:grid-cols-2">
             {
-              frontmatter.buttons.map(button => (
+              frontmatter.hero.buttons.map(button => (
                 <Button variant="default" size="lg">
                   <a href={button.href}>{button.text}</a>
                 </Button>
