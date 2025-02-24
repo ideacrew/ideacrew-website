@@ -243,6 +243,7 @@ content:
               - { name: description, label: Description, type: text, description: "This will be used as the description in the values section", required: true }
       - name: leadership
         label: Leadership Section
+        description: "This section is used to display the leadership team members"
         type: object
         fields:
           - { name: title, label: Title, type: string, description: "This will be used as the title in the leadership section", required: true }
