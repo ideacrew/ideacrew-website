@@ -14,8 +14,10 @@ import defaultHeroImage from "@/assets/images/teamwork.svg";
 
 export interface Props {
   frontmatter: {
-    title: string;
-    description: string;
+    seo: {
+      title: string;
+      description: string;
+    };
     hero: {
       heading: string;
       description: string;
@@ -101,7 +103,10 @@ const teamPhotoEntries = Object.entries(teamImagesMap).sort(([a], [b]) =>
 );
 ---
 
-<Layout title={`${frontmatter.title} | ${SITE.title}`}>
+<Layout
+  title={`${frontmatter.seo.title} | ${SITE.title}`}
+  description={frontmatter.seo.description || SITE.desc}
+>
   <Header />
   <Breadcrumbs />
   <main id="main-content">

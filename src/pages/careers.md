@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/CareersLayout.astro
-title: Careers
-description: Join our team and help build the future of healthcare technology
+seo:
+  title: Careers
+  description: Join our team and help build the future of healthcare technology
 hero:
   heading: Join Our Team
   description: We're looking for talented individuals who are passionate about making a difference in healthcare technology. At IdeaCrew, you'll work on meaningful projects that impact millions of lives while growing your career alongside industry experts.
