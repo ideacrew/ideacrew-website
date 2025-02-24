@@ -13,8 +13,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export interface Props {
   frontmatter: {
-    title: string;
-    description?: string;
+    seo: {
+      title: string;
+      description?: string;
+    };
   };
 }
 
@@ -60,7 +62,10 @@ const sortedWorkItems = workItems.sort(
 );
 ---
 
-<Layout title={`${frontmatter.title} | ${SITE.title}`}>
+<Layout
+  title={`${frontmatter.seo.title} | ${SITE.title}`}
+  description={frontmatter.seo.description || SITE.desc}
+>
   <Header activeNav="work" />
   <Breadcrumbs />
   <main id="main-content">
@@ -72,13 +77,13 @@ const sortedWorkItems = workItems.sort(
           <h1
             class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
           >
-            {frontmatter.title}
+            {frontmatter.seo.title}
           </h1>
 
           {
-            frontmatter.description && (
+            frontmatter.seo.description && (
               <p class="mb-8 font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]">
-                {frontmatter.description}
+                {frontmatter.seo.description}
               </p>
             )
           }

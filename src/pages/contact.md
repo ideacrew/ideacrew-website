@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/ContactLayout.astro
-title: Contact
+seo:
+  title: Contact
+  description: Contact IdeaCrew for more information
 contact:
   address:
     street: 1150 Connecticut Ave NW

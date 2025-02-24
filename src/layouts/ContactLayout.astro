@@ -11,8 +11,10 @@ import CtaCareer from "@/components/Cta-career.astro";
 
 export interface Props {
   frontmatter: {
-    title: string;
-    description?: string;
+    seo: {
+      title: string;
+      description?: string;
+    };
     contact: {
       address: {
         street: string;
@@ -37,7 +39,10 @@ export interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={`${frontmatter.title} | ${SITE.title}`}>
+<Layout
+  title={`${frontmatter.seo.title} | ${SITE.title}`}
+  description={frontmatter.seo.description || SITE.desc}
+>
   <Header activeNav="contact" />
   <Breadcrumbs />
   <main id="main-content">
@@ -49,7 +54,7 @@ const { frontmatter } = Astro.props;
           <h1
             class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
           >
-            {frontmatter.title}
+            {frontmatter.seo.title}
           </h1>
 
           <div class="flex flex-col gap-8 md:flex-row">

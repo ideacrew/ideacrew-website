@@ -315,15 +315,24 @@ content:
     path: src/pages/work.md
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/WorkLayout.astro" }
-      - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }      
-      - { name: description, label: Page Description, type: text, description: "Work items are managed in the Our Work collection." }                  
+      - name: seo
+        label: SEO Settings
+        type: object
+        fields:
+          - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }
+          - { name: description, label: Description, description: "This will be used as the page description for SEO. If not provided, the default description from the site configuration will be used.", type: text }              
   - name: contact
     label: Contact page
     type: file
     path: src/pages/contact.md
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/ContactLayout.astro" }
-      - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }
+      - name: seo
+        label: SEO Settings
+        type: object
+        fields:
+          - { name: title, label: Page Title, type: string, description: "This will be used as the page title in the browser", required: true }
+          - { name: description, label: Description, description: "This will be used as the page description for SEO. If not provided, the default description from the site configuration will be used.", type: text }
       - name: contact
         label: Contact Information
         type: object
