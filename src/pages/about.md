@@ -3,7 +3,8 @@ layout: ../layouts/AboutLayout.astro
 title: About IdeaCrew
 about:
   title: About IdeaCrew
-  description: Established in 2002 with headquarters in Washington DC, IdeaCrew is
+  description:
+    Established in 2002 with headquarters in Washington DC, IdeaCrew is
     a full service IT and clinical consultancy. We offer a cadre of experienced
     former leaders who have served federal and state government at the highest
     levels. Our team has led agencies through challenging start-up phases,
@@ -11,6 +12,9 @@ about:
     have worked side-by-side with our consultants during these challenges, and
     we have a unique perspective on the role that IT plays in the delivery of
     the core mission.
+  image:
+    src: /images/about-us.svg
+    alt: About IdeaCrew
 services:
   - name: Data Integration
     icon:
@@ -48,11 +52,13 @@ values:
   title: Our Values
   items:
     - title: People
-      description: People first. We believe in respect for the individual. We value
+      description:
+        People first. We believe in respect for the individual. We value
         inclusion and diversity to foster an open and collaborative work
         environment that is customer focused.
     - title: Technology
-      description: We innovate and learn, continuously.We embrace modern technologies
+      description:
+        We innovate and learn, continuously.We embrace modern technologies
         and architectures that advance business objectives and customer
         experience.
     - title: Purpose
@@ -63,7 +69,8 @@ leadership:
   title: Leadership
 careers:
   title: Careers
-  description: If you're looking for a company that works where technology touches
+  description:
+    If you're looking for a company that works where technology touches
     people's lives… a company that regularly turns "that's impossible" into "Got
     it – what's next?"… a company that rewards performance with generous pay,
     health insurance and other employee benefits… IdeaCrew may be right for you.
