@@ -140,6 +140,7 @@ content:
         label: Services Section
         type: object
         fields:
+          - { name: title, label: Heading Text, type: string, required: true, hidden: true }
           - name: items
             label: Services
             type: object
@@ -147,27 +148,44 @@ content:
               max: 4
             fields:
               - { name: name, label: Service Name, type: string, required: true }
+          - name: button
+            label: Learn More Link
+            type: object
+            required: true
+            hidden: true
+            fields:
+              - { name: text, label: Link Text, type: string, required: true }
+              - { name: href, label: Link URL, type: string, required: true }
       - name: sbm
         label: SBM Section
         type: object
         fields:
-          - { name: description, label: Description, type: text, required: true }
+          - { name: title, label: Heading Text, type: string, required: true, hidden: true }
+          - { name: description, label: Description, type: text }
           - name: categories
             label: Module Types
             type: string
             list:
               min: 4
               max: 4
+          - name: button
+            label: Learn More Link
+            type: object
+            required: true
+            hidden: true
+            fields:
+              - { name: text, label: Link Text, type: string, required: true }
+              - { name: href, label: Link URL, type: string, required: true }
       - name: clients
         label: Clients Section
         type: object
         fields:
+          - { name: title, label: Heading Text, type: string, required: true, hidden: true }
           - name: images
             label: Client Logos
             description: "Requires between 4 and 12 client logos"
             type: image
             list:
-              min: 4
               max: 12
   - name: about
     label: About page
@@ -230,7 +248,6 @@ content:
               - { name: description, label: Description, type: text, description: "This will be used as the description in the values section", required: true }
       - name: leadership
         label: Leadership Section
-        description: "This section is used to display the leadership team members"
         type: object
         fields:
           - { name: title, label: Title, type: string, description: "This will be used as the title in the leadership section", required: true }
