@@ -63,7 +63,7 @@ const clientImages = clients.images.map(imagePath =>
 ---
 
 <Layout
-  title={seo.title ? `${seo.title} | ${SITE.title}` : SITE.title}
+  title={seo.title ? `${SITE.title} | ${seo.title}` : SITE.title}
   description={seo.description || SITE.desc}
 >
   <Header />

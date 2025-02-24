@@ -28,10 +28,13 @@ const getImageFromPath = (path: string): ImageMetadata => {
   return images[imagePath].default;
 };
 
-const { frontmatter, leader } = Astro.props;
+const { leader } = Astro.props;
 ---
 
-<Layout title={`${leader.data.name} | ${SITE.title}`}>
+<Layout
+  title={leader.data.name ? `${leader.data.name} | ${SITE.title}` : SITE.title}
+  description={leader.data.seo.description || SITE.desc}
+>
   <main id="main-content">
     <div class="flex min-h-screen flex-col">
       <div class="flex-1">

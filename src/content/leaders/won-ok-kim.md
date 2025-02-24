@@ -1,4 +1,6 @@
 ---
+seo:
+  description: Won-ok Kim is the Reporting and Analytics Lead at IdeaCrew.
 name: Won-ok Kim
 position: Reporting and Analytics Lead
 photo:

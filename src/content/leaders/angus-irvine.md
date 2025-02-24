@@ -1,4 +1,6 @@
 ---
+seo:
+  description: Angus Irvine is the Director of Application Development at IdeaCrew.
 name: Angus Irvine
 position: Director of Application Development
 photo:

@@ -1,4 +1,6 @@
 ---
+seo:
+  description: Matt Williams is the VP of DevOps and Cloud at IdeaCrew.
 name: Matt Williams
 position: VP of DevOps and Cloud
 photo:

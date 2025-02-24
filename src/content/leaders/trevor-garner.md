@@ -1,5 +1,7 @@
 ---
-name: Trevor Garner
+seo:
+  description: Trevor Garner is the COO at IdeaCrew.
+name: Trevor garner
 position: COO
 photo:
   src: /images/leaders/trevor-garner.jpg

@@ -1,4 +1,6 @@
 ---
+seo:
+  description: Alex Thomas is the Project Manager and VP Product Manager at IdeaCrew.
 name: Alex Thomas
 position: Project Manager - VP Product Manager
 photo:

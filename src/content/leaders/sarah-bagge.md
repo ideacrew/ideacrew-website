@@ -1,4 +1,6 @@
 ---
+seo:
+  description: Sarah Bagge is the VP Product Manager at IdeaCrew.
 name: Sarah Bagge
 position: VP Product Manager
 photo:

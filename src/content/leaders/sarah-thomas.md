@@ -1,4 +1,6 @@
 ---
+seo:
+  description: Sarah Thomas is the VP of Human Resources at IdeaCrew.
 name: Sarah Thomas
 position: VP of Human Resources
 photo:
