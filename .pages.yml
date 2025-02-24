@@ -193,13 +193,18 @@ content:
     path: src/pages/about.md
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
-      - { name: title, label: Page Title, type: string, description: "This is used as the page title in the browser", required: true }
-      - name: about
-        label: About Section
+      - name: seo
+        label: SEO Settings
         type: object
         fields:
-          - { name: title, label: Heading Text, type: string, description: "This is used as the heading text in the about section", required: true, hidden: true }
-          - { name: description, label: Description, type: text, description: "This is used as the description in the about section", required: true }
+          - { name: title, label: Page Title, type: string, description: "This is used as the page title in the browser", required: true }
+          - { name: description, label: Description, description: "This is used as the page description for SEO. If not provided, the default description from the site configuration will be used.", type: text }
+      - name: hero
+        label: Hero Section
+        type: object
+        fields:
+          - { name: title, label: Heading Text, type: string, description: "This is used as the heading text in the hero section", required: true, hidden: true }
+          - { name: description, label: Description, type: text, description: "This is used as the description in the hero section", required: true }
           - name: image
             hidden: true
             label: Image
