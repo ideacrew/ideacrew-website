@@ -154,7 +154,6 @@ content:
           - { name: description, label: Description, type: text, required: true }
           - name: categories
             label: Module Types
-            description: "Requires 4 module types"
             type: string
             list:
               min: 4
