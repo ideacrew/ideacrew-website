@@ -6,6 +6,7 @@ photo:
   alt: Matt Williams - VP of DevOps and Cloud
 linkedin: https://www.linkedin.com/in/matt-williams
 sortOrder: 5
+active: true
 ---
 
 Matt Williams leads IdeaCrew's DevOps and Cloud Infrastructure team, ensuring the reliability, security, and scalability of our technology solutions. His expertise in cloud architecture and DevOps practices has been crucial in modernizing our infrastructure and deployment processes.

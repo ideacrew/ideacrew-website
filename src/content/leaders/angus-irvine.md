@@ -6,6 +6,7 @@ photo:
   alt: Angus Irvine - Director of Application Development
 linkedin: https://www.linkedin.com/in/angus-irvine
 sortOrder: 3
+active: true
 ---
 
 Angus Irvine leads IdeaCrew's application development team, bringing over 15 years of software engineering expertise to the organization. As Director of Application Development, he oversees the technical architecture and development of IdeaCrew's healthcare technology solutions.

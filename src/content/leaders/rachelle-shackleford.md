@@ -6,6 +6,7 @@ photo:
   alt: Rachelle Shackleford - VP of Delivery
 linkedin: https://www.linkedin.com/in/rachelle-shackleford
 sortOrder: 9
+active: true
 ---
 
 Rachelle Shackleford serves as VP of Delivery at IdeaCrew, where she ensures the successful implementation and delivery of our technology solutions. Her leadership focuses on maintaining high quality standards while meeting project timelines and client expectations.

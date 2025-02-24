@@ -6,6 +6,7 @@ photo:
   alt: Saadi Mirza - VP of Integration Services and Analytics
 linkedin: https://www.linkedin.com/in/saadi-mirza
 sortOrder: 4
+active: true
 ---
 
 Saadi Mirza leads IdeaCrew's Integration Services and Analytics division, bringing deep expertise in data integration, analytics, and healthcare information systems. His work focuses on creating seamless data flows between complex healthcare systems and delivering actionable insights to our clients.

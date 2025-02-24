@@ -6,6 +6,7 @@ photo:
   alt: Won-ok Kim - Reporting and Analytics Lead
 linkedin: https://www.linkedin.com/in/won-ok-kim
 sortOrder: 8
+active: true
 ---
 
 Won-ok Kim leads IdeaCrew's Reporting and Analytics initiatives, bringing extensive experience in healthcare data analysis and reporting. Her expertise helps clients derive meaningful insights from complex healthcare data sets.

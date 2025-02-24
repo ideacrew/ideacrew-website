@@ -3,7 +3,10 @@ import { getCollection } from "astro:content";
 import LeaderLayout from "@/layouts/LeaderLayout.astro";
 
 export async function getStaticPaths() {
-  const leaders = await getCollection("leaders");
+  const leaders = await getCollection(
+    "leaders",
+    ({ data }) => data.active !== false
+  );
   return leaders.map(leader => ({
     params: { slug: leader.slug },
     props: { leader },

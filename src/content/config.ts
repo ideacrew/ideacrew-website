@@ -26,6 +26,7 @@ const leadersCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     position: z.string(),
+    active: z.boolean().default(true),
     photo: z.object({
       src: z.string(),
       alt: z.string(),

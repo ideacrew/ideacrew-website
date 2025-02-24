@@ -6,6 +6,7 @@ photo:
   alt: Sarah Bagge - VP Product Manager
 linkedin: https://www.linkedin.com/in/sarah-bagge
 sortOrder: 6
+active: true
 ---
 
 Sarah Bagge leads IdeaCrew's product strategy and development as VP Product Manager. With deep experience in healthcare technology product management, she ensures our solutions meet the evolving needs of our clients and their stakeholders.

@@ -6,6 +6,7 @@ photo:
   alt: Alex Thomas - Project Manager - VP Product Manager
 linkedin: https://www.linkedin.com/in/alex-thomas
 sortOrder: 7
+active: true
 ---
 
 Alex Thomas serves as Project Manager and VP Product Manager at IdeaCrew, where he oversees complex implementation projects and product initiatives. His dual role allows him to bridge the gap between project execution and product strategy, ensuring successful delivery of solutions that meet our clients' needs.

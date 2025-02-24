@@ -87,7 +87,7 @@ content:
     type: collection
     path: src/content/leaders
     view:
-      fields: [ photo.src, name, position, sortOrder ]
+      fields: [ photo.src, name, position, active, sortOrder ]
       sort: [ sortOrder, name ]
       default:
         sort: sortOrder
@@ -95,6 +95,7 @@ content:
     fields:
       - { name: name, label: Name, type: string, required: true }
       - { name: position, label: Position, type: string, required: true }
+      - { name: active, label: Active, type: boolean, default: true }
       - name: photo
         label: Photo
         type: object

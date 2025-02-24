@@ -6,6 +6,7 @@ photo:
   alt: Dan Thomas - CEO
 linkedin: https://www.linkedin.com/in/dan-thomas
 sortOrder: 1
+active: true
 ---
 
 Dan Thomas is the Chief Executive Officer of IdeaCrew. With over 20 years of experience in healthcare technology, Dan has led numerous successful implementations of complex systems.
