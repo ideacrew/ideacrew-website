@@ -25,9 +25,6 @@ const leadersCollection = defineCollection({
   type: "content",
   schema: z.object({
     name: z.string(),
-    seo: z.object({
-      description: z.string(),
-    }),
     position: z.string(),
     photo: z.object({
       src: z.string(),

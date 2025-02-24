@@ -1,6 +1,4 @@
 ---
-seo:
-  description: Rachelle Shackleford is the VP of Delivery at IdeaCrew.
 name: Rachelle Shackleford
 position: VP of Delivery
 photo:

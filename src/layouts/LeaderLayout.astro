@@ -33,7 +33,6 @@ const { leader } = Astro.props;
 
 <Layout
   title={leader.data.name ? `${leader.data.name} | ${SITE.title}` : SITE.title}
-  description={leader.data.seo.description || SITE.desc}
 >
   <main id="main-content">
     <div class="flex min-h-screen flex-col">

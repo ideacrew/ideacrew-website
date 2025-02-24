@@ -1,6 +1,4 @@
 ---
-seo:
-  description: Saadi Mirza is the VP of Integration Services and Analytics at IdeaCrew.
 name: Saadi Mirza
 position: VP of Integration Services and Analytics
 photo:

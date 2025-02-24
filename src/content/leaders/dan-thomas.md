@@ -1,7 +1,5 @@
 ---
 name: Dan Thomas
-seo:
-  description: Dan Thomas is the Chief Executive Officer of IdeaCrew.
 position: Chief Executive Officer
 photo:
   src: /images/leaders/dan-thomas.jpg
