@@ -35,7 +35,7 @@ const leadersCollection = defineCollection({
   }),
 });
 
-const blogCollection = defineCollection({
+const newsCollection = defineCollection({
   type: "content",
   schema: z.object({
     author: z.string(),
@@ -71,6 +71,6 @@ const jobPostings = defineCollection({
 export const collections = {
   work: workCollection,
   leaders: leadersCollection,
-  blog: blogCollection,
+  news: newsCollection,
   careers: jobPostings,
 };
