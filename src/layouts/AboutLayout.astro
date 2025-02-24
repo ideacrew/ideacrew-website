@@ -13,9 +13,11 @@ import { getImageFromPath } from "@/utils/images";
 
 export interface Props {
   frontmatter: {
-    title: string;
-    description?: string;
-    about: {
+    seo: {
+      title: string;
+      description?: string;
+    };
+    hero: {
       title: string;
       description: string;
       image?: {
@@ -58,7 +60,10 @@ export interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={`${frontmatter.title} | ${SITE.title}`}>
+<Layout
+  title={`${frontmatter.seo.title} | ${SITE.title}`}
+  description={frontmatter.seo.description || SITE.desc}
+>
   <Header activeNav="about" />
 
   <Breadcrumbs />
@@ -74,23 +79,23 @@ const { frontmatter } = Astro.props;
               <h2
                 class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
               >
-                {frontmatter.about.title}
+                {frontmatter.hero.title}
               </h2>
 
               <div
                 class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
               >
-                {frontmatter.about.description}
+                {frontmatter.hero.description}
               </div>
             </div>
           </div>
 
           <div class="col-span-1 grid place-items-center">
             {
-              frontmatter.about.image && (
+              frontmatter.hero.image && (
                 <Image
-                  src={getImageFromPath(frontmatter.about.image.src)}
-                  alt={frontmatter.about.image.alt}
+                  src={getImageFromPath(frontmatter.hero.image.src)}
+                  alt={frontmatter.hero.image.alt}
                   width={300}
                   height={192}
                   loading="eager"

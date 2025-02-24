@@ -1,7 +1,9 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: About IdeaCrew
-about:
+seo:
+  title: About IdeaCrew
+  description:
+hero:
   title: About IdeaCrew
   description:
     Established in 2002 with headquarters in Washington DC, IdeaCrew is
