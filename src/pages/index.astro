@@ -26,6 +26,10 @@ interface HeroButton {
 }
 
 interface HomeContent {
+  seo: {
+    title: string;
+    description: string;
+  };
   hero: {
     title: string;
     description: string;
@@ -50,7 +54,7 @@ interface HomeContent {
 
 // Get home page content
 const home = await import("../pages/home.md");
-const { hero, services, sbm, clients } = home.frontmatter as HomeContent;
+const { hero, services, sbm, clients, seo } = home.frontmatter as HomeContent;
 
 // Process client images to use correct paths
 const clientImages = clients.images.map(imagePath =>
@@ -58,7 +62,10 @@ const clientImages = clients.images.map(imagePath =>
 );
 ---
 
-<Layout title={SITE.title}>
+<Layout
+  title={seo.title ? `${seo.title} | ${SITE.title}` : SITE.title}
+  description={seo.description || SITE.desc}
+>
   <Header />
 
   <main id="main-content">

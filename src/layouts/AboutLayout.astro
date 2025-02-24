@@ -61,7 +61,9 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout
-  title={`${frontmatter.seo.title} | ${SITE.title}`}
+  title={frontmatter.seo.title
+    ? `${frontmatter.seo.title} | ${SITE.title}`
+    : SITE.title}
   description={frontmatter.seo.description || SITE.desc}
 >
   <Header activeNav="about" />

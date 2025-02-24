@@ -1,5 +1,8 @@
 ---
 layout: ../layouts/Layout.astro
+seo:
+  title:
+  description:
 hero:
   title: Strategy & technology solutions that help our clients solve their most
     important challenges
@@ -22,7 +25,8 @@ services:
     href: /services
 sbm:
   title: State Based Marketplace Solutions
-  description: IdeaCrew's award winning State-based Marketplace (SBM) platform is
+  description:
+    IdeaCrew's award winning State-based Marketplace (SBM) platform is
     a cloud-based, complete end-to-end ACA-compliant solution for states,
     employers, employees and individuals to sponsor, shop and enroll in health
     insurance and other benefits. Our platform's modular, flexible design

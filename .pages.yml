@@ -112,6 +112,12 @@ content:
     path: src/pages/home.md
     fields:
       - { name: layout, type: string, hidden: true, default: "../layouts/Layout.astro" }
+      - name: seo
+        label: SEO Settings
+        type: object
+        fields:
+          - { name: title, label: Page Title, type: string, description: "This is used as the page title in the browser", required: true }
+          - { name: description, label: Description, description: "This is used as the page description for SEO. If not provided, the default description from the site configuration will be used.", type: text }
       - name: hero
         label: Hero Section
         type: object
