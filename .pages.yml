@@ -151,9 +151,10 @@ content:
         label: SBM Section
         type: object
         fields:
-          - { name: description, label: Description, type: text }
+          - { name: description, label: Description, type: text, required: true }
           - name: categories
             label: Module Types
+            description: "Requires 4 module types"
             type: string
             list:
               min: 4
@@ -164,9 +165,10 @@ content:
         fields:
           - name: images
             label: Client Logos
-            description: "Add up to 12 client logos"
+            description: "Requires between 4 and 12 client logos"
             type: image
             list:
+              min: 4
               max: 12
   - name: about
     label: About page
