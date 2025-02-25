@@ -69,9 +69,18 @@ const jobPostings = defineCollection({
   }),
 });
 
+const siteCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    siteName: z.string(),
+    description: z.string(),
+  }),
+});
+
 export const collections = {
   work: workCollection,
   leaders: leadersCollection,
   news: newsCollection,
   careers: jobPostings,
+  site: siteCollection,
 };

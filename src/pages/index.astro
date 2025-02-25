@@ -1,5 +1,6 @@
 ---
-import { SITE } from "@/config";
+import { getEntry } from "astro:content";
+// import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
@@ -9,6 +10,9 @@ import Footer from "@/components/Footer.astro";
 import Cta from "@/components/Cta.astro";
 import abstractVector from "/public/assets/abstractVector.png";
 import { getImageFromPath } from "@/utils/images";
+
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
 
 interface ServiceItem {
   name: string;
@@ -63,8 +67,8 @@ const clientImages = clients.images.map(imagePath =>
 ---
 
 <Layout
-  title={seo.title ? `${SITE.title} | ${seo.title}` : SITE.title}
-  description={seo.description || SITE.desc}
+  title={seo.title ? `${SITE.siteName} | ${seo.title}` : SITE.siteName}
+  description={seo.description || SITE.description}
 >
   <Header />
 

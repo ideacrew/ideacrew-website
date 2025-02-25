@@ -444,58 +444,14 @@ content:
   - name: site-config
     label: Site Configuration
     type: file
-    path: src/config.ts
-    format: typescript
-    template: |
-      import type { Site } from "./types";
-
-      export const SITE: Site = {
-        website: "{{SITE.website}}",
-        author: "{{SITE.author}}",
-        desc: "{{SITE.desc}}",
-        title: "{{SITE.title}}",
-        ogImage: "{{SITE.ogImage}}",
-        lightAndDarkMode: {{SITE.lightAndDarkMode}},
-        postPerPage: {{SITE.postPerPage}},
-        scheduledPostMargin: {{SITE.scheduledPostMargin}},
-      };
-
-      export const LOCALE = {
-        lang: "{{LOCALE.lang}}",
-        langTag: {{LOCALE.langTag}},
-      } as const;
-
-      export const LOGO_IMAGE = {
-        enable: {{LOGO_IMAGE.enable}},
-        svg: {{LOGO_IMAGE.svg}},
-        width: {{LOGO_IMAGE.width}},
-        height: {{LOGO_IMAGE.height}},
-      };
+    path: src/content/site/config.md
     fields:
-      - name: SITE
-        label: Site Settings
-        type: object
-        fields:
-          - { name: website, label: Website URL, type: string, pattern: "^https?://.*$", description: "The deployed domain of your website", required: true }
-          - { name: author, label: Author, type: string, required: true }
-          - { name: desc, label: Description, type: text, required: true }
-          - { name: title, label: Site Title, type: string, required: true }
-          - { name: ogImage, label: Open Graph Image, type: string, required: true }
-          - { name: lightAndDarkMode, label: Enable Light/Dark Mode, type: boolean, default: false }
-          - { name: postPerPage, label: Posts Per Page, type: number, default: 3 }
-          - { name: scheduledPostMargin, label: Scheduled Post Margin (ms), type: number, default: 900000, description: "Time in milliseconds (default: 15 minutes)" }
-      - name: LOCALE
-        label: Locale Settings
-        type: object
-        fields:
-          - { name: lang, label: Language Code, type: string, default: "en", description: "HTML lang code (e.g. 'en')" }
-          - { name: langTag, label: Language Tags, type: string, list: true, description: "BCP 47 Language Tags (e.g. ['en-EN'])" }
-      - name: LOGO_IMAGE
-        label: Logo Settings
-        type: object
-        fields:
-          - { name: enable, label: Enable Logo, type: boolean, default: true }
-          - { name: svg, label: Is SVG Logo, type: boolean, default: true }
-          - { name: width, label: Logo Width, type: number, default: 133.64 }
-          - { name: height, label: Logo Height, type: number, default: 25.05 }
+      - name: siteName
+        label: Site Name
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+        required: true
 
