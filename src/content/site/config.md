@@ -1,4 +1,4 @@
 ---
-siteName: "My Awesome Site"
-description: "A description of my website"
+siteName: IdeaCrew, Inc.
+description: Strategic Solutions for the IT Industry
 ---
