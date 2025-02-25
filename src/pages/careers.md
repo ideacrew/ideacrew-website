@@ -9,11 +9,15 @@ hero:
     making a difference in healthcare technology. At IdeaCrew, you'll work on
     meaningful projects that impact millions of lives while growing your career
     alongside industry experts.
+  image:
+    src: /src/assets/images/teamwork.svg
+    alt: Team collaboration illustration
 benefits:
   heading: Why Work With Us
   items:
     - title: Remote-First Culture
-      description: Work from anywhere in the US with flexible hours and a healthy
+      description:
+        Work from anywhere in the US with flexible hours and a healthy
         work-life balance.
     - title: Competitive Benefits
       description: Comprehensive health coverage, 401(k) matching, and generous PTO.
