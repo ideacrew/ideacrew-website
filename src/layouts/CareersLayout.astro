@@ -24,10 +24,6 @@ export interface Props {
     hero: {
       heading: string;
       description: string;
-      image: {
-        src: string;
-        alt: string;
-      };
     };
     benefits: {
       heading: string;
@@ -94,12 +90,6 @@ const teamPhotoEntries = await Promise.all(
 ).then(entries =>
   entries.filter((entry): entry is NonNullable<typeof entry> => entry !== null)
 );
-
-// Get hero image
-const heroImage = frontmatter.hero.image.src
-  ? ((await images[frontmatter.hero.image.src]?.())?.default ??
-    defaultHeroImage)
-  : defaultHeroImage;
 ---
 
 <Layout
@@ -131,8 +121,8 @@ const heroImage = frontmatter.hero.image.src
 
           <div class="col-span-1 grid place-items-center">
             <Image
-              src={heroImage}
-              alt={frontmatter.hero.image.alt}
+              src="/src/assets/images/teamwork.svg"
+              alt="Team collaboration illustration"
               width={300}
               height={192}
               loading="eager"
