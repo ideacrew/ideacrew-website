@@ -68,7 +68,7 @@ const clientImages = clients.images.map(imagePath =>
   title={seo.title ? `${SITE.siteName} | ${seo.title}` : SITE.siteName}
   description={seo.description || SITE.description}
 >
-  <Header />
+  <Header activeNav="home" />
 
   <main id="main-content">
     <section
@@ -97,10 +97,14 @@ const clientImages = clients.images.map(imagePath =>
             {hero.title}
           </h1>
           <p class="mt-4 text-lg text-[#0D2B46]">{hero.description}</p>
-          <div class="mt-8 flex gap-4">
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
             {
               hero.buttons.map(button => (
-                <Button variant={button.variant} size="lg">
+                <Button
+                  variant={button.variant}
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
                   <a href={button.href}>{button.text}</a>
                 </Button>
               ))
@@ -193,8 +197,8 @@ const clientImages = clients.images.map(imagePath =>
         </p>
 
         <div class="mt-6">
-          <Button variant="link">
-            <a href={sbm.button.href}>
+          <Button variant="link" className="max-w-full">
+            <a href={sbm.button.href} class="block truncate">
               {sbm.button.text}
             </a>
           </Button>

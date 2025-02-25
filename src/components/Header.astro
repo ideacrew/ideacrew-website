@@ -8,7 +8,7 @@ const siteConfig = await getEntry("site", "config");
 const SITE = siteConfig!.data;
 
 export interface Props {
-  activeNav?: "about" | "sbm" | "work" | "contact";
+  activeNav?: "home" | "about" | "sbm" | "work" | "contact";
 }
 
 const { activeNav } = Astro.props;
@@ -61,16 +61,24 @@ const { activeNav } = Astro.props;
           </button>
         </div>
         <nav
-          class="mt-4 flex w-full flex-col items-center sm:ml-2 sm:mt-0 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
+          class="mobile-nav fixed inset-0 top-[80px] -z-10 h-[calc(100vh-80px)] transform bg-white opacity-0 transition-[clip-path,opacity] duration-500 ease-in-out sm:relative sm:top-0 sm:z-auto sm:mt-4 sm:flex sm:h-auto sm:w-full sm:transform-none sm:flex-row sm:items-center sm:justify-end sm:bg-transparent sm:opacity-100"
         >
           <ul
             id="menu-items"
-            class="hidden w-full flex-col items-center space-y-4 sm:ml-0 sm:mt-0 sm:flex sm:w-auto sm:flex-row sm:space-x-5 sm:space-y-0"
+            class="flex h-full w-full flex-col items-center justify-center space-y-8 text-2xl opacity-0 transition-opacity delay-100 duration-300 sm:ml-0 sm:mt-0 sm:h-auto sm:w-auto sm:flex-row sm:items-center sm:justify-end sm:space-x-5 sm:space-y-0 sm:text-base sm:opacity-100"
           >
+            <li class="w-full text-center sm:hidden">
+              <a
+                href="/"
+                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent ${activeNav === "home" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+              >
+                Home
+              </a>
+            </li>
             <li class="w-full text-center sm:w-auto">
               <a
                 href="/about/"
-                class={`block px-4 py-3 font-medium hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "about" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "about" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
               >
                 About
               </a>
@@ -78,7 +86,7 @@ const { activeNav } = Astro.props;
             <li class="w-full text-center sm:w-auto">
               <a
                 href="/sbm/"
-                class={`block px-4 py-3 font-medium hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "sbm" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "sbm" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
               >
                 SBM
               </a>
@@ -86,7 +94,7 @@ const { activeNav } = Astro.props;
             <li class="w-full text-center sm:w-auto">
               <a
                 href="/work/"
-                class={`block px-4 py-3 font-medium hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "work" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "work" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
               >
                 Work
               </a>
@@ -94,7 +102,7 @@ const { activeNav } = Astro.props;
             <li class="w-full text-center sm:w-auto">
               <a
                 href="/contact/"
-                class={`block px-4 py-3 font-medium hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "contact" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "contact" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
               >
                 Contact
               </a>
@@ -113,22 +121,60 @@ const { activeNav } = Astro.props;
   .hamburger-menu.is-active .close-icon {
     display: block;
   }
+
+  /* Menu animations and transitions */
+  .mobile-nav {
+    clip-path: circle(0% at calc(100% - 2rem) 2rem);
+    pointer-events: none;
+  }
+
+  .mobile-nav.is-active {
+    clip-path: circle(170% at calc(100% - 2rem) 2rem);
+    opacity: 1;
+    pointer-events: all;
+    z-index: 40;
+  }
+
+  .mobile-nav.is-active #menu-items {
+    opacity: 1;
+  }
+
+  /* Menu icon transition */
+  .menu-icon,
+  .close-icon {
+    transition: all 0.2s ease-in-out;
+  }
+
+  @media (min-width: 640px) {
+    .mobile-nav {
+      clip-path: none;
+      pointer-events: all;
+    }
+  }
 </style>
 
 <script>
   function toggleNav() {
     const menuBtn = document.querySelector(".hamburger-menu");
-    const menuItems = document.querySelector("#menu-items");
+    const mobileNav = document.querySelector(".mobile-nav");
+    const body = document.body;
 
     menuBtn?.addEventListener("click", () => {
       const menuExpanded = menuBtn.getAttribute("aria-expanded") === "true";
       menuBtn.classList.toggle("is-active");
+      mobileNav?.classList.toggle("is-active");
       menuBtn.setAttribute("aria-expanded", menuExpanded ? "false" : "true");
       menuBtn.setAttribute(
         "aria-label",
         menuExpanded ? "Open Menu" : "Close Menu"
       );
-      menuItems?.classList.toggle("hidden");
+
+      // Prevent body scroll when menu is open
+      if (!menuExpanded) {
+        body.style.overflow = "hidden";
+      } else {
+        body.style.overflow = "";
+      }
     });
   }
 
