@@ -1,5 +1,4 @@
 ---
-import { SITE } from "@/config";
 import { Image } from "astro:assets";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import Footer from "@/components/Footer.astro";
@@ -8,6 +7,10 @@ import Layout from "./Layout.astro";
 import placeholderImage from "../assets/images/about-us.svg";
 import Cta from "@/components/Cta.astro";
 import type { CollectionEntry } from "astro:content";
+
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
 
 interface Props {
   frontmatter: {
@@ -53,7 +56,10 @@ const getImageFromPath = (path: string): ImageMetadata => {
 const { frontmatter, work } = Astro.props;
 ---
 
-<Layout title={`${work.data.title} | ${SITE.title}`}>
+<Layout
+  title={`${work.data.title} | ${SITE.siteName}`}
+  description={work.data.description}
+>
   <Header activeNav="work" />
 
   <Breadcrumbs workName={work.data.title} />

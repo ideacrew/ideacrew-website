@@ -1,5 +1,4 @@
 ---
-import { SITE } from "@/config";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
@@ -11,6 +10,10 @@ import ImageModal from "@/components/ImageModal.astro";
 
 // Import default hero image as fallback
 import defaultHeroImage from "@/assets/images/teamwork.svg";
+
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
 
 export interface Props {
   frontmatter: {
@@ -104,8 +107,8 @@ const teamPhotoEntries = Object.entries(teamImagesMap).sort(([a], [b]) =>
 ---
 
 <Layout
-  title={`${frontmatter.seo.title} | ${SITE.title}`}
-  description={frontmatter.seo.description || SITE.desc}
+  title={`${frontmatter.seo.title} | ${SITE.siteName}`}
+  description={frontmatter.seo.description || SITE.description}
 >
   <Header />
   <Breadcrumbs />

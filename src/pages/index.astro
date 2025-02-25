@@ -1,8 +1,5 @@
 ---
-import { getEntry } from "astro:content";
-// import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
-import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header.astro";
@@ -11,6 +8,7 @@ import Cta from "@/components/Cta.astro";
 import abstractVector from "/public/assets/abstractVector.png";
 import { getImageFromPath } from "@/utils/images";
 
+import { getEntry } from "astro:content";
 const siteConfig = await getEntry("site", "config");
 const SITE = siteConfig!.data;
 

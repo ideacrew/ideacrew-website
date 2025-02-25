@@ -1,5 +1,4 @@
 ---
-import { SITE } from "@/config";
 import { Image } from "astro:assets";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import Footer from "@/components/Footer.astro";
@@ -7,6 +6,10 @@ import Header from "@/components/Header.astro";
 import Layout from "./Layout.astro";
 import placeholderImage from "../assets/images/about-us.svg";
 import Cta from "@/components/Cta.astro";
+
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
 
 // Dynamic image imports with type
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -32,7 +35,9 @@ const { leader } = Astro.props;
 ---
 
 <Layout
-  title={leader.data.name ? `${leader.data.name} | ${SITE.title}` : SITE.title}
+  title={leader.data.name
+    ? `${leader.data.name} | ${SITE.siteName}`
+    : SITE.siteName}
 >
   <main id="main-content">
     <div class="flex min-h-screen flex-col">

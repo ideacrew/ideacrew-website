@@ -1,5 +1,4 @@
 ---
-import { SITE } from "@/config";
 import { Image } from "astro:assets";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import Footer from "@/components/Footer.astro";
@@ -10,6 +9,10 @@ import Careers from "@/components/Careers.astro";
 import Values from "@/components/Values.astro";
 import Leadership from "@/components/Leadership.astro";
 import { getImageFromPath } from "@/utils/images";
+
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
 
 export interface Props {
   frontmatter: {
@@ -62,9 +65,9 @@ const { frontmatter } = Astro.props;
 
 <Layout
   title={frontmatter.seo.title
-    ? `${frontmatter.seo.title} | ${SITE.title}`
-    : SITE.title}
-  description={frontmatter.seo.description || SITE.desc}
+    ? `${frontmatter.seo.title} | ${SITE.siteName}`
+    : SITE.siteName}
+  description={frontmatter.seo.description || SITE.description}
 >
   <Header activeNav="about" />
 
