@@ -1,6 +1,11 @@
 ---
-import { LOGO_IMAGE, SITE } from "@/config";
-import Hr from "./Hr.astro";
+import { Image } from "astro:assets";
+import logoWhite from "/src/assets/images/logo.svg";
+import { Menu, X } from "lucide-react";
+
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
 
 export interface Props {
   activeNav?: "about" | "sbm" | "work" | "contact";
@@ -29,18 +34,13 @@ const { activeNav } = Astro.props;
             href="/"
             class="whitespace-nowrap py-1 text-xl font-semibold sm:text-2xl"
           >
-            {
-              LOGO_IMAGE.enable ? (
-                <img
-                  src={`/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
-                  alt={SITE.title}
-                  width={LOGO_IMAGE.width}
-                  height={LOGO_IMAGE.height}
-                />
-              ) : (
-                SITE.title
-              )
-            }
+            <Image
+              src={logoWhite}
+              alt={SITE.siteName}
+              width={133.64}
+              height={25.05}
+              loading="eager"
+            />
           </a>
           <button
             class="hamburger-menu focus-outline p-2 sm:hidden"
@@ -48,41 +48,16 @@ const { activeNav } = Astro.props;
             aria-expanded="false"
             aria-controls="menu-items"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="menu-icon h-6 w-6 scale-125 fill-skin-base"
-            >
-              <line
-                x1="7"
-                y1="12"
-                x2="21"
-                y2="12"
-                class="line transition-opacity duration-75 ease-in-out"></line>
-              <line
-                x1="3"
-                y1="6"
-                x2="21"
-                y2="6"
-                class="line transition-opacity duration-75 ease-in-out"></line>
-              <line
-                x1="12"
-                y1="18"
-                x2="21"
-                y2="18"
-                class="line transition-opacity duration-75 ease-in-out"></line>
-              <line x1="18" y1="6" x2="6" y2="18" class="close opacity-0"
-              ></line>
-              <line x1="6" y1="6" x2="18" y2="18" class="close opacity-0"
-              ></line>
-            </svg>
+            <Menu
+              client:load
+              className="menu-icon h-6 w-6 scale-125"
+              strokeWidth={1.5}
+            />
+            <X
+              client:load
+              className="close-icon hidden h-6 w-6 scale-125"
+              strokeWidth={1.5}
+            />
           </button>
         </div>
         <nav
@@ -132,23 +107,22 @@ const { activeNav } = Astro.props;
 </header>
 
 <style>
-  .menu-icon.is-active .line {
-    opacity: 0;
+  .hamburger-menu.is-active .menu-icon {
+    display: none;
   }
-  .menu-icon.is-active .close {
-    opacity: 1;
+  .hamburger-menu.is-active .close-icon {
+    display: block;
   }
 </style>
 
 <script>
   function toggleNav() {
     const menuBtn = document.querySelector(".hamburger-menu");
-    const menuIcon = document.querySelector(".menu-icon");
     const menuItems = document.querySelector("#menu-items");
 
     menuBtn?.addEventListener("click", () => {
       const menuExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-      menuIcon?.classList.toggle("is-active");
+      menuBtn.classList.toggle("is-active");
       menuBtn.setAttribute("aria-expanded", menuExpanded ? "false" : "true");
       menuBtn.setAttribute(
         "aria-label",

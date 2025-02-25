@@ -1,22 +1,15 @@
 ---
-import { LOGO_IMAGE, SITE } from "@/config";
-import Hr from "./Hr.astro";
-import Socials from "./Socials.astro";
 import { Image } from "astro:assets";
-import logoWhite from "/public/assets/logo-white.svg";
+import logoWhite from "/src/assets/images/logo-white-full.svg";
+
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
 
 const currentYear = new Date().getFullYear();
-
-export interface Props {
-  noMarginTop?: boolean;
-}
-
-const { noMarginTop = false } = Astro.props;
 ---
 
-<footer
-  class={`${noMarginTop ? "" : "mt-auto"} w-full min-w-full bg-[#0B2441] sm:h-[210px]`}
->
+<footer class={`mt-auto w-full min-w-full bg-[#0B2441] sm:h-[210px]`}>
   <div class="mx-auto h-full w-full max-w-[960px] px-4 py-8 sm:py-4">
     <div
       class="flex h-full w-full flex-col items-center text-white sm:flex-row sm:items-center sm:justify-between"
@@ -31,8 +24,8 @@ const { noMarginTop = false } = Astro.props;
             loading="lazy"
           />
         </a>
-        <div class="flex w-full justify-between text-xs">
-          <div>{SITE.title}</div>
+        <div class="flex w-full justify-between text-xs leading-[200%]">
+          <div>{SITE.siteName}</div>
           <div>Copyright © {currentYear}</div>
         </div>
       </div>
