@@ -400,16 +400,6 @@ content:
         fields:
           - { name: heading, label: Heading, type: string, required: true }
           - { name: description, label: Description, type: text, required: true }
-          - name: image
-            label: Hero Image
-            hidden: true
-            type: object
-            fields:
-              - name: src
-                label: Image
-                type: image
-                description: "Select an image from the assets folder. The path will be automatically prefixed with /src/assets/images/"
-              - { name: alt, label: Alt Text, type: string }
       - name: benefits
         label: Benefits Section
         type: object
