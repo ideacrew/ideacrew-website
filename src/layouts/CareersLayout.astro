@@ -48,6 +48,10 @@ export interface Props {
     };
     teamPhotos: {
       heading: string;
+      photos: {
+        image: string;
+        alt: string;
+      }[];
     };
   };
 }
@@ -55,36 +59,8 @@ export interface Props {
 const { frontmatter } = Astro.props;
 
 // Get all available images from assets
-const availableImages = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/images/**/*.(png|jpg|jpeg|svg)"
-);
-
-// Dynamically import all team photos
-const teamImages = await Astro.glob<{ default: ImageMetadata }>(
-  "@/assets/images/team/*.png"
-);
-const teamImagesMap: Record<string, ImageMetadata> = Object.fromEntries(
-  teamImages.map(image => [
-    image.default.src.split("/").pop() || "",
-    image.default,
-  ])
-);
-
-// Function to get image source
-async function getImageSource(src: string): Promise<ImageMetadata> {
-  if (src.startsWith("/src/assets/")) {
-    const image = availableImages[src];
-    if (image) {
-      const importedImage = await image();
-      return importedImage.default;
-    }
-  }
-  return defaultHeroImage;
-}
-
-// Get hero image
-const heroImageSrc = await getImageSource(
-  frontmatter.hero.image.src || "/src/assets/images/teamwork.svg"
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/**/*.{png,jpg,jpeg,svg}"
 );
 
 // Fetch active job postings
@@ -101,9 +77,29 @@ const sortedJobs = activeJobs.sort((a, b) => {
 });
 
 // Get all team image entries for rendering
-const teamPhotoEntries = Object.entries(teamImagesMap).sort(([a], [b]) =>
-  a.localeCompare(b)
+const teamPhotoEntries = await Promise.all(
+  frontmatter.teamPhotos.photos.map(async photo => {
+    try {
+      const imageModule = await images[photo.image]();
+      return {
+        filename: photo.image.split("/").pop() || "",
+        image: imageModule.default,
+        alt: photo.alt,
+      };
+    } catch (error) {
+      console.error(`Failed to load image: ${photo.image}`);
+      return null;
+    }
+  })
+).then(entries =>
+  entries.filter((entry): entry is NonNullable<typeof entry> => entry !== null)
 );
+
+// Get hero image
+const heroImage = frontmatter.hero.image.src
+  ? ((await images[frontmatter.hero.image.src]?.())?.default ??
+    defaultHeroImage)
+  : defaultHeroImage;
 ---
 
 <Layout
@@ -135,7 +131,7 @@ const teamPhotoEntries = Object.entries(teamImagesMap).sort(([a], [b]) =>
 
           <div class="col-span-1 grid place-items-center">
             <Image
-              src={heroImageSrc}
+              src={heroImage}
               alt={frontmatter.hero.image.alt}
               width={300}
               height={192}
@@ -197,15 +193,15 @@ const teamPhotoEntries = Object.entries(teamImagesMap).sort(([a], [b]) =>
                 {frontmatter.teamPhotos.heading}
               </h2>
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {teamPhotoEntries.map(([filename, image]) => (
+                {teamPhotoEntries.map(({ filename, image, alt }) => (
                   <>
                     <button
                       class="aspect-square w-full cursor-pointer overflow-hidden rounded-lg"
                       onclick={`document.getElementById('modal-${filename}').showModal()`}
                     >
                       <Image
-                        src={image as ImageMetadata}
-                        alt={`Team member ${filename.replace(".png", "")}`}
+                        src={image}
+                        alt={alt}
                         width={600}
                         height={600}
                         quality="max"
@@ -214,8 +210,8 @@ const teamPhotoEntries = Object.entries(teamImagesMap).sort(([a], [b]) =>
                     </button>
                     <ImageModal
                       id={`modal-${filename}`}
-                      image={image as ImageMetadata}
-                      alt={`Team member ${filename.replace(".png", "")}`}
+                      image={image}
+                      alt={alt}
                     />
                   </>
                 ))}
