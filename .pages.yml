@@ -22,13 +22,7 @@ content:
         type: select
         required: true
         options:
-          values:
-            - value: full-time
-              label: Full-time
-            - value: part-time
-              label: Part-time
-            - value: contract
-              label: Contract
+          values: [Full Time, Part Time, Contract]
       - { name: location, label: Location, type: string, required: true }
       - { name: active, label: Active Posting, type: boolean, default: true }
       - { name: responsibilities, label: Responsibilities, type: string, list: true }
