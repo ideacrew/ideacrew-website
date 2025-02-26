@@ -58,7 +58,6 @@ const jobPostings = defineCollection({
     title: z.string(),
     type: z.string(),
     location: z.string(),
-    department: z.string(),
     active: z.boolean(),
     description: z.string(),
     responsibilities: z.array(z.string()),

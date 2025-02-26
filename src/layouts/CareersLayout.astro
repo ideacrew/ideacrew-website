@@ -8,9 +8,6 @@ import { getCollection } from "astro:content";
 import type { ImageMetadata } from "astro";
 import TeamPhotoDialog from "@/components/TeamPhotoDialog";
 
-// Import default hero image as fallback
-import defaultHeroImage from "@/assets/images/teamwork.svg";
-
 import { getEntry } from "astro:content";
 const siteConfig = await getEntry("site", "config");
 const SITE = siteConfig!.data;
@@ -158,8 +155,7 @@ const teamPhotoEntries = await Promise.all(
                     <div>
                       <h3 class="font-bold text-[#0D2B46]">{job.data.title}</h3>
                       <p class="text-sm text-[#666]">
-                        {job.data.type} · {job.data.location} ·{" "}
-                        {job.data.department}
+                        {job.data.type} · {job.data.location}
                       </p>
                     </div>
                     <a

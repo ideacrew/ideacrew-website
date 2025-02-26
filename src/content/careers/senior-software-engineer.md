@@ -3,7 +3,7 @@ title: Senior Software Engineer
 postedDate: 2025-02-26
 description: We're seeking an experienced software engineer to help build and
   maintain our healthcare technology platforms using modern web technologies.
-type: Full Time
+type: Full-Time
 location: Remote
 active: true
 responsibilities:
@@ -25,23 +25,24 @@ benefits:
 applicationUrl: https://careers.ideacrew.com/jobs/senior-software-engineer
 sortOrder: 10
 ---
+
 ## About the Role
 
 We are looking for a Senior Software Engineer to join our growing team...
 
 ## What You'll Do
 
-*   Work on challenging problems in the healthcare space
-*   Contribute to architecture decisions
-*   Mentor junior team members
+- Work on challenging problems in the healthcare space
+- Contribute to architecture decisions
+- Mentor junior team members
 
 ## Our Tech Stack
 
-*   TypeScript/JavaScript
-*   React
-*   Node.js
-*   PostgreSQL
-*   AWS
+- TypeScript/JavaScript
+- React
+- Node.js
+- PostgreSQL
+- AWS
 
 ## How to Apply
 
