@@ -23,6 +23,7 @@ benefits:
   - Professional development budget
 applicationUrl: https://careers.ideacrew.com/jobs/senior-software-engineer
 sortOrder: 10
+postedDate: 2025-02-26
 ---
 
 ## About the Role

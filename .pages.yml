@@ -15,6 +15,8 @@ content:
         order: desc
     fields:
       - { name: title, label: Job Title, type: string, required: true }
+      - { name: postedDate, label: Posted Date, type: date, required: true }
+      - { name: description, label: Short Description, description: "A brief description of the job posting. Used on the careers page.", type: text, required: true }
       - name: type
         label: Employment Type
         type: select
@@ -28,9 +30,7 @@ content:
             - value: contract
               label: Contract
       - { name: location, label: Location, type: string, required: true }
-      - { name: department, label: Department, type: string, required: true }
       - { name: active, label: Active Posting, type: boolean, default: true }
-      - { name: description, label: Short Description, type: text, required: true }
       - { name: responsibilities, label: Responsibilities, type: string, list: true }
       - { name: requirements, label: Requirements, type: string, list: true }
       - { name: benefits, label: Benefits, type: string, list: true }

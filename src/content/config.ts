@@ -66,6 +66,7 @@ const jobPostings = defineCollection({
     benefits: z.array(z.string()),
     applicationUrl: z.string(),
     sortOrder: z.number(),
+    postedDate: z.date(),
   }),
 });
 

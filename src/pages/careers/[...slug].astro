@@ -4,7 +4,10 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import { SITE } from "@/config";
+
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
 
 export async function getStaticPaths() {
   const careers = await getCollection("careers");
@@ -18,7 +21,10 @@ const { career } = Astro.props;
 const { Content } = await career.render();
 ---
 
-<Layout title={`${career.data.title} | ${SITE.title}`}>
+<Layout
+  title={`${career.data.title} | ${SITE.siteName}`}
+  description={career.data.description}
+>
   <Header />
   <Breadcrumbs />
   <main id="main-content">
@@ -28,7 +34,14 @@ const { Content } = await career.render();
           {career.data.title}
         </h1>
         <p class="text-sm text-[#666]">
-          {career.data.type} · {career.data.location} · {career.data.department}
+          {career.data.type} · {career.data.location}
+          {career.data.type} · {career.data.location} · Posted {
+            career.data.postedDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
         </p>
       </div>
 
