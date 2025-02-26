@@ -149,6 +149,11 @@ module.exports = {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
+  		},
+  		transitionDuration: {
+  			'700': '700ms',
+  			'1000': '1000ms',
+  			'2000': '2000ms',
   		}
   	}
   },
