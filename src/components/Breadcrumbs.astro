@@ -2,9 +2,10 @@
 interface Props {
   leaderName?: string;
   workName?: string;
+  careerName?: string;
 }
 
-const { leaderName, workName } = Astro.props;
+const { leaderName, workName, careerName } = Astro.props;
 
 // Remove current url path and remove trailing slash if exists
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
@@ -28,6 +29,14 @@ if (breadcrumbList[0] === "leaders") {
 // Handle work items
 if (breadcrumbList[0] === "work" && breadcrumbList[1] && workName) {
   breadcrumbList[1] = workName;
+}
+
+// Handle career items
+if (breadcrumbList[0] === "careers" && breadcrumbList[1] && careerName) {
+  breadcrumbList[1] = careerName
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
 }
 
 // if breadcrumb is Home > Posts > 1 <etc>
@@ -64,7 +73,8 @@ breadcrumbList[0] === "tags" &&
             <span
               class={`${
                 (breadcrumbList[0] === "about" && index === 1) ||
-                (breadcrumbList[0] === "work" && index === 1)
+                (breadcrumbList[0] === "work" && index === 1) ||
+                (breadcrumbList[0] === "careers" && index === 1)
                   ? ""
                   : index > 0
                     ? "lowercase"

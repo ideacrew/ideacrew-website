@@ -6,6 +6,7 @@ import Footer from "@/components/Footer.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 import { getEntry } from "astro:content";
+import { Button } from "@/components/ui/button";
 const siteConfig = await getEntry("site", "config");
 const SITE = siteConfig!.data;
 
@@ -26,7 +27,7 @@ const { Content } = await career.render();
   description={career.data.description}
 >
   <Header />
-  <Breadcrumbs />
+  <Breadcrumbs careerName={career.data.title} />
   <main id="main-content">
     <article class="mx-auto max-w-[960px] px-4 py-16">
       <div class="mb-8">
@@ -46,30 +47,37 @@ const { Content } = await career.render();
         </p>
       </div>
 
-      <div class="prose max-w-none">
-        <Content />
-      </div>
+      <div class="flex flex-col-reverse md:flex-row md:gap-8">
+        <div class="md:w-3/4">
+          <div class="prose max-w-none">
+            <Content />
+          </div>
 
-      <div class="mt-8">
-        <h3 class="mb-2 text-[24px] font-bold">
-          Job Type: {career.data.type}
-        </h3>
-        <h4 class="font-semibold">
-          Salary: ${career.data.salary.salaryLow} to ${
-            career.data.salary.salaryHigh
-          } / year
-        </h4>
-      </div>
+          <div class="mt-8">
+            <h3 class="mb-2 text-[24px] font-bold">
+              Job Type: {career.data.type}
+            </h3>
+            <h4 class="mb-8 font-semibold">
+              Salary: ${career.data.salary.salaryLow} to ${
+                career.data.salary.salaryHigh
+              } / year
+            </h4>
 
-      <div class="mt-8">
-        <a
-          href={career.data.applicationUrl}
-          class="rounded-md bg-[#0D2B46] px-6 py-3 text-white hover:bg-[#0D2B46]/90"
-        >
-          Apply Now
-        </a>
+            <Button variant="default" size="lg" className="w-full sm:w-auto">
+              <a href={career.data.applicationUrl}>Apply Now</a>
+            </Button>
+          </div>
+        </div>
+
+        <div class="mb-8 md:mb-0 md:w-1/4">
+          <div class="sticky top-8">
+            <Button variant="default" size="lg" className="w-full">
+              <a href={career.data.applicationUrl}>Apply Now</a>
+            </Button>
+          </div>
+        </div>
       </div>
     </article>
   </main>
-  <Footer />
 </Layout>
+<Footer />
