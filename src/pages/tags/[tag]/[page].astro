@@ -1,24 +1,24 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import TagPosts from "@/layouts/TagPosts.astro";
+import NewsTagPosts from "@/layouts/NewsTagPosts.astro";
 import getUniqueTags from "@/utils/getUniqueTags";
 import getPostsByTag from "@/utils/getPostsByTag";
 import getPageNumbers from "@/utils/getPageNumbers";
 import getPagination from "@/utils/getPagination";
 
 export interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<"news">;
   tag: string;
   tagName: string;
 }
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const news = await getCollection("news");
 
-  const tags = getUniqueTags(posts);
+  const tags = getUniqueTags(news);
 
   return tags.flatMap(({ tag, tagName }) => {
-    const tagPosts = getPostsByTag(posts, tag);
+    const tagPosts = getPostsByTag(news, tag);
     const totalPages = getPageNumbers(tagPosts.length);
 
     return totalPages.map(page => ({
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
 const { page } = Astro.params;
 const { tag, tagName } = Astro.props;
 
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = await getCollection("news", ({ data }) => !data.draft);
 
 const postsByTag = getPostsByTag(posts, tag);
 
@@ -41,4 +41,7 @@ const pagination = getPagination({
 });
 ---
 
-<TagPosts {...pagination} {tag} {tagName} />
+<NewsTagPosts {...pagination} tag={tag} tagName={tagName} />
+
+{tag}
+{tagName}

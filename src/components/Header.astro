@@ -8,7 +8,7 @@ const siteConfig = await getEntry("site", "config");
 const SITE = siteConfig!.data;
 
 export interface Props {
-  activeNav?: "home" | "about" | "sbm" | "work" | "contact";
+  activeNav?: "home" | "about" | "sbm" | "work" | "contact" | "news";
 }
 
 const { activeNav } = Astro.props;
@@ -97,6 +97,14 @@ const { activeNav } = Astro.props;
                 class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "work" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
               >
                 Work
+              </a>
+            </li>
+            <li class="w-full text-center sm:w-auto">
+              <a
+                href="/news/"
+                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "news" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+              >
+                News
               </a>
             </li>
             <li class="w-full text-center sm:w-auto">

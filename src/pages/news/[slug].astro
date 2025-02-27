@@ -1,0 +1,39 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import NewsDetails from "@/layouts/NewsDetails.astro";
+import getSortedPosts from "@/utils/getSortedPosts";
+import getPageNumbers from "@/utils/getPageNumbers";
+import { SITE } from "@/config";
+
+export interface Props {
+  post: CollectionEntry<"news">;
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection("news");
+
+  const postResult = posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+
+  return postResult;
+}
+
+const { post } = Astro.props;
+const { slug } = Astro.params;
+
+const news = await getCollection("news");
+const sortedPosts = getSortedPosts(news);
+
+const totalPages = getPageNumbers(sortedPosts.length);
+
+const currentPage =
+  sortedPosts.findIndex(news => news.slug === slug) > -1
+    ? Math.floor(
+        sortedPosts.findIndex(news => news.slug === slug) / SITE.postPerPage
+      ) + 1
+    : 0;
+---
+
+<NewsDetails post={post} />
