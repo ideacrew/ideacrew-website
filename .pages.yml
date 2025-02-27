@@ -25,6 +25,7 @@ content:
           values: [Full-Time, Part-Time, Contract]
       - { name: location, label: Location, type: string, required: true }
       - { name: active, label: Active Posting, type: boolean, default: true }
+      - { name: featured, label: Featured, type: boolean, default: false }
       - name: salary
         label: Salary
         type: object
