@@ -25,9 +25,12 @@ content:
           values: [Full-Time, Part-Time, Contract]
       - { name: location, label: Location, type: string, required: true }
       - { name: active, label: Active Posting, type: boolean, default: true }
-      - { name: responsibilities, label: Responsibilities, type: string, list: true }
-      - { name: requirements, label: Requirements, type: string, list: true }
-      - { name: benefits, label: Benefits, type: string, list: true }
+      - name: salary
+        label: Salary
+        type: object
+        fields:
+          - { name: salaryLow, label: Low Salary, description: "The lowest salary for the job posting", type: number }
+          - { name: salaryHigh, label: High Salary, description: "The highest salary for the job posting", type: number }
       - { name: applicationUrl, label: Application URL, type: string, pattern: "^https?://.*$" }
       - { name: sortOrder, label: Sort Order, type: number, default: 999 }
       - { name: body, label: Full Description, type: rich-text, required: true }

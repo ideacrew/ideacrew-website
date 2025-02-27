@@ -51,6 +51,17 @@ const { Content } = await career.render();
       </div>
 
       <div class="mt-8">
+        <h3 class="mb-2 text-[24px] font-bold">
+          Job Type: {career.data.type}
+        </h3>
+        <h4 class="font-semibold">
+          Salary: ${career.data.salary.salaryLow} to ${
+            career.data.salary.salaryHigh
+          } / year
+        </h4>
+      </div>
+
+      <div class="mt-8">
         <a
           href={career.data.applicationUrl}
           class="rounded-md bg-[#0D2B46] px-6 py-3 text-white hover:bg-[#0D2B46]/90"

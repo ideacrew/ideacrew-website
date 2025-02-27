@@ -60,12 +60,13 @@ const jobPostings = defineCollection({
     location: z.string(),
     active: z.boolean(),
     description: z.string(),
-    responsibilities: z.array(z.string()),
-    requirements: z.array(z.string()),
-    benefits: z.array(z.string()),
     applicationUrl: z.string(),
     sortOrder: z.number(),
     postedDate: z.date(),
+    salary: z.object({
+      salaryLow: z.number().transform(num => num.toLocaleString()),
+      salaryHigh: z.number().transform(num => num.toLocaleString()),
+    }),
   }),
 });
 
