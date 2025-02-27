@@ -8,7 +8,7 @@ content:
     type: collection
     path: src/content/careers
     view:
-      fields: [ title, location, active ]
+      fields: [ title, location, featured, active ]
       sort: [ active, title ]
       default:
         sort: active

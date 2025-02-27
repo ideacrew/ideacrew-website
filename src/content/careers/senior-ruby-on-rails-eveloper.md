@@ -11,6 +11,7 @@ location: Washington, DC / Remote
 active: true
 applicationUrl: https://careers.ideacrew.com/jobs/senior-software-engineer
 sortOrder: 10
+featured: true
 ---
 
 If you’re looking for a company that works where technology touches people’s lives… a company that regularly turns “that’s impossible” into “Got it – what’s next?”… a company that rewards performance with generous pay, health insurance and other employee benefits… IdeaCrew may be right for you.

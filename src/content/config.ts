@@ -63,6 +63,7 @@ const jobPostings = defineCollection({
     applicationUrl: z.string(),
     sortOrder: z.number(),
     postedDate: z.date(),
+    featured: z.boolean().default(false),
     salary: z.object({
       salaryLow: z.number().transform(num => num.toLocaleString()),
       salaryHigh: z.number().transform(num => num.toLocaleString()),
