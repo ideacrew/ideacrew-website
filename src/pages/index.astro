@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -59,29 +60,10 @@ interface HomeContent {
 const home = await import("../pages/home.md");
 const { hero, services, sbm, clients, seo } = home.frontmatter as HomeContent;
 
-// Import client images dynamically with glob
-const clientImagesImport = import.meta.glob<{ default: ImageMetadata }>(
-  "../assets/images/clients/*.{png,jpg,jpeg,svg}",
-  { eager: true }
+// Process client images using the enhanced getImageFromPath utility
+const clientImages = clients.images.map(imagePath =>
+  getImageFromPath(imagePath)
 );
-
-// Process client images to use correct paths
-const clientImages = clients.images
-  .map(imagePath => {
-    // Extract file name from path, e.g., "/images/clients/dchealthlink3.png" -> "dchealthlink3.png"
-    const fileName = imagePath.split("/").pop();
-    const importPath = `../assets/images/clients/${fileName}`;
-
-    if (clientImagesImport[importPath]) {
-      return clientImagesImport[importPath].default;
-    }
-
-    // Fallback to a placeholder or empty image if needed
-    // Returning a string path is not valid for the Image component in production
-    console.warn(`Image not found: ${imagePath}`);
-    return undefined;
-  })
-  .filter(Boolean) as ImageMetadata[]; // Filter out any undefined values and assert type
 ---
 
 <Layout
@@ -185,12 +167,12 @@ const clientImages = clients.images
         <div class="mb-6 hidden sm:flex sm:items-center sm:justify-between">
           {
             sbm.categories.map((category: string, index: number) => (
-              <>
+              <div class="flex items-center">
                 <div class="font-medium text-[#0D2B46]">{category}</div>
                 {index < sbm.categories.length - 1 && (
-                  <div class="text-gray-300">|</div>
+                  <div class="ml-4 mr-4 text-gray-300">|</div>
                 )}
-              </>
+              </div>
             ))
           }
         </div>
