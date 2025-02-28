@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Cta from "@/components/Cta.astro";
-import abstractVector from "/src/assets/images/abstract-vector.png";
+import abstractVector from "@/assets/images/abstract-vector.png";
+import servicesImage from "@/assets/images/services.svg";
 import { getImageFromPath } from "@/utils/images";
 
 import { getEntry } from "astro:content";
@@ -58,10 +59,29 @@ interface HomeContent {
 const home = await import("../pages/home.md");
 const { hero, services, sbm, clients, seo } = home.frontmatter as HomeContent;
 
-// Process client images to use correct paths
-const clientImages = clients.images.map(imagePath =>
-  getImageFromPath(imagePath)
+// Import client images dynamically with glob
+const clientImagesImport = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/images/clients/*.{png,jpg,jpeg,svg}",
+  { eager: true }
 );
+
+// Process client images to use correct paths
+const clientImages = clients.images
+  .map(imagePath => {
+    // Extract file name from path, e.g., "/images/clients/dchealthlink3.png" -> "dchealthlink3.png"
+    const fileName = imagePath.split("/").pop();
+    const importPath = `../assets/images/clients/${fileName}`;
+
+    if (clientImagesImport[importPath]) {
+      return clientImagesImport[importPath].default;
+    }
+
+    // Fallback to a placeholder or empty image if needed
+    // Returning a string path is not valid for the Image component in production
+    console.warn(`Image not found: ${imagePath}`);
+    return undefined;
+  })
+  .filter(Boolean) as ImageMetadata[]; // Filter out any undefined values and assert type
 ---
 
 <Layout
@@ -143,7 +163,7 @@ const clientImages = clients.images.map(imagePath =>
           {/* Right Column - Services Image */}
           <div class="flex items-center justify-center">
             <Image
-              src="/src/assets/images/services.svg"
+              src={servicesImage}
               alt="Our Services Illustration"
               width={500}
               height={500}
@@ -214,17 +234,21 @@ const clientImages = clients.images.map(imagePath =>
 
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
           {
-            clientImages.map(imagePath => (
-              <div class="flex flex-col items-center justify-center">
-                <Image
-                  src={imagePath}
-                  alt="Client Logo"
-                  width={150}
-                  height={150}
-                  class="h-auto w-full"
-                />
-              </div>
-            ))
+            clientImages.length > 0 ? (
+              clientImages.map(imageSrc => (
+                <div class="flex flex-col items-center justify-center">
+                  <Image
+                    src={imageSrc}
+                    alt="Client Logo"
+                    width={150}
+                    height={150}
+                    class="h-auto w-full"
+                  />
+                </div>
+              ))
+            ) : (
+              <p>No client images available</p>
+            )
           }
         </div>
       </div>
