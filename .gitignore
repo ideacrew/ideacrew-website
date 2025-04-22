@@ -1,6 +1,7 @@
 # build output
 dist/
 .output/
+public/
 
 # dependencies
 node_modules/
@@ -36,3 +37,6 @@ pnpm-debug.log*
 
 # cursor rules
 .cursor/rules/cursor-rules.mdc
+
+# Local Netlify folder
+.netlify
