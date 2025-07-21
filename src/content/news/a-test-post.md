@@ -1,8 +1,9 @@
 ---
-author: Sat Naing
+author: Brad Bodine
 pubDatetime: 2025-07-21
+modDatetime: 2025-07-21
 title: A Test News Post
-slug: how-to-configure-astropaper-theme
+slug: a-test-post
 featured: true
 draft: false
 tags:
@@ -10,7 +11,7 @@ tags:
   - docs
 description: How you can make AstroPaper theme absolutely yours.
 ---
-AstroPaper is a highly customizable Astro blog theme. With AstroPaper, you can customize everything according to your personal taste. This article will explain how you can make some customizations easily in the config file.
+A test post. AstroPaper is a highly customizable Astro blog theme. With AstroPaper, you can customize everything according to your personal taste. This article will explain how you can make some customizations easily in the config file.
 
 ## Table of contents
 
