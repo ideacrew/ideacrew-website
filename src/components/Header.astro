@@ -12,27 +12,31 @@ export interface Props {
 }
 
 const { activeNav } = Astro.props;
+const currentPath = Astro.url.pathname;
+const isPhilanthropyPage = currentPath.startsWith("/philanthropy");
+const isCareersPage = currentPath.startsWith("/careers");
+const isNewsPage = currentPath.startsWith("/news");
 ---
 
 <header
-  class="fixed left-0 right-0 top-0 z-50 h-auto min-h-20 bg-white/90 backdrop-blur-md sm:h-[100px]"
+  class="fixed top-0 right-0 left-0 z-50 h-auto min-h-20 bg-white/90 backdrop-blur-md sm:h-[100px]"
 >
   <a
     id="skip-to-content"
     href="#main-content"
-    class="absolute -top-full left-16 z-50 bg-skin-accent px-3 py-2 text-skin-inverted transition-all focus:top-4"
+    class="bg-skin-accent text-skin-inverted absolute -top-full left-16 z-50 px-3 py-2 transition-all focus:top-4"
   >
     Skip to content
   </a>
   <div class="mx-auto h-full max-w-[960px]">
     <div class="flex h-full flex-col sm:flex-row sm:items-end sm:justify-end">
       <div
-        class="relative flex w-full flex-col p-4 sm:flex-row sm:items-center sm:pb-1 sm:pt-0"
+        class="relative flex w-full flex-col p-4 sm:flex-row sm:items-center sm:pt-0 sm:pb-1"
       >
         <div class="flex w-full items-center justify-between">
           <a
             href="/"
-            class="whitespace-nowrap py-1 text-xl font-semibold sm:text-2xl"
+            class="py-1 text-xl font-semibold whitespace-nowrap sm:text-2xl"
           >
             <Image
               src={logoWhite}
@@ -65,7 +69,7 @@ const { activeNav } = Astro.props;
         >
           <ul
             id="menu-items"
-            class="flex h-full w-full flex-col items-center justify-center space-y-8 text-2xl opacity-0 transition-opacity delay-100 duration-300 sm:ml-0 sm:mt-0 sm:h-auto sm:w-auto sm:flex-row sm:items-center sm:justify-end sm:space-x-5 sm:space-y-0 sm:text-base sm:opacity-100"
+            class="flex h-full w-full flex-col items-center justify-center space-y-8 text-center text-2xl opacity-0 transition-opacity delay-100 duration-300 sm:mt-0 sm:ml-0 sm:h-auto sm:w-auto sm:flex-row sm:items-center sm:justify-end sm:space-y-0 sm:space-x-5 sm:text-left sm:text-base sm:opacity-100"
           >
             <li class="w-full text-center sm:hidden">
               <a
@@ -75,13 +79,107 @@ const { activeNav } = Astro.props;
                 Home
               </a>
             </li>
-            <li class="w-full text-center sm:w-auto">
-              <a
-                href="/about/"
-                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "about" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+            <li class="relative w-full text-center sm:w-auto">
+              <!-- Mobile: About toggle with secondary menu -->
+              <button
+                class={`about-toggle inline-flex w-full items-center justify-center gap-1 px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:hidden ${activeNav === "about" || isPhilanthropyPage || isCareersPage || isNewsPage ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                aria-expanded={`${isPhilanthropyPage || isCareersPage || isNewsPage ? "true" : "false"}`}
+                aria-controls="about-submenu-mobile"
+                aria-haspopup="menu"
+                aria-label="About menu"
               >
                 About
+                <svg
+                  class="about-chevron h-3 w-3 text-gray-500 transition-transform duration-150"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.08z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <ul
+                id="about-submenu-mobile"
+                class={`about-submenu-mobile mx-auto mt-2 ${isPhilanthropyPage || isCareersPage || isNewsPage ? "flex" : "hidden"} w-80 max-w-[90%] flex-col space-y-2 overflow-hidden rounded-lg border border-gray-300 bg-gray-50/80 p-3 text-center text-base shadow-sm sm:hidden`}
+              >
+                <li>
+                  <a
+                    href="/philanthropy/"
+                    class={`block rounded px-4 py-3 hover:bg-white/70 ${isPhilanthropyPage ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                    >Philanthropy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/careers/"
+                    class={`block rounded px-4 py-3 hover:bg-white/70 ${isCareersPage ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                    >Careers</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/news/"
+                    class={`block rounded px-4 py-3 hover:bg-white/70 ${isNewsPage ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                    >News</a
+                  >
+                </li>
+              </ul>
+
+              <!-- Desktop: About with hover dropdown -->
+              <a
+                href="/about/"
+                class={`about-desktop-link group hidden px-2 py-1 font-medium transition-colors hover:text-skin-accent sm:inline-flex sm:items-center ${activeNav === "about" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+              >
+                About
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="ml-1 h-3 w-3 text-gray-500 transition-transform duration-150 group-hover:rotate-180"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.08z"
+                    clip-rule="evenodd"></path>
+                </svg>
               </a>
+              <div
+                class="about-desktop-dropdown pointer-events-none absolute left-1/2 z-50 mt-2 hidden w-44 -translate-x-1/2 rounded-md border border-gray-200 bg-white/95 p-2 text-left opacity-0 shadow-lg backdrop-blur-md transition-opacity duration-150 ease-out sm:block"
+              >
+                <ul class="space-y-1 text-sm">
+                  <li>
+                    <a
+                      href="/about/"
+                      class="block rounded px-2 py-1 hover:bg-gray-100">About</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/philanthropy/"
+                      class="block rounded px-2 py-1 hover:bg-gray-100"
+                      >Philanthropy</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/careers/"
+                      class="block rounded px-2 py-1 hover:bg-gray-100"
+                      >Careers</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/news/"
+                      class="block rounded px-2 py-1 hover:bg-gray-100">News</a
+                    >
+                  </li>
+                </ul>
+              </div>
             </li>
             <li class="w-full text-center sm:w-auto">
               <a
@@ -96,15 +194,7 @@ const { activeNav } = Astro.props;
                 href="/work/"
                 class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "work" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
               >
-                Work
-              </a>
-            </li>
-            <li class="w-full text-center sm:w-auto">
-              <a
-                href="/news/"
-                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "news" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
-              >
-                News
+                Client Projects
               </a>
             </li>
             <li class="w-full text-center sm:w-auto">
@@ -159,6 +249,14 @@ const { activeNav } = Astro.props;
       pointer-events: all;
     }
   }
+
+  /* Desktop About dropdown visibility on parent hover */
+  @media (min-width: 640px) {
+    li:hover > .about-desktop-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
 </style>
 
 <script>
@@ -186,7 +284,128 @@ const { activeNav } = Astro.props;
     });
   }
 
+  function setupAboutMenus() {
+    // Mobile submenu toggle
+    const aboutToggle = document.querySelector(
+      ".about-toggle"
+    ) as HTMLButtonElement | null;
+    const mobileSubmenu = document.getElementById(
+      "about-submenu-mobile"
+    ) as HTMLUListElement | null;
+    if (aboutToggle && !(aboutToggle as HTMLElement).dataset.initialized) {
+      aboutToggle.addEventListener("click", () => {
+        const expanded = aboutToggle.getAttribute("aria-expanded") === "true";
+        aboutToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+        if (mobileSubmenu) {
+          const isOpen = !mobileSubmenu.classList.contains("hidden");
+          if (isOpen) {
+            // Collapse with height + padding/border/opacity animation
+            mobileSubmenu.style.maxHeight = mobileSubmenu.scrollHeight + "px";
+            // Force reflow so the browser acknowledges the starting max-height
+            void mobileSubmenu.offsetHeight;
+            mobileSubmenu.style.maxHeight = "0px";
+            mobileSubmenu.style.padding = "0px";
+            mobileSubmenu.style.borderWidth = "0px";
+            mobileSubmenu.style.opacity = "0";
+            mobileSubmenu.addEventListener("transitionend", function handler() {
+              mobileSubmenu.classList.add("hidden");
+              mobileSubmenu.classList.remove("flex");
+              mobileSubmenu.removeEventListener(
+                "transitionend",
+                handler as any
+              );
+            });
+          } else {
+            // Expand with height animation
+            mobileSubmenu.classList.remove("hidden");
+            mobileSubmenu.classList.add("flex");
+            mobileSubmenu.style.maxHeight = "0px";
+            // Force reflow then set to target height for transition
+            mobileSubmenu.style.padding = "0px";
+            mobileSubmenu.style.borderWidth = "0px";
+            mobileSubmenu.style.opacity = "0";
+            void mobileSubmenu.offsetHeight;
+            mobileSubmenu.style.maxHeight = mobileSubmenu.scrollHeight + "px";
+            mobileSubmenu.style.padding = "12px"; // Tailwind p-3 ~ 12px
+            mobileSubmenu.style.borderWidth = "1px";
+            mobileSubmenu.style.opacity = "1";
+          }
+        }
+        const chevron = aboutToggle.querySelector(
+          ".about-chevron"
+        ) as SVGElement | null;
+        if (chevron) {
+          chevron.classList.toggle("rotate-180");
+        }
+      });
+      (aboutToggle as HTMLElement).dataset.initialized = "true";
+
+      // If current page is within About section, ensure submenu starts expanded visually
+      if (
+        aboutToggle.getAttribute("aria-expanded") === "true" &&
+        mobileSubmenu
+      ) {
+        mobileSubmenu.classList.remove("hidden");
+        mobileSubmenu.classList.add("flex");
+        mobileSubmenu.style.maxHeight = mobileSubmenu.scrollHeight + "px";
+      }
+    }
+
+    // Desktop hover/focus interactions
+    const desktopLink = document.querySelector(
+      "a.about-desktop-link"
+    ) as HTMLAnchorElement | null;
+    const desktopDropdown = document.querySelector(
+      ".about-desktop-dropdown"
+    ) as HTMLDivElement | null;
+    if (
+      desktopLink &&
+      desktopDropdown &&
+      !desktopDropdown.getAttribute("data-initialized")
+    ) {
+      const show = () => {
+        desktopDropdown.classList.remove("opacity-0", "pointer-events-none");
+        desktopDropdown.classList.add("opacity-100");
+      };
+      const hide = () => {
+        desktopDropdown.classList.add("opacity-0", "pointer-events-none");
+        desktopDropdown.classList.remove("opacity-100");
+      };
+      let hideTimeout: number | undefined;
+      desktopLink.addEventListener("mouseenter", show);
+      desktopLink.addEventListener("focus", show);
+      desktopDropdown.addEventListener("mouseenter", () => {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        show();
+      });
+      desktopDropdown.addEventListener("mouseleave", () => {
+        hideTimeout = window.setTimeout(hide, 100);
+      });
+      desktopLink.addEventListener("mouseleave", () => {
+        hideTimeout = window.setTimeout(hide, 100);
+      });
+      desktopLink.addEventListener("blur", () => {
+        hideTimeout = window.setTimeout(hide, 100);
+      });
+      desktopDropdown.setAttribute("data-initialized", "true");
+    }
+  }
+
   toggleNav();
+  setupAboutMenus();
 
   document.addEventListener("astro:after-swap", toggleNav);
+  document.addEventListener("astro:after-swap", setupAboutMenus);
 </script>
+
+<style>
+  /* Smooth open/close animation for mobile About submenu */
+  #about-submenu-mobile {
+    max-height: 0;
+    transition:
+      max-height 220ms ease,
+      padding 200ms ease,
+      border-width 200ms ease,
+      opacity 200ms ease;
+  }
+</style>
