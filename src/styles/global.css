@@ -1,8 +1,100 @@
 @import url("https://fonts.googleapis.com/css2?family=Kalam:wght@400&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
+@theme {
+  /* Map design tokens so utilities like bg-*, text-*, border-* keep working */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Custom "skin" colors used throughout the site */
+  --color-skin-base: rgb(var(--color-text-base));
+  --color-skin-accent: rgb(var(--color-accent));
+  --color-skin-inverted: rgb(var(--color-fill));
+  --color-skin-fill: rgb(var(--color-fill));
+  --color-skin-card: rgb(var(--color-card));
+  --color-skin-card-muted: rgb(var(--color-card-muted));
+  --color-skin-line: rgb(var(--color-border));
+
+  /* Fonts */
+  --font-sans: "Open Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+/* Keep .dark class strategy (we don't use Tailwind's dark: variant) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Accordion animations (previously in tailwind.config) */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+@utility animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+@utility animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+/* Legacy "skin-*" design tokens as Tailwind utilities */
+@utility text-skin-base {
+  color: var(--color-skin-base);
+}
+@utility text-skin-accent {
+  color: var(--color-skin-accent);
+}
+@utility text-skin-inverted {
+  color: var(--color-skin-inverted);
+}
+@utility bg-skin-fill {
+  background-color: var(--color-skin-fill);
+}
+@utility bg-skin-card {
+  background-color: var(--color-skin-card);
+}
+@utility bg-skin-card-muted {
+  background-color: var(--color-skin-card-muted);
+}
+@utility border-skin-line {
+  border-color: var(--color-skin-line);
+}
+@utility fill-skin-accent {
+  fill: var(--color-skin-accent);
+}
+@utility fill-skin-base {
+  fill: var(--color-skin-base);
+}
 
 @layer base {
   :root {
@@ -47,7 +139,7 @@
     @apply mx-auto max-w-3xl px-4;
   }
   a {
-    @apply outline-2 outline-offset-1 focus-visible:no-underline focus-visible:outline-dashed;
+    @apply focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-dashed;
   }
   svg {
     @apply inline-block h-6 w-6;
@@ -55,9 +147,8 @@
   svg.icon-tabler {
     @apply inline-block h-6 w-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110;
   }
-  .prose {
-    @apply prose-headings:!mb-3 prose-h3:italic prose-a:!decoration-dashed prose-a:underline-offset-8 prose-blockquote:border-opacity-50 prose-blockquote:opacity-80 prose-figcaption:opacity-70 prose-code:rounded prose-code:bg-opacity-75 prose-code:p-1 prose-code:before:!content-none prose-code:after:!content-none prose-ul:overflow-x-clip prose-img:!my-2 prose-img:mx-auto prose-img:border-2;
-  }
+  /* Typography plugin default styles apply via the `prose` class. 
+     Custom fine-grained `prose-*:` utilities from v3 are removed for Tailwind v4. */
   .prose a {
     @apply break-words;
   }
@@ -73,7 +164,7 @@
     @apply inline-block cursor-pointer select-none;
   }
   .prose summary {
-    @apply focus-outline;
+    @apply outline-2 outline-offset-1 focus-visible:no-underline focus-visible:outline-dashed;
   }
   .prose h2#table-of-contents + p {
     @apply hidden;
@@ -153,7 +244,7 @@
     @apply hidden;
   }
   .focus-outline {
-    @apply outline-2 outline-offset-1 focus-visible:no-underline focus-visible:outline-dashed;
+    @apply focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-dashed;
   }
 }
 

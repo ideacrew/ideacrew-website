@@ -30,14 +30,14 @@
     "clsx": "^2.1.1",
     "fuse.js": "^7.1.0",
     "github-slugger": "^2.0.0",
-    "lucide-react": "^0.525.0",
-    "netlify-cli": "^22.3.0",
+    "lucide-react": "^0.539.0",
+    "netlify-cli": "^23.1.4",
     "react-hook-form": "^7.54.2",
     "remark-collapse": "^0.1.2",
     "remark-toc": "^9.0.0",
-    "satori": "^0.15.2",
+    "satori": "^0.16.2",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss": "^3.0.24",
+    "tailwindcss": "^4.0.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.7.3",
     "zod": "^4.0.5"
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@astrojs/react": "^4.2.0",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^6.0.0",
+    "@tailwindcss/vite": "^4.0.0",
     "@divriots/jampack": "^0.33.0",
     "@tailwindcss/typography": "^0.5.16",
     "@typescript-eslint/parser": "^8.23.0",
@@ -77,6 +77,6 @@
     "glob": "11.0.3"
   },
   "volta": {
-    "node": "20.19.4"
+    "node": "22.18.0"
   }
 }

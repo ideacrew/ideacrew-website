@@ -1,4 +1,4 @@
-import type { Site } from "./types";
+import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
   website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
@@ -22,3 +22,24 @@ export const LOGO_IMAGE = {
   width: 133.64,
   height: 25.05,
 };
+
+export const SOCIALS: SocialObjects = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/ideacrewinc/",
+    linkTitle: "LinkedIn",
+    active: true,
+  },
+  {
+    name: "Mail",
+    href: "mailto:info@ideacrew.com",
+    linkTitle: "Email us",
+    active: true,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/ideacrewinc",
+    linkTitle: "Twitter",
+    active: false,
+  },
+];
