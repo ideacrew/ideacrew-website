@@ -2,7 +2,7 @@
 layout: ../layouts/Layout.astro
 seo:
   title:
-  description:
+  description: Strategic Solutions for the IT Industry
 hero:
   title: Strategy & technology solutions that help our clients solve their most
     important challenges
@@ -22,7 +22,7 @@ services:
     - name: DevOps & Cloud
   button:
     text: Learn More About Our Services
-    href: /services
+    href: /sbm
 sbm:
   title: State Based Marketplace Solutions
   description:
