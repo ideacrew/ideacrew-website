@@ -8,7 +8,7 @@ const siteConfig = await getEntry("site", "config");
 const SITE = siteConfig!.data;
 
 export interface Props {
-  activeNav?: "home" | "about" | "sbm" | "work" | "contact" | "news";
+  activeNav?: "home" | "about" | "sbm" | "clients" | "contact" | "news";
 }
 
 const { activeNav } = Astro.props;
@@ -191,10 +191,10 @@ const isNewsPage = currentPath.startsWith("/news");
             </li>
             <li class="w-full text-center sm:w-auto">
               <a
-                href="/work/"
-                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "work" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                href="/clients/"
+                class={`block px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:inline-block sm:px-2 sm:py-1 ${activeNav === "clients" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
               >
-                Client Projects
+                Client Work
               </a>
             </li>
             <li class="w-full text-center sm:w-auto">

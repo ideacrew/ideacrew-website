@@ -7,8 +7,6 @@ export async function getStaticPaths() {
   return workEntries.map(work => ({
     params: { slug: work.slug },
     props: { work },
-    // Provide an alternative route under /clients
-    // Astro will generate /work/[slug] by default; we will relocate the folder next
   }));
 }
 
