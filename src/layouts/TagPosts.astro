@@ -12,7 +12,7 @@ import { slugifyStr } from "@/utils/slugify";
 export interface Props {
   currentPage: number;
   totalPages: number;
-  paginatedPosts: CollectionEntry<"blog">[];
+  paginatedPosts: CollectionEntry<"news">[];
   tag: string;
   tagName: string;
 }
@@ -21,7 +21,7 @@ const { currentPage, totalPages, paginatedPosts, tag, tagName } = Astro.props;
 ---
 
 <Layout title={`Tag: ${tagName} | ${SITE.title}`}>
-  <Header />
+  <Header activeNav="news" />
   <Main
     pageTitle={[`Tag:`, `${tagName}`]}
     titleTransition={tag}
@@ -33,7 +33,7 @@ const { currentPage, totalPages, paginatedPosts, tag, tagName } = Astro.props;
     <ul>
       {
         paginatedPosts.map(({ data, slug }) => (
-          <Card href={`/posts/${slug}/`} frontmatter={data} />
+          <Card href={`/news/${slug}/`} frontmatter={data} />
         ))
       }
     </ul>
