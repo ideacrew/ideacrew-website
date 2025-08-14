@@ -13,9 +13,12 @@ export interface Props {
 
 const { activeNav } = Astro.props;
 const currentPath = Astro.url.pathname;
+const isAboutPage = currentPath.startsWith("/about");
 const isPhilanthropyPage = currentPath.startsWith("/philanthropy");
 const isCareersPage = currentPath.startsWith("/careers");
 const isNewsPage = currentPath.startsWith("/news");
+const isInAboutSection =
+  isAboutPage || isPhilanthropyPage || isCareersPage || isNewsPage;
 ---
 
 <header
@@ -82,8 +85,8 @@ const isNewsPage = currentPath.startsWith("/news");
             <li class="relative w-full text-center sm:w-auto">
               <!-- Mobile: About toggle with secondary menu -->
               <button
-                class={`about-toggle inline-flex w-full items-center justify-center gap-1 px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:hidden ${activeNav === "about" || isPhilanthropyPage || isCareersPage || isNewsPage ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
-                aria-expanded={`${isPhilanthropyPage || isCareersPage || isNewsPage ? "true" : "false"}`}
+                class={`about-toggle inline-flex w-full items-center justify-center gap-1 px-4 py-3 font-medium transition-colors hover:text-skin-accent sm:hidden ${activeNav === "about" || isInAboutSection ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                aria-expanded={`${isInAboutSection ? "true" : "false"}`}
                 aria-controls="about-submenu-mobile"
                 aria-haspopup="menu"
                 aria-label="About menu"
@@ -104,7 +107,7 @@ const isNewsPage = currentPath.startsWith("/news");
               </button>
               <ul
                 id="about-submenu-mobile"
-                class={`about-submenu-mobile mx-auto mt-2 ${isPhilanthropyPage || isCareersPage || isNewsPage ? "flex" : "hidden"} w-80 max-w-[90%] flex-col space-y-2 overflow-hidden rounded-lg border border-gray-300 bg-gray-50/80 p-3 text-center text-base shadow-sm sm:hidden`}
+                class={`about-submenu-mobile mx-auto mt-2 ${isInAboutSection ? "flex" : "hidden"} w-80 max-w-[90%] flex-col space-y-2 overflow-hidden rounded-lg border border-gray-300 bg-gray-50/80 p-3 text-center text-base shadow-sm sm:hidden`}
               >
                 <li>
                   <a
@@ -132,13 +135,13 @@ const isNewsPage = currentPath.startsWith("/news");
               <!-- Desktop: About with hover dropdown -->
               <a
                 href="/about/"
-                class={`about-desktop-link group hidden px-2 py-1 font-medium transition-colors hover:text-skin-accent sm:inline-flex sm:items-center ${activeNav === "about" ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                class={`about-desktop-link group hidden px-2 py-1 font-medium transition-colors hover:text-skin-accent sm:inline-flex sm:items-center ${activeNav === "about" || isInAboutSection ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
               >
                 About
                 <svg
                   aria-hidden="true"
                   focusable="false"
-                  class="ml-1 h-3 w-3 text-gray-500 transition-transform duration-150 group-hover:rotate-180"
+                  class="about-desktop-chevron ml-1 h-3 w-3 text-gray-500 transition-transform duration-150 group-hover:rotate-180"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -358,6 +361,9 @@ const isNewsPage = currentPath.startsWith("/news");
     const desktopDropdown = document.querySelector(
       ".about-desktop-dropdown"
     ) as HTMLDivElement | null;
+    const desktopChevron = document.querySelector(
+      ".about-desktop-chevron"
+    ) as SVGElement | null;
     if (
       desktopLink &&
       desktopDropdown &&
@@ -366,10 +372,12 @@ const isNewsPage = currentPath.startsWith("/news");
       const show = () => {
         desktopDropdown.classList.remove("opacity-0", "pointer-events-none");
         desktopDropdown.classList.add("opacity-100");
+        desktopChevron?.classList.add("rotate-180");
       };
       const hide = () => {
         desktopDropdown.classList.add("opacity-0", "pointer-events-none");
         desktopDropdown.classList.remove("opacity-100");
+        desktopChevron?.classList.remove("rotate-180");
       };
       let hideTimeout: number | undefined;
       desktopLink.addEventListener("mouseenter", show);
