@@ -41,22 +41,22 @@ const careerData = data || defaultData;
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
       <div class="col-span-2">
         <div
-          class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+          class="mb-3 font-sans text-[18px] leading-[200%] font-normal text-[#0D2B46]"
         >
           <h2
-            class="mb-4 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+            class="font-domine mb-4 text-[24px] leading-normal font-normal text-[#0D2B46]"
           >
             {careerData.title}
           </h2>
 
           <div
-            class="mb-4 font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+            class="mb-4 font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]"
           >
             {careerData.description}
           </div>
 
           <Button variant="outline" size="lg">
-            {careerData.button.text}
+            <a href={careerData.button.href}>{careerData.button.text}</a>
           </Button>
         </div>
       </div>
