@@ -56,6 +56,16 @@ services:
       - Data Driven Consulting
       - Strategic Planning
       - Project Management
+philanthropy:
+  title: Philanthropy
+  description:
+    At IdeaCrew, we believe in the power of community and the importance of giving back. We are
+    proud to support a variety of charitable organizations that make a lasting impact in the lives of
+    individuals and families. Through both financial contributions and active participation, we
+    partner with organizations that align with our values and support causes close to our hearts. By
+    actively engaging with these organizations, we strive to create a positive, lasting impact on the
+    communities we serve.
+
 values:
   title: Our Values
   items:

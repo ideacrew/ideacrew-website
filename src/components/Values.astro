@@ -15,7 +15,7 @@ const { data } = Astro.props;
 <section class="w-full min-w-full">
   <div class="mx-auto w-full max-w-[960px] px-4 py-8">
     <h2
-      class="mb-8 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+      class="font-domine mb-8 text-[24px] leading-normal font-normal text-[#0D2B46]"
     >
       {data.title}
     </h2>
@@ -23,12 +23,12 @@ const { data } = Astro.props;
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
       {
         data.items.map(value => (
-          <div class="relative pl-6">
-            <div class="absolute left-0 top-0 h-full w-1 bg-[#0D2B46]" />
-            <h3 class="mb-4 font-sans text-[18px] font-semibold leading-normal text-[#0D2B46]">
+          <div class="relative py-2 pl-6">
+            <div class="absolute top-0 left-0 h-full w-1 bg-[#466CB2]" />
+            <h3 class="mb-4 font-sans text-[18px] leading-normal font-semibold text-[#0D2B46]">
               {value.title}
             </h3>
-            <p class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]">
+            <p class="font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]">
               {value.description}
             </p>
           </div>

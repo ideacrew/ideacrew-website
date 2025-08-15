@@ -55,6 +55,10 @@ export interface Props {
         text: string;
       };
     };
+    philanthropy: {
+      title: string;
+      description: string;
+    };
     values: {
       title: string;
       items: {
@@ -176,6 +180,22 @@ const { frontmatter } = Astro.props;
             ))
           }
         </div>
+      </div>
+    </section>
+
+    <section class="w-full min-w-full">
+      <div class="mx-auto w-full max-w-[960px] px-4 py-8">
+        <h2
+          class="font-domine mb-8 text-[24px] leading-normal font-normal text-[#0D2B46]"
+        >
+          {frontmatter.philanthropy.title}
+        </h2>
+
+        <p
+          class="font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]"
+        >
+          {frontmatter.philanthropy.description}
+        </p>
       </div>
     </section>
 
