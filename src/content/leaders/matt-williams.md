@@ -1,9 +1,9 @@
 ---
 name: Matt Williams
-position: VP of DevOps and Cloud
+position: VP - Cloud Infrastructure
 photo:
   src: /images/leaders/matt-williams.jpg
-  alt: Matt Williams - VP of DevOps and Cloud
+  alt: Matt Williams - VP - Cloud Infrastructure
 linkedin: https://www.linkedin.com/in/matt-williams
 sortOrder: 5
 active: true

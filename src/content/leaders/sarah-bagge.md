@@ -1,9 +1,9 @@
 ---
 name: Sarah Bagge
-position: VP Product Manager
+position: VP - Product Manager, Individual Market
 photo:
   src: /images/leaders/sarah-bagge.jpg
-  alt: Sarah Bagge - VP Product Manager
+  alt: Sarah Bagge - VP - Product Manager, Individual Market
 linkedin: https://www.linkedin.com/in/sarah-bagge
 sortOrder: 6
 active: true

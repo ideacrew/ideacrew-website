@@ -9,6 +9,7 @@ import Careers from "@/components/Careers.astro";
 import Values from "@/components/Values.astro";
 import Leadership from "@/components/Leadership.astro";
 import { getImageFromPath } from "@/utils/images";
+import { Button } from "@/components/ui/button";
 
 import { getEntry } from "astro:content";
 const siteConfig = await getEntry("site", "config");
@@ -58,6 +59,10 @@ export interface Props {
     philanthropy: {
       title: string;
       description: string;
+      button: {
+        href: string;
+        text: string;
+      };
     };
     values: {
       title: string;
@@ -196,6 +201,17 @@ const { frontmatter } = Astro.props;
         >
           {frontmatter.philanthropy.description}
         </p>
+
+        <div class="mt-6">
+          <Button variant="link" className="max-w-full">
+            <a
+              href={frontmatter.philanthropy.button.href}
+              class="block truncate"
+            >
+              {frontmatter.philanthropy.button.text}
+            </a>
+          </Button>
+        </div>
       </div>
     </section>
 

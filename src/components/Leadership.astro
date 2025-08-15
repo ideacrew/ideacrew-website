@@ -44,7 +44,7 @@ const sortedLeaders = leaders.sort(
 <section class="w-full min-w-full bg-[#F6F6F6]">
   <div class="mx-auto w-full max-w-[960px] px-4 py-8">
     <h2
-      class="mb-8 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+      class="font-domine mb-8 text-[24px] leading-normal font-normal text-[#0D2B46]"
     >
       {data.title}
     </h2>
@@ -52,8 +52,14 @@ const sortedLeaders = leaders.sort(
     <div class="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
       {
         sortedLeaders.map(leader => (
-          <Card className="group overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lg">
-            <a href={`/leaders/${leader.slug}`}>
+          <Card
+            variant="leadership"
+            className="group flex h-full flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lg"
+          >
+            <a
+              href={`/leaders/${leader.slug}`}
+              class="block flex grow flex-col"
+            >
               <div class="h-[232px] w-full p-3">
                 <Image
                   src={getImageFromPath(leader.data.photo.src)}
@@ -63,28 +69,28 @@ const sortedLeaders = leaders.sort(
                   class="h-full w-full rounded-lg object-cover"
                 />
               </div>
-              <CardContent className="px-3 pb-2">
-                <h3 class="mb-2 font-sans text-[16px] font-semibold leading-normal text-[#0D2B46]">
+              <CardContent className="flex grow flex-col px-3 pb-2">
+                <h3 class="mb-2 font-sans text-[16px] leading-normal font-semibold text-[#0D2B46]">
                   {leader.data.name}
                 </h3>
-                <p class="mb-4 font-sans text-[14px] font-normal leading-normal text-[#666]">
+                <p class="mb-2 font-sans text-[14px] leading-normal font-normal text-[#666]">
                   {leader.data.position}
                 </p>
-                <div class="mt-auto">
-                  <hr class="my-2" />
-                  <div class="inline-flex items-center text-[#0D2B46]">
-                    <svg
-                      class="h-5 w-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                  </div>
-                </div>
               </CardContent>
             </a>
+            <div class="mt-auto px-3 pb-3">
+              <hr class="my-2 border-gray-300" />
+              <div class="inline-flex items-center text-[#007BB6]">
+                <svg
+                  class="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </div>
+            </div>
           </Card>
         ))
       }

@@ -1,9 +1,9 @@
 ---
 name: Sarah Thomas
-position: VP of Human Resources
+position: VP - Human Resources
 photo:
   src: /images/leaders/sarah-thomas.jpg
-  alt: Sarah Thomas - VP of Human Resources
+  alt: Sarah Thomas - VP - Human Resources
 linkedin: https://www.linkedin.com/in/sarah-thomas
 sortOrder: 10
 active: true

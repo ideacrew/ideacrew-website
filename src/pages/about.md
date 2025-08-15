@@ -65,6 +65,9 @@ philanthropy:
     partner with organizations that align with our values and support causes close to our hearts. By
     actively engaging with these organizations, we strive to create a positive, lasting impact on the
     communities we serve.
+  button:
+    href: /philanthropy
+    text: Read more about philanthropy at IdeaCrew
 
 values:
   title: Our Values

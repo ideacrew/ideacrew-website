@@ -1,9 +1,9 @@
 ---
 name: Trevor garner
-position: COO
+position: COO & CFO
 photo:
   src: /images/leaders/trevor-garner.jpg
-  alt: Trevor Garner - COO
+  alt: Trevor Garner - COO & CFO
 linkedin: https://www.linkedin.com/in/trevor-garner
 sortOrder: 2
 active: true

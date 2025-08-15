@@ -1,9 +1,9 @@
 ---
 name: Alex Thomas
-position: Project Manager - VP Product Manager
+position: VP - Product Manager, Group Market
 photo:
   src: /images/leaders/alex-thomas.jpg
-  alt: Alex Thomas - Project Manager - VP Product Manager
+  alt: Alex Thomas - VP - Product Manager, Group Market
 linkedin: https://www.linkedin.com/in/alex-thomas
 sortOrder: 7
 active: true

@@ -1,9 +1,9 @@
 ---
 name: Won-ok Kim
-position: Reporting and Analytics Lead
+position: VP - Product Manager
 photo:
   src: /images/leaders/won-ok-kim.jpg
-  alt: Won-ok Kim - Reporting and Analytics Lead
+  alt: Won-ok Kim - VP - Product Manager
 linkedin: https://www.linkedin.com/in/won-ok-kim
 sortOrder: 8
 active: true

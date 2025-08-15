@@ -1,9 +1,9 @@
 ---
 name: Dan Thomas
-position: Chief Executive Officer
+position: Founder & CEO
 photo:
   src: /images/leaders/dan-thomas.jpg
-  alt: Dan Thomas - CEO
+  alt: Dan Thomas - Founder & CEO
 linkedin: https://www.linkedin.com/in/dan-thomas
 sortOrder: 1
 active: true

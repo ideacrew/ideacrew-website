@@ -1,9 +1,9 @@
 ---
 name: Rachelle Shackleford
-position: VP of Delivery
+position: VP - Software Delivery
 photo:
   src: /images/leaders/rachelle-shackleford.jpg
-  alt: Rachelle Shackleford - VP of Delivery
+  alt: Rachelle Shackleford - VP - Software Delivery
 linkedin: https://www.linkedin.com/in/rachelle-shackleford
 sortOrder: 9
 active: true

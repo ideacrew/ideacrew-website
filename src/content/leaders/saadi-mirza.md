@@ -1,9 +1,9 @@
 ---
 name: Saadi Mirza
-position: VP of Integration Services and Analytics
+position: VP - EDI & Data Services
 photo:
   src: /images/leaders/saadi-mirza.jpg
-  alt: Saadi Mirza - VP of Integration Services and Analytics
+  alt: Saadi Mirza - VP - EDI & Data Services
 linkedin: https://www.linkedin.com/in/saadi-mirza
 sortOrder: 4
 active: true
