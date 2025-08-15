@@ -4,11 +4,9 @@ position: VP - Product Manager, Group Market
 photo:
   src: /images/leaders/alex-thomas.jpg
   alt: Alex Thomas - VP - Product Manager, Group Market
-linkedin: https://www.linkedin.com/in/alex-thomas
+linkedin: https://www.linkedin.com/in/alex-thomas-24b71b136
 sortOrder: 7
 active: true
 ---
 
-Alex Thomas serves as Project Manager and VP Product Manager at IdeaCrew, where he oversees complex implementation projects and product initiatives. His dual role allows him to bridge the gap between project execution and product strategy, ensuring successful delivery of solutions that meet our clients' needs.
-
-With significant experience in healthcare IT project management, Alex has successfully led numerous large-scale implementations for state-based marketplaces and other healthcare organizations. His approach to project management emphasizes clear communication, risk management, and stakeholder engagement.
+Alex Thomas has 7 years of experience supporting IdeaCrew’s clients within the Clinical Consulting and StateBased marketplace lines of business. These experiences include serving as a client lead for state Departments of Health and Behavioral Services, as well as state-based marketplaces where he supports planning, configuration and requirements analysis for the DC Health Benefit Exchange (DC HBX) and MA Health Connector (MHC). Alex managed Agile development work groups responsible for delivery of O&M projects for DC HBX and MHC. He served as a primary point-of-contact for stakeholders, communicating program status and challenges, triaging reported challenges, and managing stakeholder expectations. As part of the trading partner operational support team, Alex resolves operational issues in a manner compliant with trading partners’ policy and state-based marketplace rules, using a variety of integrated and external software systems to achieve operational goals.

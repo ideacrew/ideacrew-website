@@ -31,7 +31,7 @@ const leadersCollection = defineCollection({
       src: z.string(),
       alt: z.string(),
     }),
-    linkedin: z.string().url(),
+    linkedin: z.string().url().optional().nullable().default(""),
     sortOrder: z.number().default(999),
   }),
 });

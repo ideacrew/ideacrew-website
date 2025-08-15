@@ -94,7 +94,12 @@ breadcrumbList[0] === "tags" &&
         ) : (
           <li class="inline">
             <a
-              href={`/${breadcrumb}/`}
+              href={`/${
+                // If on leader page, make the parent "about" link point to leadership anchor
+                breadcrumbList[0] === "about" && index === 0
+                  ? "about/#leadership"
+                  : breadcrumb + "/"
+              }`}
               class="capitalize opacity-70 hover:opacity-100"
             >
               {breadcrumb}

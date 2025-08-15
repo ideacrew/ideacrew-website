@@ -4,11 +4,9 @@ position: VP - Software Delivery
 photo:
   src: /images/leaders/rachelle-shackleford.jpg
   alt: Rachelle Shackleford - VP - Software Delivery
-linkedin: https://www.linkedin.com/in/rachelle-shackleford
+linkedin: https://www.linkedin.com/in/rachelle-shackelford-1b08226a
 sortOrder: 9
 active: true
 ---
 
-Rachelle Shackleford serves as VP of Delivery at IdeaCrew, where she ensures the successful implementation and delivery of our technology solutions. Her leadership focuses on maintaining high quality standards while meeting project timelines and client expectations.
-
-With extensive experience in healthcare IT delivery, Rachelle has successfully overseen the implementation of complex systems for multiple state-based marketplaces. Her expertise in project delivery methodology and stakeholder management has been crucial to IdeaCrew's successful track record.
+Rachelle Shackelford has been working in the software industry for over 10 years, in domains ranging from Healthcare to Communications. Rachelle has experience in various project delivery, management and support roles and has led teams in technical projects since 2017. In addition to her leadership roles, Rachelle brings deep experience in project estimation, project management ceremonies, artifacts and concepts and agile workflow optimization, as well as strong capability in configuring assessing and evolving the tools that support agile team success. Rachelle is an experienced technical project leader with a passion for agile principles and delivering working software.

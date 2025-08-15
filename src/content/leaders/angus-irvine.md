@@ -9,6 +9,4 @@ sortOrder: 3
 active: true
 ---
 
-Angus Irvine leads IdeaCrew's application development team, bringing over 15 years of software engineering expertise to the organization. As Senior Vice President of State Based Marketplaces, he oversees the technical architecture and development of IdeaCrew's healthcare technology solutions.
-
-Angus has been instrumental in developing and implementing innovative software solutions for state-based marketplaces and healthcare systems. His focus on code quality, scalability, and modern development practices has helped establish IdeaCrew as a technical leader in the healthcare IT space.
+Angus Irvine has 18 years of experience managing Agile development and other technology projects. He currently oversees technical delivery and operations for State-Based health insurance Exchanges—the DC Health Benefit Exchange Authority (HBX), Massachusetts Health Connector, and Maine’s CoverME. Angus recently oversaw a complete re-architecture of IdeaCrew’s Exchange technology platform. The re-architecture occurred while the platform was live in production and had to be carried out without disrupting customers. Deployment of this new model has led to gains in efficiencies and reduced operations and maintenance costs for the clients. Angus has extensive experience working directly with stakeholders and agency leadership. He excels at providing strategic consulting guidance and translating business priorities into realizable technical road-maps.

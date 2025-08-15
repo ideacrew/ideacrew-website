@@ -4,11 +4,9 @@ position: VP - Human Resources
 photo:
   src: /images/leaders/sarah-thomas.jpg
   alt: Sarah Thomas - VP - Human Resources
-linkedin: https://www.linkedin.com/in/sarah-thomas
+linkedin: https://www.linkedin.com/in/sarah-thomas-225b6659
 sortOrder: 10
 active: true
 ---
 
-Sarah Thomas leads IdeaCrew's Human Resources department, focusing on talent acquisition, employee development, and maintaining our strong company culture. Her role is crucial in ensuring IdeaCrew attracts and retains top talent while fostering an inclusive and innovative workplace environment.
-
-With significant experience in HR management in the technology sector, Sarah has implemented comprehensive programs for professional development and employee engagement. Her strategic approach to HR has helped IdeaCrew maintain its position as an employer of choice in the healthcare technology industry.
+Sarah is the Vice President of Human Resources at IdeaCrew, based in Washington, DC. With a progressive career path, she began at IdeaCrew as Human Resources Manager in 2022 before advancing to her current VP role in 2023. Previously, Sarah built extensive retail leadership experience at lululemon from 2014-2022, where she served in various positions including Store Manager, Regional Visual Manager, Key Leader, and Educator. She holds a Bachelor of Science degree from Towson University.
