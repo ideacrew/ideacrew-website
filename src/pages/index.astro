@@ -53,6 +53,10 @@ interface HomeContent {
   clients: {
     title: string;
     images: string[];
+    button: {
+      text: string;
+      href: string;
+    };
   };
 }
 
@@ -128,7 +132,7 @@ const clientImages = clients.images.map(imagePath =>
               {
                 services.items.map((service: ServiceItem) => (
                   <div class="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
-                    <h3 class="text-lg font-medium text-[#0D2B46]">
+                    <h3 class="font-domine text-lg font-medium text-[#0D2B46]">
                       {service.name}
                     </h3>
                   </div>
@@ -240,6 +244,14 @@ const clientImages = clients.images.map(imagePath =>
               <p>No client images available</p>
             )
           }
+        </div>
+
+        <div class="mt-6">
+          <Button variant="link" className="max-w-full">
+            <a href={clients.button.href} class="block truncate">
+              {clients.button.text}
+            </a>
+          </Button>
         </div>
       </div>
     </section>

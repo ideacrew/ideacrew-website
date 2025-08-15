@@ -55,4 +55,7 @@ clients:
     - /images/clients/rwjf.png
     - /images/clients/statehealthvaluestrategies3.png
     - /images/clients/vthc3.png
+  button:
+    text: View Our Client Work
+    href: /clients
 ---

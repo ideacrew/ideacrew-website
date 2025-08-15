@@ -270,6 +270,9 @@
 .font-handwriting {
   font-family: "Kalam", cursive;
 }
+.font-domine {
+  font-family: "Domine", serif;
+}
 
 /* Prevent layout shifts and handle scroll locking */
 html,
