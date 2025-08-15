@@ -1,0 +1,86 @@
+---
+import { Image } from "astro:assets";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Layout from "./Layout.astro";
+import Cta from "@/components/Cta.astro";
+import Careers from "@/components/Careers.astro";
+import Values from "@/components/Values.astro";
+import Leadership from "@/components/Leadership.astro";
+import { getImageFromPath } from "@/utils/images";
+import { Button } from "@/components/ui/button";
+
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
+
+export interface Props {
+  frontmatter: {
+    seo: {
+      title: string;
+      description?: string;
+    };
+    philanthropy: {
+      title: string;
+      description: string;
+      items?: { name: string; description: string }[];
+    };
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout
+  title={frontmatter.seo.title
+    ? `${frontmatter.seo.title} | ${SITE.siteName}`
+    : SITE.siteName}
+  description={frontmatter.seo.description || SITE.description}
+>
+  <Header activeNav="about" />
+
+  <Breadcrumbs />
+
+  <main id="main-content">
+    <section class="w-full min-w-full">
+      <div class="mx-auto w-full max-w-[960px] px-4 py-8">
+        <h1
+          class="font-domine mb-8 text-[36px] leading-normal font-normal text-[#0D2B46]"
+        >
+          {frontmatter.philanthropy.title}
+        </h1>
+
+        <div
+          class="mb-8 font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]"
+        >
+          <p class="mb-8">
+            {frontmatter.philanthropy.description}
+          </p>
+
+          {
+            frontmatter.philanthropy.items && (
+              <ul class="space-y-6">
+                {frontmatter.philanthropy.items.map(item => (
+                  <li>
+                    <p class="font-sans text-[14px] leading-[150%] font-semibold text-[#0D2B46]">
+                      {item.name}
+                    </p>
+                    <p class="font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]">
+                      {item.description}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mt-auto">
+    <Cta />
+    <Footer />
+  </div>
+</Layout>
