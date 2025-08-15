@@ -28,6 +28,14 @@ export interface Props {
         alt: string;
       };
     };
+    cbe: {
+      visible: boolean;
+      text: string;
+      image: {
+        src: string;
+        alt: string;
+      };
+    };
     services: {
       name: string;
       icon: {
@@ -76,19 +84,19 @@ const { frontmatter } = Astro.props;
   <main id="main-content">
     <section class="w-full min-w-full">
       <div class="mx-auto w-full max-w-[960px] px-4 py-16">
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div class="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
           <div class="col-span-2">
             <div
-              class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+              class="mb-3 font-sans text-[18px] leading-[200%] font-normal text-[#0D2B46]"
             >
               <h2
-                class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
+                class="font-domine mb-6 text-[36px] leading-normal font-normal text-[#0D2B46]"
               >
                 {frontmatter.hero.title}
               </h2>
 
               <div
-                class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+                class="font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]"
               >
                 {frontmatter.hero.description}
               </div>
@@ -109,13 +117,35 @@ const { frontmatter } = Astro.props;
             }
           </div>
         </div>
+
+        {
+          frontmatter.cbe.visible && (
+            <div class="cbe mx-auto w-full max-w-[500px] rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-sm md:mx-0">
+              <div class="flex items-center gap-4">
+                {frontmatter.cbe.image && (
+                  <Image
+                    src={getImageFromPath(frontmatter.cbe.image.src)}
+                    alt={frontmatter.cbe.image.alt}
+                    width={120}
+                    height={96}
+                    loading="eager"
+                  />
+                )}
+
+                <p class="font-sans text-[14px] leading-[150%] font-semibold text-[#0D2B46]">
+                  {frontmatter.cbe.text}
+                </p>
+              </div>
+            </div>
+          )
+        }
       </div>
     </section>
 
     <section class="w-full min-w-full bg-[#F6F6F6]">
       <div class="mx-auto w-full max-w-[960px] px-4 py-8">
         <h2
-          class="mb-8 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+          class="font-domine mb-8 text-[24px] leading-normal font-normal text-[#0D2B46]"
         >
           Our Services
         </h2>
@@ -124,20 +154,20 @@ const { frontmatter } = Astro.props;
           {
             frontmatter.services.map(service => (
               <div class="flex flex-col">
-                <div class="mb-6 h-16 w-16">
+                <div class="mb-6 h-24 w-24 pl-2">
                   <Image
                     src={getImageFromPath(service.icon.src)}
                     alt={`${service.name} Icon`}
-                    width={64}
-                    height={64}
+                    width={82}
+                    height={82}
                     class="h-full w-full"
                   />
                 </div>
 
-                <h3 class="mb-4 font-sans text-[16px] font-semibold leading-[200%] text-[#0D2B46]">
+                <h3 class="mb-4 font-sans text-[16px] leading-[200%] font-semibold text-[#0D2B46]">
                   {service.name}
                 </h3>
-                <ul class="space-y-2 font-sans text-[14px] font-normal leading-[150%] text-[#0D2B46]">
+                <ul class="space-y-2 font-sans text-[14px] leading-[150%] font-normal text-[#0D2B46]">
                   {service.items.map(item => (
                     <li>{item}</li>
                   ))}

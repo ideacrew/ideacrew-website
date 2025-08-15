@@ -17,6 +17,12 @@ hero:
   image:
     src: /images/about-us.svg
     alt: About IdeaCrew
+cbe:
+  visible: true
+  image:
+    src: /images/dc-cbe-logo.svg
+    alt: DC CBE Logo
+  text: Proud to be part of the District of Columbia Certified Business Enterprise Program
 services:
   - name: Data Integration
     icon:
