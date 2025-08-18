@@ -5,6 +5,23 @@ description: Modernizing healthcare access for DC residents through an integrate
 summary: A modern, user-friendly healthcare marketplace that streamlines access to quality coverage for DC residents.
 challenge: The District of Columbia’s expensive commercial-off-the-shelf (COTS) software failed after implementation during its first renewal period in 2014.
 solution: IdeaCrew re-implemented the District’s state-based marketplace using open standards and cloud technology to quickly become one of the leading and most financially sustainable platforms in the nation.
+awards:
+  - name: "AWS City on a Cloud 2016"
+    details: "IdeaCrew's marketplace won the Best Practices Award for providing a cost-effective platform"
+    img:
+      src: "/images/clients/awards/award-dchl-1.png"
+      alt: "AWS City on a Cloud 2016"
+  - name: "Clear Choices Award"
+    details: "Our state-based marketplace was ranked #1 among 13 other State-Based Marketplaces"
+    img:
+      src: "/images/clients/awards/award-dchl-2.png"
+      alt: "Clear Choices Award"
+  - name: "AWS City on a Cloud 2018"
+    details: "Our marketplace won the Best Practices Award for website performance and cost savings"
+    img:
+      src: "/images/clients/awards/award-dchl-3.png"
+      alt: "AWS City on a Cloud 2018"
+
 image:
   src: /images/clients/dchealthlinklogo.png
   alt: DC Health Benefit Exchange Project

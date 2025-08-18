@@ -9,6 +9,7 @@ import Cta from "@/components/Cta.astro";
 import type { CollectionEntry } from "astro:content";
 
 import { getEntry } from "astro:content";
+import { Card } from "@/components/ui/card";
 const siteConfig = await getEntry("site", "config");
 const SITE = siteConfig!.data;
 
@@ -26,6 +27,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   [
     "../assets/images/work/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/clients/*.{jpeg,jpg,png,gif,svg}",
+    "../assets/images/clients/awards/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/*.{jpeg,jpg,png,gif,svg}",
   ],
   { eager: true }
@@ -41,6 +43,7 @@ const getImageFromPath = (path: string): ImageMetadata => {
     `../assets/${cleanPath}`,
     `../assets/images/work/${cleanPath.split("/").pop()}`,
     `../assets/images/clients/${cleanPath.split("/").pop()}`,
+    `../assets/images/clients/awards/${cleanPath.split("/").pop()}`,
     `../assets/images/${cleanPath.split("/").pop()}`,
   ];
 
@@ -125,6 +128,31 @@ const { frontmatter, work } = Astro.props;
           </div>
         </div>
         <slot />
+
+        {
+          work.data.awards && work.data.awards.length > 0 && (
+            <div class="awards">
+              <h2 class="text-2xl font-bold text-[#0D2B46]">Awards</h2>
+              <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                {work.data.awards.map((award, index) => (
+                  <Card
+                    className="flex flex-col items-center justify-center bg-white p-4"
+                    variant="leadership"
+                  >
+                    <Image
+                      src={getImageFromPath(award.img.src)}
+                      alt={award.img.alt}
+                      width={100}
+                      height={100}
+                    />
+                    <h3 class="text-base font-bold">{award.name}</h3>
+                    <p class="text-sm">{award.details}</p>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )
+        }
       </div>
     </article>
   </main>

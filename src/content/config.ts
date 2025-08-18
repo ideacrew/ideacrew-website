@@ -9,6 +9,19 @@ const workCollection = defineCollection({
     summary: z.string().optional().default(""),
     challenge: z.string().optional().default(""),
     solution: z.string().optional().default(""),
+    awards: z
+      .array(
+        z.object({
+          name: z.string(),
+          details: z.string(),
+          img: z.object({
+            src: z.string(),
+            alt: z.string(),
+          }),
+        })
+      )
+      .optional()
+      .default([]),
     image: z
       .object({
         src: z.string().default("/images/about-us.svg"),
