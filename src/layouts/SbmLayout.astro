@@ -50,16 +50,16 @@ const { frontmatter } = Astro.props;
       <section class="w-full min-w-full">
         <div class="mx-auto w-full max-w-[960px] px-4 py-16">
           <div
-            class="mb-3 font-sans text-[18px] font-normal leading-[200%] text-[#0D2B46]"
+            class="mb-3 font-sans text-[18px] leading-[200%] font-normal text-[#0D2B46]"
           >
             <h1
-              class="mb-6 font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
+              class="font-domine mb-6 text-[36px] leading-normal font-normal text-[#0D2B46]"
             >
               {frontmatter.hero.title}
             </h1>
 
             <div
-              class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+              class="font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]"
             >
               {frontmatter.hero.description}
             </div>
@@ -69,7 +69,9 @@ const { frontmatter } = Astro.props;
             {
               frontmatter.hero.buttons.map(button => (
                 <Button variant="default" size="lg">
-                  <a href={button.href}>{button.text}</a>
+                  <a href={button.href} target="_blank">
+                    {button.text}
+                  </a>
                 </Button>
               ))
             }
@@ -80,10 +82,10 @@ const { frontmatter } = Astro.props;
       <section class="w-full min-w-full">
         <div class="mx-auto w-full max-w-[960px] px-4 py-16">
           <div
-            class="font-sans text-[14px] font-normal leading-[200%] text-[#0D2B46]"
+            class="font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]"
           >
             <h2
-              class="mb-8 font-domine text-[24px] font-normal leading-normal text-[#0D2B46]"
+              class="font-domine mb-8 text-[24px] leading-normal font-normal text-[#0D2B46]"
             >
               {frontmatter.modules.heading}
             </h2>
