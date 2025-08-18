@@ -7,6 +7,8 @@ const workCollection = defineCollection({
     client: z.string(),
     description: z.string(),
     summary: z.string().optional().default(""),
+    challenge: z.string().optional().default(""),
+    solution: z.string().optional().default(""),
     image: z
       .object({
         src: z.string().default("/images/about-us.svg"),

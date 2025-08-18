@@ -15,6 +15,8 @@ const SITE = siteConfig!.data;
 interface Props {
   frontmatter: {
     title: string;
+    challenge?: string;
+    solution?: string;
   };
   work: CollectionEntry<"work">;
 }
@@ -22,8 +24,8 @@ interface Props {
 // Dynamic image imports with type
 const images = import.meta.glob<{ default: ImageMetadata }>(
   [
-    "../assets/images/work/*.{jpeg,jpg,png,gif}",
-    "../assets/images/clients/*.{jpeg,jpg,png,gif}",
+    "../assets/images/work/*.{jpeg,jpg,png,gif,svg}",
+    "../assets/images/clients/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/*.{jpeg,jpg,png,gif,svg}",
   ],
   { eager: true }
@@ -67,7 +69,7 @@ const { frontmatter, work } = Astro.props;
   <main id="main-content">
     <article class="mx-auto max-w-[960px] px-4 py-16">
       <div class="mb-8 flex flex-col md:flex-row md:space-x-8">
-        <div class="mb-6 w-full md:mb-0 md:w-1/2">
+        <div class="mb-6 w-full place-items-center md:mb-0 md:w-1/2">
           <Image
             src={getImageFromPath(work.data.image.src)}
             alt={work.data.image.alt}
@@ -86,6 +88,42 @@ const { frontmatter, work } = Astro.props;
       </div>
 
       <div class="prose max-w-none">
+        <div
+          class="challenge-solution mb-16 border-b border-gray-200 pt-16 pb-16 md:mb-8 md:pb-0"
+        >
+          <div class="challenge">
+            <div class="flex flex-col gap-6 md:flex-row md:gap-12">
+              <h2
+                class="mb-0 text-2xl font-bold text-[#0D2B46] md:mt-6 md:w-32 md:flex-shrink-0"
+              >
+                Challenge
+              </h2>
+              <div class="flex-1">
+                <p
+                  class="mt-0 text-base leading-relaxed text-gray-700 md:mt-6 md:text-lg md:text-gray-800"
+                >
+                  {work.data.challenge}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="solution">
+            <div class="flex flex-col gap-6 md:flex-row md:gap-12">
+              <h2
+                class="mb-0 text-2xl font-bold text-[#0D2B46] md:mt-6 md:w-32 md:flex-shrink-0"
+              >
+                Solution
+              </h2>
+              <div class="flex-1">
+                <p
+                  class="mt-0 text-base leading-relaxed text-gray-700 md:mt-6 md:text-lg md:text-gray-800"
+                >
+                  {work.data.solution}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <slot />
       </div>
     </article>

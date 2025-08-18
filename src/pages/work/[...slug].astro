@@ -16,6 +16,13 @@ const { work } = Astro.props;
 const { Content } = await work.render();
 ---
 
-<ClientItemLayout frontmatter={{ title: work.data.title }} {work}>
+<ClientItemLayout
+  frontmatter={{
+    title: work.data.title,
+    challenge: work.data.challenge,
+    solution: work.data.solution,
+  }}
+  {work}
+>
   <Content />
 </ClientItemLayout>
