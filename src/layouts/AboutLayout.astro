@@ -9,7 +9,7 @@ import Careers from "@/components/Careers.astro";
 import Values from "@/components/Values.astro";
 import Leadership from "@/components/Leadership.astro";
 import { getImageFromPath } from "@/utils/images";
-import { Button } from "@/components/ui/button";
+import LinkButton from "@/components/LinkButton.astro";
 
 import { getEntry } from "astro:content";
 const siteConfig = await getEntry("site", "config");
@@ -203,14 +203,15 @@ const { frontmatter } = Astro.props;
         </p>
 
         <div class="mt-6">
-          <Button variant="link" className="max-w-full">
-            <a
-              href={frontmatter.philanthropy.button.href}
-              class="block truncate"
-            >
+          <LinkButton
+            href={frontmatter.philanthropy.button.href}
+            className="max-w-full"
+            variant="link"
+          >
+            <span class="block truncate">
               {frontmatter.philanthropy.button.text}
-            </a>
-          </Button>
+            </span>
+          </LinkButton>
         </div>
       </div>
     </section>

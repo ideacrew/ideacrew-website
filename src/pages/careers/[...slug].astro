@@ -6,7 +6,7 @@ import Footer from "@/components/Footer.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 import { getEntry } from "astro:content";
-import { Button } from "@/components/ui/button";
+import LinkButton from "@/components/LinkButton.astro";
 const siteConfig = await getEntry("site", "config");
 const SITE = siteConfig!.data;
 
@@ -31,7 +31,7 @@ const { Content } = await career.render();
   <main id="main-content">
     <article class="mx-auto max-w-[960px] px-4 py-16">
       <div class="mb-8">
-        <h1 class="mb-4 font-domine text-[36px] font-normal text-[#0D2B46]">
+        <h1 class="font-domine mb-4 text-[36px] font-normal text-[#0D2B46]">
           {career.data.title}
         </h1>
         <p class="text-sm text-[#666]">
@@ -63,17 +63,25 @@ const { Content } = await career.render();
               } / year
             </h4>
 
-            <Button variant="default" size="lg" className="w-full sm:w-auto">
-              <a href={career.data.applicationUrl}>Apply Now</a>
-            </Button>
+            <LinkButton
+              href={career.data.applicationUrl}
+              className="w-full sm:w-auto"
+              variant="primary"
+            >
+              Apply Now
+            </LinkButton>
           </div>
         </div>
 
         <div class="mb-8 md:mb-0 md:w-1/4">
           <div class="sticky top-8">
-            <Button variant="default" size="lg" className="w-full">
-              <a href={career.data.applicationUrl}>Apply Now</a>
-            </Button>
+            <LinkButton
+              href={career.data.applicationUrl}
+              className="w-full"
+              variant="primary"
+            >
+              Apply Now
+            </LinkButton>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
-import { Button } from "@/components/ui/button";
+import LinkButton from "@/components/LinkButton.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Cta from "@/components/Cta.astro";
@@ -106,13 +106,15 @@ const clientImages = clients.images.map(imagePath =>
           <div class="mt-8 flex flex-col gap-4 sm:flex-row">
             {
               hero.buttons.map(button => (
-                <Button
-                  variant={button.variant}
-                  size="lg"
+                <LinkButton
+                  href={button.href}
                   className="w-full sm:w-auto"
+                  variant={
+                    button.variant === "outline" ? "secondary" : "primary"
+                  }
                 >
-                  <a href={button.href}>{button.text}</a>
-                </Button>
+                  {button.text}
+                </LinkButton>
               ))
             }
           </div>
@@ -140,9 +142,9 @@ const clientImages = clients.images.map(imagePath =>
               }
             </div>
             <div class="mt-6">
-              <Button variant="link">
-                <a href={services.button.href}>{services.button.text}</a>
-              </Button>
+              <LinkButton href={services.button.href} variant="link">
+                {services.button.text}
+              </LinkButton>
             </div>
           </div>
 
@@ -211,11 +213,13 @@ const clientImages = clients.images.map(imagePath =>
         </p>
 
         <div class="mt-6">
-          <Button variant="link" className="max-w-full">
-            <a href={sbm.button.href} class="block truncate">
-              {sbm.button.text}
-            </a>
-          </Button>
+          <LinkButton
+            href={sbm.button.href}
+            className="max-w-full"
+            variant="link"
+          >
+            <span class="block truncate">{sbm.button.text}</span>
+          </LinkButton>
         </div>
       </div>
     </section>
@@ -247,11 +251,13 @@ const clientImages = clients.images.map(imagePath =>
         </div>
 
         <div class="mt-6">
-          <Button variant="link" className="max-w-full">
-            <a href={clients.button.href} class="block truncate">
-              {clients.button.text}
-            </a>
-          </Button>
+          <LinkButton
+            href={clients.button.href}
+            className="max-w-full"
+            variant="link"
+          >
+            <span class="block truncate">{clients.button.text}</span>
+          </LinkButton>
         </div>
       </div>
     </section>

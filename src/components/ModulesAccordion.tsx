@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import LinkButton from "@/components/LinkButton";
 
 interface ModuleButton {
   text: string;
@@ -52,20 +53,17 @@ export function ModulesAccordion({ items }: ModulesAccordionProps) {
                 {item.buttons && item.buttons.length > 0 && (
                   <div className="col-span-1 flex flex-col items-start gap-2 md:items-stretch">
                     {item.buttons.map((button, buttonIndex) => (
-                      <Button
+                      <LinkButton
                         key={buttonIndex}
-                        variant="default"
-                        size="sm"
+                        href={button.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="min-w-[200px] md:w-full"
+                        variant="primary"
+                        size="sm"
                       >
-                        <a
-                          href={button.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {button.text}
-                        </a>
-                      </Button>
+                        {button.text}
+                      </LinkButton>
                     ))}
                   </div>
                 )}

@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import { Button } from "@/components/ui/button";
+import LinkButton from "@/components/LinkButton.astro";
 
 import { getEntry } from "astro:content";
 const siteConfig = await getEntry("site", "config");
@@ -17,16 +17,14 @@ const { frontmatter } = Astro.props;
   <main class="mx-auto flex max-w-3xl flex-1 items-center justify-center">
     <div class="mb-14 flex flex-col items-center justify-center">
       <h1
-        class="text-9xl font-bold text-skin-accent"
+        class="text-skin-accent text-9xl font-bold"
         aria-label="404 Not Found"
       >
         404
       </h1>
       <span aria-hidden="true">¯\_(ツ)_/¯</span>
       <p class="my-4 text-2xl sm:text-3xl">Page Not Found</p>
-      <Button variant="default" size="lg">
-        <a href="/">Go back home</a>
-      </Button>
+      <LinkButton href="/" variant="primary">Go back home</LinkButton>
     </div>
   </main>
 

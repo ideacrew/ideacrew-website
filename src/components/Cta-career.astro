@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import careerImage from "@/assets/images/remote-team.svg";
-import { Button } from "./ui/button";
+import LinkButton from "./LinkButton.astro";
 
 interface Props {
   heading: string;
@@ -18,14 +18,14 @@ const { heading, buttonText, buttonHref } = Astro.props;
       <div class="col-span-2 flex flex-col justify-center">
         <div class="space-y-6">
           <h3
-            class="font-domine text-[36px] font-normal leading-normal text-[#0D2B46]"
+            class="font-domine text-[36px] leading-normal font-normal text-[#0D2B46]"
           >
             {heading}
           </h3>
 
-          <Button variant="outline" size="lg">
-            <a href={buttonHref}>{buttonText}</a>
-          </Button>
+          <LinkButton href={buttonHref} variant="secondary"
+            >{buttonText}</LinkButton
+          >
         </div>
       </div>
 

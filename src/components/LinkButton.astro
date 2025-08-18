@@ -5,7 +5,10 @@ export interface Props {
   ariaLabel?: string;
   title?: string;
   disabled?: boolean;
-  variant?: "primary" | "secondary" | "white";
+  variant?: "primary" | "secondary" | "default" | "outline" | "link";
+  size?: "default" | "sm" | "lg" | "icon";
+  target?: string;
+  rel?: string;
 }
 
 const {
@@ -15,17 +18,41 @@ const {
   title,
   disabled = false,
   variant = "primary",
+  size = "lg",
+  target,
+  rel,
 } = Astro.props;
 
-const variantStyles = {
-  primary: "bg-[#2C5282] text-white hover:bg-[#1A365D]",
-  secondary:
-    "border-2 border-[#466cb2] bg-transparent text-[#466cb2] hover:bg-[#0D2B46] hover:text-white",
-  white: "bg-white text-[#466CB2] hover:bg-white/90 transition-opacity",
+// Map legacy variants to button.tsx variants
+const resolvedVariant =
+  variant === "primary"
+    ? "default"
+    : variant === "secondary"
+      ? "outline"
+      : variant;
+
+const variantStyles: Record<string, string> = {
+  default: "bg-[#466CB2] text-white shadow hover:bg-[#466CB2]/90",
+  destructive:
+    "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+  outline:
+    "border-2 border-[#466CB2] bg-transparent text-[#466CB2] hover:bg-[#466CB2]/10",
+  secondary: "bg-white text-[#466CB2] shadow-sm hover:bg-white/90",
+  ghost: "hover:bg-accent hover:text-accent-foreground",
+  link: "py-6 text-sm font-bold text-[#466CB2] underline decoration-solid decoration-from-font underline-offset-auto hover:text-[#466CB2]/80",
 };
 
-const baseStyles = "px-4 py-2 rounded-md transition-colors duration-200";
-const buttonStyles = `${baseStyles} ${variantStyles[variant]} ${className || ""}`;
+const sizeStyles: Record<string, string> = {
+  default: "px-3 py-2",
+  sm: "h-8 rounded-md px-3 text-xs",
+  lg: "h-10 rounded-md px-4",
+  icon: "h-9 w-9",
+};
+
+const baseStyles =
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[6px] font-sans text-base font-semibold leading-[20px] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0";
+
+const buttonStyles = `${baseStyles} ${sizeStyles[size]} ${variantStyles[resolvedVariant] || ""} ${className || ""}`;
 ---
 
 {
@@ -39,7 +66,14 @@ const buttonStyles = `${baseStyles} ${variantStyles[variant]} ${className || ""}
       <slot />
     </span>
   ) : (
-    <a {href} class={buttonStyles} aria-label={ariaLabel} title={title}>
+    <a
+      {href}
+      class={buttonStyles}
+      aria-label={ariaLabel}
+      title={title}
+      target={target}
+      rel={rel}
+    >
       <slot />
     </a>
   )
