@@ -1,7 +1,13 @@
 # build output
 dist/
 .output/
-public/
+# public folder - ignore specific file types but allow tracking of source assets
+public/**/*.DS_Store
+public/**/*.log
+public/**/*.tmp
+public/**/*.cache
+public/images/**/*
+public/assets/**/*
 
 # dependencies
 node_modules/

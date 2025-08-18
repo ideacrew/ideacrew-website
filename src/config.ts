@@ -1,11 +1,11 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
+  website: "https://ideacrew.com/", // replace this with your deployed domain
   author: "IdeaCrew, Inc.",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
+  desc: "IdeaCrew is a healthcare technology company that provides software solutions to the healthcare industry.",
   title: "IdeaCrew",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "ideacrew-og.jpg",
   lightAndDarkMode: false,
   postPerPage: 3,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
@@ -37,9 +37,9 @@ export const SOCIALS: SocialObjects = [
     active: true,
   },
   {
-    name: "Twitter",
-    href: "https://twitter.com/ideacrewinc",
-    linkTitle: "Twitter",
+    name: "X",
+    href: "https://x.com/ideacrewinc",
+    linkTitle: "X",
     active: false,
   },
 ];
