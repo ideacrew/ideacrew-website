@@ -24,7 +24,7 @@ export interface Props {
     philanthropy: {
       title: string;
       description: string;
-      items?: { name: string; description: string }[];
+      items?: { name: string; description: string; url: string }[];
     };
   };
 }
@@ -63,9 +63,13 @@ const { frontmatter } = Astro.props;
               <ul class="space-y-6">
                 {frontmatter.philanthropy.items.map(item => (
                   <li>
-                    <p class="font-sans text-[14px] leading-[150%] font-semibold text-[#0D2B46]">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      class="font-sans text-[14px] leading-[150%] font-semibold text-[#0D2B46] hover:underline"
+                    >
                       {item.name}
-                    </p>
+                    </a>
                     <p class="font-sans text-[14px] leading-[200%] font-normal text-[#0D2B46]">
                       {item.description}
                     </p>
