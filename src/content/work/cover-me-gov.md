@@ -1,12 +1,12 @@
 ---
-title: WorkRadar Platform
-client: WorkRadar
-description: Building an innovative workforce management and compliance platform
-summary: A cloud-native platform that revolutionizes workforce management with real-time compliance monitoring and analytics.
+title: CoverME.gov
+client: State of Maine
+description: Maine's official state-based health insurance marketplace where residents can compare, apply for financial assistance, and enroll in health insurance plans.
+summary: Transitioning Maine off the Federally-Facilitated Exchange (FFE) to a State-Based Marketplace (SBM)
 image:
-  src: /images/work/workradar.jpg
-  alt: WorkRadar Platform Project
-sortOrder: 8
+  src: /images/clients/covermegov.png
+  alt: CoverME.gov SBM Project
+sortOrder: 3
 ---
 
 IDC developed WorkRadar, a comprehensive workforce management and compliance platform. This innovative solution helps organizations streamline their workforce operations while ensuring regulatory compliance.

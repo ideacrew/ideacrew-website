@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/ClientLayout.astro
 seo:
-  title: Clients
+  title: Client Projects
   description:
 ---
 

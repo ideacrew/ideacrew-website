@@ -28,8 +28,8 @@ const { frontmatter } = Astro.props;
 // Dynamic image imports with type
 const images = import.meta.glob<{ default: ImageMetadata }>(
   [
-    "../assets/images/work/*.{jpeg,jpg,png,gif}",
-    "../assets/images/clients/*.{jpeg,jpg,png,gif}",
+    "../assets/images/work/*.{jpeg,jpg,png,gif,svg}",
+    "../assets/images/clients/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/*.{jpeg,jpg,png,gif,svg}",
   ],
   { eager: true }
@@ -96,7 +96,10 @@ const sortedWorkItems = workItems.sort(
           >
             {
               sortedWorkItems.map(work => (
-                <Card className="group overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lg">
+                <Card
+                  variant="leadership"
+                  className="group flex h-full flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lg"
+                >
                   <a href={`/clients/${work.slug}`}>
                     <div class="flex h-[210px] w-full items-center justify-center p-4">
                       <div class="h-[178px] w-[178px] overflow-hidden rounded-lg">
@@ -105,11 +108,11 @@ const sortedWorkItems = workItems.sort(
                           alt={work.data.image.alt}
                           width={178}
                           height={178}
-                          class="h-full w-full object-cover"
+                          class="h-full w-full object-contain"
                         />
                       </div>
                     </div>
-                    <CardContent className="p-4">
+                    <CardContent className="border-t border-gray-200 p-4">
                       <h3 class="mb-2 line-clamp-2 min-h-[48px] font-sans text-[18px] leading-[24px] font-semibold text-[#0D2B46]">
                         {work.data.title}
                       </h3>
