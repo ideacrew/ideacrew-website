@@ -30,6 +30,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   [
     "../assets/images/work/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/clients/*.{jpeg,jpg,png,gif,svg}",
+    "../assets/images/clients/projects/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/*.{jpeg,jpg,png,gif,svg}",
   ],
   { eager: true }
@@ -45,6 +46,7 @@ const getImageFromPath = (path: string): ImageMetadata => {
     `../assets/${cleanPath}`,
     `../assets/images/work/${cleanPath.split("/").pop()}`,
     `../assets/images/clients/${cleanPath.split("/").pop()}`,
+    `../assets/images/clients/projects/${cleanPath.split("/").pop()}`,
     `../assets/images/${cleanPath.split("/").pop()}`,
   ];
 
