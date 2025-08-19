@@ -1,0 +1,31 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Layout from "./Layout.astro";
+import ThankYouContent from "@/components/ThankYouContent.astro";
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <Header />
+  <Breadcrumbs />
+  <main id="main-content">
+    <section class="w-full min-w-full">
+      <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+        <ThankYouContent />
+      </div>
+    </section>
+  </main>
+  <div class="mt-auto">
+    <Footer />
+  </div>
+</Layout>
