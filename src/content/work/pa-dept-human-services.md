@@ -7,7 +7,7 @@ challenge: Pennsylvania Department of Human Services as a result of a legal sett
 solution: IdeaCrew delivered a Competency Evaluation and Treatment Guide that significantly reduced transfer and treatment of individuals including criminal defendants in county prisons restoring them to competency.
 sortOrder: 6
 image:
-  src: /images/clients/pa-dhs-logo.png
+  src: /images/clients/projects/pa-dhs-logo.png
   alt: Pennsylvania Department of Human Services
 ---
 

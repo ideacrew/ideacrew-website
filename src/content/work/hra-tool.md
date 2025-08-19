@@ -6,7 +6,7 @@ summary: The HRA Tool offers consumers a simple, anonymous tool to enter info ab
 challenge: Under new regulations, Employers offering Employees ICHRAs to purchase individual health insurance could cause tax complications.
 solution: IdeaCrew worked with State Health & Value Strategies to develop an HRA calculator tool as a shared service for State-based Marketplaces to provide consumers consistent guidance
 image:
-  src: /images/clients/hra-tool.png
+  src: /images/clients/projects/hra-tool.png
   alt: HRA Tool Interface
 sortOrder: 9
 ---

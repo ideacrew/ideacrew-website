@@ -7,7 +7,7 @@ challenge: Maryland Behavioral Health Administration was struggling to achieve c
 solution: IdeaCrew helped Maryland implement a single system of high-quality psychiatric hospital care to improve overall quality of care across the state.
 sortOrder: 5
 image:
-  src: /images/clients/maryland-behavioral-health-logo.png
+  src: /images/clients/projects/maryland-behavioral-health-logo.png
   alt: Maryland Behavioral Health Services
 ---
 

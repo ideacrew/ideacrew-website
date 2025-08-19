@@ -6,7 +6,7 @@ summary: System wide improvements to  technology and data management capabilitie
 challenge: The District of Columbia's transformation of Medicaid services and payment model required DBH to reform its data management practices and establish a new mechanism for collecting behavioral health supplemental data (BHSD) from 70 community-based healthcare providers. The leadership and staff at DBH needed timely and centralized access to data to support data-driven decision-making. Additionally, there was a need to develop data governance strategies to realize the vision of Whole Person Care and Population Health in the District of Columbia.
 solution: IdeaCrew developed the Integrated Technology Engine (ITE), a centralized, cloud-based data hub application that features standardized data collection from various providers and instant data validations, along with Tableau dashboards and data governance strategies to enable efficient data collection, accurate reporting, and meaningful analysis.
 image:
-  src: /images/clients/dc-dbh-logo.png
+  src: /images/clients/projects/dc-dbh-logo.png
   alt: DC Department of Behavioral Health
 sortOrder: 4
 ---

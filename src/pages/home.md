@@ -52,7 +52,7 @@ clients:
     - /images/clients/logos/mddoh3.png
     - /images/clients/logos/montgomerymd3.png
     - /images/clients/logos/padhs3.png
-    - /images/clients/rwjf.png
+    - /images/clients/logos/rwjf.png
     - /images/clients/logos/statehealthvaluestrategies3.png
     - /images/clients/logos/vthc3.png
   button:

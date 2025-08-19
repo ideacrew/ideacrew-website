@@ -8,7 +8,7 @@ summary: An intuitive health insurance marketplace platform enabling
 challenge: When initially launched, the Massachusetts Health Connector focused on the individual market, achieving the lowest uninsured rate in the country. However, growth in small group membership through the Connector remained flat, it lacked the modern technology private exchanges need to make enrollment easy for brokers, employers and their members.
 solution: IdeaCrew’s successful implementation, including carrier and broker onboarding resulted in immediate growth. Since its relaunch Massachusetts SHOP was the fastest growing in the country > Membership increased 90% from 4,500 to over 8,000 members in two years. The shared services model with DC has resulted in significant financial savings for both Massachusetts and the District of Columbia.
 image:
-  src: /images/clients/health-connector-logo.png
+  src: /images/clients/projects/health-connector-logo.png
   alt: Massachusetts Health Connector Project
 sortOrder: 2
 ---

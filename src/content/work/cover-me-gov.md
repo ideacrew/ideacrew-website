@@ -6,7 +6,7 @@ summary: Transitioning Maine off the Federally-Facilitated Exchange (FFE) to a S
 challenge: Maine’s pledge to run its own health insurance marketplace made it the latest state, literally, to transition from the Federally-Facilitated Exchange (FFE).
 solution: CoverME.gov, the nation’s newest State-based Marketplace, powered by IdeaCrew's cloud SBM platform, launched in record time enrolling over 66,000 Mainers in affordable health plans for 2022.
 image:
-  src: /images/clients/covermegov.png
+  src: /images/clients/projects/covermegov.png
   alt: CoverME.gov SBM Project
 sortOrder: 3
 ---

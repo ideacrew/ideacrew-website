@@ -23,7 +23,7 @@ awards:
       alt: "AWS City on a Cloud 2018"
 
 image:
-  src: /images/clients/dchealthlinklogo.png
+  src: /images/clients/projects/dchealthlinklogo.png
   alt: DC Health Benefit Exchange Project
 sortOrder: 1
 ---
