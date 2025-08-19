@@ -19,7 +19,7 @@ export function ContactForm() {
         value="Contact Form Submission (%{submissionId})"
       />
 
-      <div className="input-group visually-hidden">
+      <div className="input-group stanky">
         <Label htmlFor="website-name">What is your website name?</Label>
         <Input type="text" name="website-name" id="website-name" />
       </div>

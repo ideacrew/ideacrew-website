@@ -297,3 +297,10 @@ body[data-scroll-locked] {
 .dialog-overlay::-webkit-scrollbar {
   display: none;
 }
+
+/* Honey Pot Helper Class */
+.stanky {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+}
