@@ -43,18 +43,18 @@ sbm:
 clients:
   title: Select Clients
   images:
-    - /images/clients/dchealthlink3.png
-    - /images/clients/colorado3.png
-    - /images/clients/dodea3.png
-    - /images/clients/dcgov3.png
-    - /images/clients/fema3.png
-    - /images/clients/masshealth3.png
-    - /images/clients/mddoh3.png
-    - /images/clients/montgomerymd3.png
-    - /images/clients/padhs3.png
+    - /images/clients/logos/dchealthlink3.png
+    - /images/clients/logos/colorado3.png
+    - /images/clients/logos/dodea3.png
+    - /images/clients/logos/dcgov3.png
+    - /images/clients/logos/fema3.png
+    - /images/clients/logos/masshealth3.png
+    - /images/clients/logos/mddoh3.png
+    - /images/clients/logos/montgomerymd3.png
+    - /images/clients/logos/padhs3.png
     - /images/clients/rwjf.png
-    - /images/clients/statehealthvaluestrategies3.png
-    - /images/clients/vthc3.png
+    - /images/clients/logos/statehealthvaluestrategies3.png
+    - /images/clients/logos/vthc3.png
   button:
     text: View Our Client Work
     href: /clients
