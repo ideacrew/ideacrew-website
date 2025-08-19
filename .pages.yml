@@ -329,12 +329,12 @@ content:
                 fields:
                   - { name: text, label: Button Text, type: string, required: true }
                   - { name: href, label: Button URL, type: string, required: true, pattern: "^https?://.*$" }
-  - name: work
-    label: Work page
+  - name: clients
+    label: Client Projects page
     type: file
-    path: src/pages/work.md
+    path: src/pages/clients.md
     fields:
-      - { name: layout, type: string, hidden: true, default: "../layouts/WorkLayout.astro" }
+      - { name: layout, type: string, hidden: true, default: "../layouts/ClientLayout.astro" }
       - name: seo
         label: SEO Settings
         type: object
