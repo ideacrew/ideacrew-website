@@ -12,6 +12,14 @@ The public website for IdeaCrew. This site showcases IdeaCrew's services, portfo
 - **Deployment**: Netlify (configured via `netlify.toml`)
 - **OG Images**: Dynamic generation for posts and site pages
 
+## Content Management System
+
+The website content is managed through PagesCMS:
+
+- **CMS URL**: https://app.pagescms.org/ideacrew/ideacrew-website/
+- **Documentation**: https://pagescms.org/docs/
+- **Access**: If you need access to the CMS, contact Brad Bodine.
+
 ## Content Model
 
 Content lives under `src/content/` and is organized by collection:
@@ -96,6 +104,8 @@ The site is configured for Netlify:
 - Build command: `npm run build`
 - Publish directory: `dist`
 - Additional settings are defined in `netlify.toml`.
+- **Netlify Project URL**: https://app.netlify.com/projects/ideacrew-website/
+- **Access**: If you need access to the Netlify project, contact Brad Bodine.
 
 ## License
 
