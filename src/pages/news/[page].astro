@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import News from "@/layouts/News.astro";
+import getSortedPosts from "@/utils/getSortedPosts";
+import getPagination from "@/utils/getPagination";
+import getPageNumbers from "@/utils/getPageNumbers";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("news");
+  const sortedPosts = getSortedPosts(posts);
+  const totalPages = getPageNumbers(sortedPosts.length);
+
+  return totalPages
+    .filter(page => page !== 1)
+    .map(page => ({ params: { page: String(page) } }));
+}
+
+const { page } = Astro.params;
+
+const posts = await getCollection("news");
+const sortedPosts = getSortedPosts(posts);
+
+const pagination = getPagination({
+  posts: sortedPosts,
+  page,
+});
+---
+
+<News {...pagination} />
