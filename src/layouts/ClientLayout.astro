@@ -28,7 +28,6 @@ const { frontmatter } = Astro.props;
 // Dynamic image imports with type
 const images = import.meta.glob<{ default: ImageMetadata }>(
   [
-    "../assets/images/work/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/clients/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/clients/projects/*.{jpeg,jpg,png,gif,svg}",
     "../assets/images/*.{jpeg,jpg,png,gif,svg}",
@@ -44,7 +43,6 @@ const getImageFromPath = (path: string): ImageMetadata => {
   // Try different possible paths
   const possiblePaths = [
     `../assets/${cleanPath}`,
-    `../assets/images/work/${cleanPath.split("/").pop()}`,
     `../assets/images/clients/${cleanPath.split("/").pop()}`,
     `../assets/images/clients/projects/${cleanPath.split("/").pop()}`,
     `../assets/images/${cleanPath.split("/").pop()}`,
@@ -61,7 +59,9 @@ const getImageFromPath = (path: string): ImageMetadata => {
   return placeholderImage;
 };
 
-const workItems = (await getCollection("work")) as CollectionEntry<"work">[];
+const workItems = (await getCollection(
+  "clients"
+)) as CollectionEntry<"clients">[];
 const sortedWorkItems = workItems.sort(
   (a, b) => (a.data.sortOrder || 999) - (b.data.sortOrder || 999)
 );

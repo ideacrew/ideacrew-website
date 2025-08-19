@@ -35,10 +35,10 @@ content:
       - { name: applicationUrl, label: Application URL, type: string, pattern: "^https?://.*$" }
       - { name: sortOrder, label: Sort Order, type: number, default: 999 }
       - { name: body, label: Full Description, type: rich-text, required: true }
-  - name: our-work
-    label: Our Work
+  - name: clients
+    label: Clients
     type: collection
-    path: src/content/work
+    path: src/content/clients
     view:
       fields: [ title, client, summary, sortOrder ]
       sort: [ sortOrder, title ]

@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import ClientItemLayout from "@/layouts/ClientItemLayout.astro";
 
 export async function getStaticPaths() {
-  const workEntries = await getCollection("work");
+  const workEntries = await getCollection("clients");
   return workEntries.map(work => ({
     params: { slug: work.slug },
     props: { work },
