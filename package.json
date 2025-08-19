@@ -30,7 +30,7 @@
     "clsx": "^2.1.1",
     "fuse.js": "^7.1.0",
     "github-slugger": "^2.0.0",
-    "lucide-react": "^0.539.0",
+    "lucide-react": "^0.540.0",
     "netlify-cli": "^23.1.4",
     "react-hook-form": "^7.54.2",
     "remark-collapse": "^0.1.2",
@@ -45,9 +45,8 @@
   "devDependencies": {
     "@astrojs/react": "^4.2.0",
     "@astrojs/sitemap": "^3.2.1",
-    "@tailwindcss/vite": "^4.0.0",
-    "@divriots/jampack": "^0.33.0",
     "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.0.0",
     "@typescript-eslint/parser": "^8.23.0",
     "astro-eslint-parser": "^1.2.1",
     "commitizen": "^4.3.1",
@@ -74,9 +73,7 @@
     ]
   },
   "overrides": {
-    "glob": "11.0.3"
-  },
-  "volta": {
-    "node": "22.18.0"
+    "glob": "11.0.3",
+    "tmp": "0.2.5"
   }
 }
