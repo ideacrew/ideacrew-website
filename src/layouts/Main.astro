@@ -18,19 +18,32 @@ const { props } = Astro;
 ---
 
 <Breadcrumbs />
-<main id="main-content" class="mx-auto w-full max-w-3xl px-4 pb-4">
-  {
-    "titleTransition" in props ? (
-      <h1 class="text-2xl font-semibold sm:text-3xl">
-        {props.pageTitle[0]}
-        <span transition:name={props.titleTransition}>
-          {props.pageTitle[1]}
-        </span>
-      </h1>
-    ) : (
-      <h1 class="text-2xl font-semibold sm:text-3xl">{props.pageTitle}</h1>
-    )
-  }
-  <p class="mb-6 mt-2 italic">{props.pageDesc}</p>
-  <slot />
+
+<main id="main-content">
+  <section class="w-full min-w-full">
+    <div class="mx-auto w-full max-w-[960px] px-4 py-16">
+      <div
+        class="mb-3 font-sans text-[18px] leading-[200%] font-normal text-[#0D2B46]"
+      >
+        {
+          "titleTransition" in props ? (
+            <h1 class="text-2xl font-semibold sm:text-3xl">
+              {props.pageTitle[0]}
+              <span transition:name={props.titleTransition}>
+                {props.pageTitle[1]}
+              </span>
+            </h1>
+          ) : (
+            <h1 class="text-2xl font-semibold sm:text-3xl">
+              {props.pageTitle}
+            </h1>
+          )
+        }
+
+        <div class="mb-16">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
