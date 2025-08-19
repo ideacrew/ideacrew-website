@@ -329,7 +329,7 @@ content:
                 fields:
                   - { name: text, label: Button Text, type: string, required: true }
                   - { name: href, label: Button URL, type: string, required: true, pattern: "^https?://.*$" }
-  - name: clients
+  - name: projects
     label: Client Projects page
     type: file
     path: src/pages/clients.md
