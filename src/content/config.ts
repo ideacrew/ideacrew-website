@@ -75,7 +75,7 @@ const jobPostings = defineCollection({
     location: z.string(),
     active: z.boolean(),
     description: z.string(),
-    applicationUrl: z.string(),
+    applicationUrl: z.string().optional().nullable().default(""),
     sortOrder: z.number(),
     postedDate: z.date(),
     featured: z.boolean().default(false),

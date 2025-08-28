@@ -8,7 +8,7 @@ salary:
 type: Full-Time
 location: Washington, DC / Remote
 active: true
-applicationUrl: https://careers.ideacrew.com/jobs/senior-software-engineer
+applicationUrl:
 sortOrder: 10
 featured: true
 ---
