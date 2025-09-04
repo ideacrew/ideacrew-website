@@ -71,7 +71,7 @@ content:
       sort: [ modDatetime, draft, title ]
       default:
         sort: modDatetime
-        order: asc
+        order: desc
     fields:
       - { name: author, label: Author, type: string, required: true }
       - { name: pubDatetime, label: Publication Date, type: date, required: true }
