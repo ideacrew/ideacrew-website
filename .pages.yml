@@ -68,7 +68,7 @@ content:
     path: src/content/news
     view:
       fields: [ title, draft, pubDatetime, modDatetime ]
-      sort: [ draft, modDatetime, title ]
+      sort: [ modDatetime, draft, title ]
       default:
         sort: draft
         order: asc
