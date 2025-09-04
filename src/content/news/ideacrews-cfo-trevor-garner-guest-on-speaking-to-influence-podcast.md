@@ -1,7 +1,7 @@
 ---
 author: Brad Bodine
-pubDatetime: 2025-07-21
-modDatetime: 2025-07-21
+pubDatetime: 2023-05-21
+modDatetime: 2023-05-21
 title: IdeaCrew CFO Trevor Garner Guest on Speaking to Influence Podcast
 slug: ideacrews-cfo-trevor-garner-guest-on-speaking-to-influence-podcast
 featured: true

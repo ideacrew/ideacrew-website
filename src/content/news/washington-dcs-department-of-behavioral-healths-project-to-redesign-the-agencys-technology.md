@@ -1,7 +1,7 @@
 ---
 author: Brad Bodine
-pubDatetime: 2025-07-21
-modDatetime: 2025-07-21
+pubDatetime: 2025-03-13
+modDatetime: 2025-03-13
 title: Washington DC Department of Behavioral Health's Project to Redesign the Agency's Technology
 slug: washington-dcs-department-of-behavioral-healths-project-to-redesign-the-agencys-technology
 featured: false

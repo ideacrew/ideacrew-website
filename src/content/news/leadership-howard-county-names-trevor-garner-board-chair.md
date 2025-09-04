@@ -1,7 +1,7 @@
 ---
 author: Brad Bodine
-pubDatetime: 2025-07-21
-modDatetime: 2025-07-21
+pubDatetime: 2025-06-04
+modDatetime: 2025-06-04
 title: Leadership Howard County Names Trevor Garner Board Chair
 slug: leadership-howard-county-names-trevor-garner-board-chair
 featured: true
