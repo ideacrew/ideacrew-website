@@ -13,7 +13,8 @@ benefits:
   heading: Why Work With Us
   items:
     - title: Remote-First Culture
-      description: Work from anywhere in the US with flexible hours and a healthy
+      description:
+        Work from anywhere in the US with flexible hours and a healthy
         work-life balance.
     - title: Competitive Benefits
       description: Comprehensive health coverage, 401(k) matching, and generous PTO.
