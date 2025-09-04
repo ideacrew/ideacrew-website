@@ -23,10 +23,11 @@ He earned his MBA from the University of Maryland and his bachelor’s degree fr
 Garner joins Leadership Howard County board officers Brendon Mahoney, resource development chair; Sue Ann Shafley, leadership programming chair; Joe Garrison, treasurer; Kimberly Prescott, secretary; Anne Brinker, past chair; and Paul Skalny, general counsel.
 
 Leadership Howard County also named five new board members:
-Jeffrey T. Agnor, Leadership Premier ’97
-Anika Baty-Mills, Leadership Premier ’21
-David Koonce, Leadership Premier ’18
-Ashish Mehta, Leadership Premier ’13
-Minah Woo, Leadership Premier ’20 and Leadership Essentials ’17
+
+- Jeffrey T. Agnor, Leadership Premier ’97
+- Anika Baty-Mills, Leadership Premier ’21
+- David Koonce, Leadership Premier ’18
+- Ashish Mehta, Leadership Premier ’13
+- Minah Woo, Leadership Premier ’20 and Leadership Essentials ’17
 
 Leadership Howard County provides innovative programs designed to empower and connect community leaders and keep them engaged in the critical issues facing Howard County and the region. Drawn from private businesses, nonprofits and the public sector, Leadership Howard County participants share a common interest in learning more about their community and a commitment to making a positive impact. (www.leadershiphc.org)
