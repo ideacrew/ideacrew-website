@@ -7,7 +7,7 @@ export const SITE: Site = {
   title: "IdeaCrew",
   ogImage: "ideacrew-og.jpg",
   lightAndDarkMode: false,
-  postPerPage: 3,
+  postPerPage: 6,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
 

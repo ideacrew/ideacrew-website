@@ -1,13 +1,14 @@
 ---
+import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Tag from "@/components/Tag.astro";
 import Datetime from "@/components/Datetime";
 import type { CollectionEntry } from "astro:content";
-import { slugifyStr } from "@/utils/slugify";
 import ShareLinks from "@/components/ShareLinks.astro";
-import { SITE } from "@/config";
+import LinkButton from "@/components/LinkButton.astro";
+import { ArrowLeft } from "@lucide/astro";
 
 export interface Props {
   post: CollectionEntry<"news">;
@@ -40,32 +41,22 @@ const ogImageUrl = typeof ogImage === "string" ? ogImage : SITE.ogImage;
 >
   <Header activeNav="news" />
   <div
-    class="mx-auto mt-[var(--header-height)] flex w-full max-w-3xl justify-start px-2"
+    class="mx-auto mt-[calc(var(--header-height)+6rem)] mb-4 flex w-full max-w-3xl justify-start px-2"
   >
-    <button
-      class="focus-outline mt-8 mb-2 flex hover:opacity-75"
-      onclick="history.back()"
+    <LinkButton href="/news" variant="link"
+      ><ArrowLeft /> Back to News</LinkButton
     >
-      <svg xmlns="http://www.w3.org/2000/svg"
-        ><path
-          d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-        ></path>
-      </svg><span>Go back</span>
-    </button>
   </div>
-  <main id="main-content">
-    <h1 class="post-title">{title}</h1>
-    <Datetime
-      pubDatetime={pubDatetime}
-      modDatetime={null}
-      size="lg"
-      className="my-2"
-    />
+  <main id="main-content" class="mx-auto w-full max-w-3xl px-4 pb-12">
+    <h1 class="font-domine text-4xl leading-[150%] font-normal text-blue-300">
+      {title}
+    </h1>
+
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
 
-    <ul class="tags-container">
+    <ul class="my-8 flex flex-wrap gap-2">
       {tags.map(tag => <Tag tag={tag} />)}
     </ul>
 
@@ -76,11 +67,13 @@ const ogImageUrl = typeof ogImage === "string" ? ogImage : SITE.ogImage;
             pubDatetime={pubDatetime}
             modDatetime={modDatetime}
             size="sm"
-            className="italic text-right"
+            className="italic text-right mb-8"
           />
         </div>
       )
     }
+
+    <LinkButton href="/news"> Back to News </LinkButton>
 
     <div class="flex justify-end">
       <ShareLinks />
@@ -88,17 +81,3 @@ const ogImageUrl = typeof ogImage === "string" ? ogImage : SITE.ogImage;
   </main>
   <Footer />
 </Layout>
-
-<style>
-  @reference "tailwindcss";
-  @reference "../styles/global.css";
-  main {
-    @apply mx-auto w-full max-w-3xl px-4 pb-12;
-  }
-  .post-title {
-    @apply text-skin-accent text-2xl font-semibold;
-  }
-  .tags-container {
-    @apply my-8;
-  }
-</style>

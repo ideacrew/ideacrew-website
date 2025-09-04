@@ -19,14 +19,23 @@ const { currentPage, totalPages, paginatedPosts } = Astro.props;
 
 <Layout title={`News | ${SITE.title}`}>
   <Header activeNav="news" />
-  <Main pageTitle="News" pageDesc="All the latest news and updates.">
-    <ul>
-      {
-        paginatedPosts.map(({ data, slug }) => (
-          <Card href={`/news/${slug}/`} frontmatter={data} />
-        ))
-      }
-    </ul>
+  <Main pageTitle="News">
+    <div class="mx-auto max-w-4xl">
+      <ul class="space-y-0">
+        {
+          paginatedPosts.map(({ data, slug }, index) => (
+            <li class="border-b border-gray-200 last:border-b-0">
+              <a
+                href={`/news/${slug}/`}
+                class="block py-4 text-lg font-medium text-[#0D2B46] transition-colors hover:text-blue-600"
+              >
+                {data.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </Main>
 
   <Pagination

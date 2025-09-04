@@ -5,7 +5,7 @@ modDatetime: 2025-07-21
 title: A Test News Post
 slug: a-test-post
 featured: true
-draft: false
+draft: true
 tags:
   - configuration
   - docs

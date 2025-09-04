@@ -1,69 +1,59 @@
 ---
-import { SITE } from "@/config";
 import LinkButton from "./LinkButton.astro";
-import socialIcons from "@/assets/socialIcons";
+import { Facebook, Linkedin, X, Mail } from "@lucide/astro";
 
 const URL = Astro.url;
 
 const shareLinks = [
   {
-    name: "WhatsApp",
-    href: "https://wa.me/?text=",
-    linkTitle: `Share this post via WhatsApp`,
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/shareArticle?mini=true&url=",
+    linkTitle: `Share this post on LinkedIn`,
+    icon: Linkedin,
   },
   {
     name: "Facebook",
     href: "https://www.facebook.com/sharer.php?u=",
     linkTitle: `Share this post on Facebook`,
+    icon: Facebook,
   },
   {
-    name: "Twitter",
-    href: "https://twitter.com/intent/tweet?url=",
-    linkTitle: `Tweet this post`,
-  },
-  {
-    name: "Telegram",
-    href: "https://t.me/share/url?url=",
-    linkTitle: `Share this post via Telegram`,
-  },
-  {
-    name: "Pinterest",
-    href: "https://pinterest.com/pin/create/button/?url=",
-    linkTitle: `Share this post on Pinterest`,
+    name: "X",
+    href: "https://x.com/intent/tweet?url=",
+    linkTitle: `Share this post on X`,
+    icon: X,
   },
   {
     name: "Mail",
     href: "mailto:?subject=See%20this%20post&body=",
     linkTitle: `Share this post via email`,
+    icon: Mail,
   },
 ] as const;
 ---
 
-<div class={`social-icons`}>
-  <span class="italic">Share this post on:</span>
-  <div class="text-center">
+<div class="flex flex-col items-center gap-3 py-4">
+  <span
+    class="text-xs font-medium tracking-wide text-gray-600 uppercase dark:text-gray-400"
+    >Share this post on:</span
+  >
+  <div class="flex flex-wrap items-center justify-center gap-2">
     {
-      shareLinks.map(social => (
-        <LinkButton
-          href={`${social.href + URL}`}
-          className="link-button"
-          title={social.linkTitle}
-        >
-          <Fragment set:html={socialIcons[social.name]} />
-          <span class="sr-only">{social.linkTitle}</span>
-        </LinkButton>
-      ))
+      shareLinks.map(social => {
+        const IconComponent = social.icon;
+        return (
+          <LinkButton
+            href={`${social.href + URL}`}
+            variant="outline"
+            size="icon"
+            className="group !w-9 !h-9 !rounded-xl !bg-white dark:!bg-gray-800 !border-gray-200 dark:!border-gray-700 !text-gray-600 dark:!text-gray-400 hover:!text-gray-900 dark:hover:!text-gray-100 hover:!bg-gray-50 dark:hover:!bg-gray-700 hover:!border-gray-300 dark:hover:!border-gray-600 !transition-all !duration-200 hover:!scale-105 hover:!shadow-md hover:!-translate-y-0.5 !p-0"
+            title={social.linkTitle}
+          >
+            <IconComponent class="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+            <span class="sr-only">{social.linkTitle}</span>
+          </LinkButton>
+        );
+      })
     }
   </div>
 </div>
-
-<style>
-  @reference "tailwindcss";
-  @reference "../styles/global.css";
-  .social-icons {
-    @apply flex flex-col flex-wrap items-center justify-center gap-1 sm:items-start;
-  }
-  .link-button {
-    @apply scale-90 p-2 hover:rotate-6 sm:p-1;
-  }
-</style>
