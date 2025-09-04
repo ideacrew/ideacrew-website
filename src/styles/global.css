@@ -34,6 +34,7 @@
   --color-skin-card: rgb(var(--color-card));
   --color-skin-card-muted: rgb(var(--color-card-muted));
   --color-skin-line: rgb(var(--color-border));
+  --color-blue-300: #0d2b46;
 
   /* Fonts */
   --font-sans: "Open Sans", sans-serif;
@@ -94,6 +95,9 @@
 }
 @utility fill-skin-base {
   fill: var(--color-skin-base);
+}
+@utility text-blue-300 {
+  color: var(--color-blue-300);
 }
 
 @layer base {
