@@ -18,5 +18,3 @@ In preparation for the American Rescue Plan signed in March, DCHBX and IdeaCrew 
 This ground-breaking achievement has allowed for some customers to go from paying $357 for coverage to $3.76 for the same coverage, resulting in $36 million in total savings. This was accomplished through IdeaCrew’s technical expertise and foresight to originally stand up the DCHBX in an agile, cloud-based environment, so when new features are needed they can be implemented cost-effectively and in a short amount of time.
 
 “The fact that we were able to do that a couple of weeks after the bill was signed, it’s huge,” Kofman said about the impactful changes for DC Residents.
-
-![](/images/team/team1002.jpg)
