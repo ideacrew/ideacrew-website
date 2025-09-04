@@ -67,7 +67,11 @@ content:
     type: collection
     path: src/content/news
     view:
-      fields: [ title, draft, date ]
+      fields: [ title, draft, pubDatetime, modDatetime ]
+      sort: [ draft, modDatetime, title ]
+      default:
+        sort: draft
+        order: desc
     fields:
       - { name: author, label: Author, type: string, required: true }
       - { name: pubDatetime, label: Publication Date, type: date, required: true }
