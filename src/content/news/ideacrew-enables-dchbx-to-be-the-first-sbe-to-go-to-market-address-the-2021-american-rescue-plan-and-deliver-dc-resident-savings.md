@@ -19,6 +19,4 @@ This ground-breaking achievement has allowed for some customers to go from payin
 
 “The fact that we were able to do that a couple of weeks after the bill was signed, it’s huge,” Kofman said about the impactful changes for DC Residents.
 
-```
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/episode/3co3iA7WOtdaIxIRLrXYgs?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-```
+![](/images/team/team1002.jpg)
