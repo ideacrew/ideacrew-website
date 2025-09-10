@@ -238,7 +238,9 @@ export default function CareerApplicationForm({
     try {
       const formDataToSubmit = new FormData();
       formDataToSubmit.append("form-name", "careerApplication");
-      formDataToSubmit.append("role applied for", currentRole);
+      // Format role as "Role Name Application - LastName"
+      const formattedRole = `${currentRole} Application - ${formData.lastName}`;
+      formDataToSubmit.append("role applied for", formattedRole);
       formDataToSubmit.append("first name", formData.firstName);
       formDataToSubmit.append("last name", formData.lastName);
       formDataToSubmit.append("email", formData.email);
