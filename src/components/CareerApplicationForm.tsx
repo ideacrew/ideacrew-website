@@ -244,32 +244,9 @@ export default function CareerApplicationForm({
     }
 
     try {
-      const formDataToSubmit = new FormData();
-      formDataToSubmit.append("form-name", "careerApplication");
-      formDataToSubmit.append("role applied for", currentRole);
-      formDataToSubmit.append("first name", formData.firstName);
-      formDataToSubmit.append("last name", formData.lastName);
-      formDataToSubmit.append("email", formData.email);
-      formDataToSubmit.append("phone", formData.phone);
-      formDataToSubmit.append(
-        "authorized to work in the United States",
-        formData.authUS.toString()
-      );
-      formDataToSubmit.append(
-        "require employer sponsorship",
-        formData.sponsorship.toString()
-      );
-      formDataToSubmit.append(
-        "able to provide I-9 documentation by start date",
-        formData.i9.toString()
-      );
-
-      if (formData.coverLetter) {
-        formDataToSubmit.append("cover letter", formData.coverLetter);
-      }
-      if (formData.resume) {
-        formDataToSubmit.append("resume", formData.resume);
-      }
+      // Use the actual form element to get all form data including hidden fields
+      const form = e.target as HTMLFormElement;
+      const formDataToSubmit = new FormData(form);
 
       await fetch("/", { method: "POST", body: formDataToSubmit });
       setIsSubmitted(true);
@@ -305,6 +282,24 @@ export default function CareerApplicationForm({
       <input type="hidden" name="form-name" value="careerApplication" />
       <input type="hidden" name="subject" value="" />
       <input type="hidden" name="role applied for" value={currentRole} />
+      <input type="hidden" name="first name" value={formData.firstName} />
+      <input type="hidden" name="last name" value={formData.lastName} />
+      <input type="hidden" name="email" value={formData.email} />
+      <input
+        type="hidden"
+        name="authorized to work in the United States"
+        value={formData.authUS.toString()}
+      />
+      <input
+        type="hidden"
+        name="require employer sponsorship"
+        value={formData.sponsorship.toString()}
+      />
+      <input
+        type="hidden"
+        name="able to provide I-9 documentation by start date"
+        value={formData.i9.toString()}
+      />
       <p className="hidden">
         <label>
           Don't fill this out if you're human: <input name="bot-field" />
@@ -405,6 +400,7 @@ export default function CareerApplicationForm({
           </Label>
           <Input
             id="phoneDisplay"
+            name="phone"
             type="tel"
             placeholder="(555) 123-4567"
             value={formData.phoneDisplay}
@@ -413,6 +409,8 @@ export default function CareerApplicationForm({
             maxLength={14}
             className={errors.phone ? "border-red-500" : ""}
           />
+          {/* Hidden input for the actual phone number value */}
+          <input type="hidden" name="phone" value={formData.phone} />
           {errors.phone && (
             <p className="mt-1 text-sm text-red-600" aria-live="polite">
               {errors.phone}
