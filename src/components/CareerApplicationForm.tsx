@@ -238,9 +238,7 @@ export default function CareerApplicationForm({
     try {
       const formDataToSubmit = new FormData();
       formDataToSubmit.append("form-name", "careerApplication");
-      // Format role as "Role Name Application - LastName"
-      const formattedRole = `${currentRole} Application - ${formData.lastName}`;
-      formDataToSubmit.append("role applied for", formattedRole);
+      formDataToSubmit.append("role applied for", currentRole);
       formDataToSubmit.append("first name", formData.firstName);
       formDataToSubmit.append("last name", formData.lastName);
       formDataToSubmit.append("email", formData.email);
@@ -297,6 +295,11 @@ export default function CareerApplicationForm({
       onSubmit={handleSubmit}
     >
       <input type="hidden" name="form-name" value="careerApplication" />
+      <input
+        type="hidden"
+        name="subject"
+        value={`${currentRole} Application - ${formData.lastName} (%{submissionId})`}
+      />
       <input type="hidden" name="role applied for" value={currentRole} />
       <p className="hidden">
         <label>
