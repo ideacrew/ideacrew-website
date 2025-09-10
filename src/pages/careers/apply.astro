@@ -1,0 +1,91 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { getEntry } from "astro:content";
+import CareerApplicationForm from "@/components/CareerApplicationForm.tsx";
+
+const siteConfig = await getEntry("site", "config");
+const SITE = siteConfig!.data;
+
+const roleParam = Astro.url.searchParams.get("role") || "Career Role";
+const pageTitle = `Applying for ${roleParam} | ${SITE.siteName}`;
+---
+
+<Layout
+  title={pageTitle}
+  description={`Apply for ${roleParam} at ${SITE.siteName}`}
+>
+  <Header />
+  <!-- Use a custom breadcrumb to ensure a back link to the originating career -->
+  <nav
+    class="mx-auto mt-[112px] mb-1 w-full max-w-[960px] px-4"
+    aria-label="breadcrumb"
+  >
+    <ul>
+      <li class="inline">
+        <a href="/" class="capitalize opacity-70 hover:opacity-100">Home</a>
+        <span class="opacity-70" aria-hidden="true">&raquo;</span>
+      </li>
+      <li class="inline">
+        <a
+          id="bc-careers"
+          href="/careers/"
+          class="capitalize opacity-70 hover:opacity-100">Careers</a
+        >
+        <span class="opacity-70" aria-hidden="true">&raquo;</span>
+      </li>
+      <li class="inline">
+        <a
+          id="bc-role"
+          href="/careers/"
+          class="capitalize opacity-70 hover:opacity-100">{roleParam}</a
+        >
+        <span class="opacity-70" aria-hidden="true">&raquo;</span>
+      </li>
+      <li class="inline">
+        <span class="opacity-70" aria-current="page">Apply</span>
+      </li>
+    </ul>
+  </nav>
+  <main id="main-content">
+    <section class="mx-auto max-w-[960px] px-4 py-16">
+      <h1 class="font-domine mb-6 text-[32px] font-normal text-[#0D2B46]">
+        Applying for <span id="role-text">{roleParam}</span>
+      </h1>
+
+      <CareerApplicationForm roleParam={roleParam} client:load />
+    </section>
+  </main>
+</Layout>
+<Footer />
+
+<script>
+  // Update role from query string at runtime
+  const updateRoleFromQuery = () => {
+    const params = new URLSearchParams(window.location.search);
+    const roleFromQuery = params.get("role");
+    if (roleFromQuery) {
+      const roleSpan = document.getElementById("role-text");
+      if (roleSpan) roleSpan.textContent = roleFromQuery;
+      document.title = `Applying for ${roleFromQuery} | ${document.title.replace(/^Applying for [^|]+ \| /, "").replace(/^.* \| /, "")}`;
+    }
+    const from = params.get("from");
+    if (from) {
+      const bcRole = document.getElementById(
+        "bc-role"
+      ) as HTMLAnchorElement | null;
+      if (bcRole) {
+        bcRole.href = from;
+        bcRole.textContent = roleFromQuery || bcRole.textContent || "Role";
+      }
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateRoleFromQuery);
+  } else {
+    updateRoleFromQuery();
+  }
+</script>

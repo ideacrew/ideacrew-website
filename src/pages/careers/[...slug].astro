@@ -20,14 +20,10 @@ export async function getStaticPaths() {
 
 const { career } = Astro.props;
 const { Content } = await career.render();
-// Build application URL from frontmatter, allowing {{title}} substitution
-const defaultMailto = `mailto:info@ideacrew.com?subject=${encodeURIComponent(
-  `Application for ${career.data.title} at IdeaCrew, Inc.`
-)}`;
-const applicationHref = (career.data.applicationUrl || defaultMailto).replace(
-  "{{title}}",
-  encodeURIComponent(career.data.title)
-);
+// Route applicants to internal application form page, passing the role and source path
+const applicationHref = `/careers/apply?role=${encodeURIComponent(
+  career.data.title
+)}&from=${encodeURIComponent(`/careers/${career.slug}`)}`;
 ---
 
 <Layout
@@ -75,6 +71,7 @@ const applicationHref = (career.data.applicationUrl || defaultMailto).replace(
               href={applicationHref}
               className="w-full sm:w-auto"
               variant="primary"
+              reload={true}
             >
               Apply Now
             </LinkButton>
@@ -87,6 +84,7 @@ const applicationHref = (career.data.applicationUrl || defaultMailto).replace(
               href={applicationHref}
               className="w-full"
               variant="primary"
+              reload={true}
             >
               Apply Now
             </LinkButton>
