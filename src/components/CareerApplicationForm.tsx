@@ -149,6 +149,17 @@ export default function CareerApplicationForm({
   };
 
   const handleBlur = (name: string) => {
+    // Don't validate file inputs or checkboxes on blur
+    if (
+      name === "resume" ||
+      name === "coverLetter" ||
+      name === "authUS" ||
+      name === "sponsorship" ||
+      name === "i9"
+    ) {
+      return;
+    }
+
     setTouched(prev => ({ ...prev, [name]: true }));
     const value =
       name === "phoneDisplay"
@@ -160,10 +171,10 @@ export default function CareerApplicationForm({
 
   const handleFileChange = (name: string, file: File | null) => {
     setFormData(prev => ({ ...prev, [name]: file }));
-    if (touched[name]) {
-      const error = validateField(name, file);
-      setErrors(prev => ({ ...prev, [name]: error }));
-    }
+    // Mark as touched when a file is selected
+    setTouched(prev => ({ ...prev, [name]: true }));
+    const error = validateField(name, file);
+    setErrors(prev => ({ ...prev, [name]: error }));
   };
 
   const handleCheckboxChange = (name: string, checked: boolean) => {
@@ -416,7 +427,6 @@ export default function CareerApplicationForm({
             onCheckedChange={checked =>
               handleCheckboxChange("authUS", checked as boolean)
             }
-            onBlur={() => handleBlur("authUS")}
             className={errors.authUS ? "border-red-500" : ""}
           />
           <Label htmlFor="authUS" className="text-sm text-[#0D2B46]">
@@ -436,7 +446,6 @@ export default function CareerApplicationForm({
             onCheckedChange={checked =>
               handleCheckboxChange("sponsorship", checked as boolean)
             }
-            onBlur={() => handleBlur("sponsorship")}
             className={errors.sponsorship ? "border-red-500" : ""}
           />
           <Label htmlFor="sponsorship" className="text-sm text-[#0D2B46]">
@@ -458,7 +467,6 @@ export default function CareerApplicationForm({
             onCheckedChange={checked =>
               handleCheckboxChange("i9", checked as boolean)
             }
-            onBlur={() => handleBlur("i9")}
             className={errors.i9 ? "border-red-500" : ""}
           />
           <Label htmlFor="i9" className="text-sm text-[#0D2B46]">
@@ -512,7 +520,6 @@ export default function CareerApplicationForm({
           onChange={e =>
             handleFileChange("resume", e.target.files?.[0] || null)
           }
-          onBlur={() => handleBlur("resume")}
           className={errors.resume ? "border-red-500" : ""}
         />
         {errors.resume && (
@@ -522,14 +529,131 @@ export default function CareerApplicationForm({
         )}
       </div>
 
-      <div>
+      <div className="flex flex-col gap-4 md:flex-row md:justify-start">
         <Button
           type="submit"
           disabled={!isFormValid || isSubmitting}
-          className="bg-[#0D2B46] hover:bg-[#0A2238] disabled:cursor-not-allowed disabled:opacity-50"
+          className="h-fit w-fit cursor-pointer bg-[#0D2B46] hover:bg-[#0A2238] disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isSubmitting ? "Submitting..." : "Submit application"}
         </Button>
+
+        {/* Completion Status Box */}
+        <div className="w-full rounded-md border border-gray-200 bg-gray-50 p-4 md:w-60">
+          <h3 className="mb-2 text-sm font-medium text-[#0D2B46]">
+            Application Checklist
+          </h3>
+          <ul className="space-y-1 text-xs">
+            <li
+              className={`flex items-center gap-2 ${formData.firstName.trim() !== "" ? "text-green-600" : "text-gray-500"}`}
+            >
+              <span
+                className={
+                  formData.firstName.trim() !== ""
+                    ? "text-green-500"
+                    : "text-gray-400"
+                }
+              >
+                {formData.firstName.trim() !== "" ? "✓" : "○"}
+              </span>
+              First name
+            </li>
+            <li
+              className={`flex items-center gap-2 ${formData.lastName.trim() !== "" ? "text-green-600" : "text-gray-500"}`}
+            >
+              <span
+                className={
+                  formData.lastName.trim() !== ""
+                    ? "text-green-500"
+                    : "text-gray-400"
+                }
+              >
+                {formData.lastName.trim() !== "" ? "✓" : "○"}
+              </span>
+              Last name
+            </li>
+            <li
+              className={`flex items-center gap-2 ${formData.email.trim() !== "" && /^[A-Za-z0-9.!#$%&'*+\/=?^_`{|}~-]+@(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)\.)+[A-Za-z]{2,63}$/.test(formData.email) ? "text-green-600" : "text-gray-500"}`}
+            >
+              <span
+                className={
+                  formData.email.trim() !== "" &&
+                  /^[A-Za-z0-9.!#$%&'*+\/=?^_`{|}~-]+@(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)\.)+[A-Za-z]{2,63}$/.test(
+                    formData.email
+                  )
+                    ? "text-green-500"
+                    : "text-gray-400"
+                }
+              >
+                {formData.email.trim() !== "" &&
+                /^[A-Za-z0-9.!#$%&'*+\/=?^_`{|}~-]+@(?:(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)\.)+[A-Za-z]{2,63}$/.test(
+                  formData.email
+                )
+                  ? "✓"
+                  : "○"}
+              </span>
+              Email address
+            </li>
+            <li
+              className={`flex items-center gap-2 ${formData.phone.length === 10 ? "text-green-600" : "text-gray-500"}`}
+            >
+              <span
+                className={
+                  formData.phone.length === 10
+                    ? "text-green-500"
+                    : "text-gray-400"
+                }
+              >
+                {formData.phone.length === 10 ? "✓" : "○"}
+              </span>
+              Phone number
+            </li>
+            <li
+              className={`flex items-center gap-2 ${formData.resume !== null ? "text-green-600" : "text-gray-500"}`}
+            >
+              <span
+                className={
+                  formData.resume !== null ? "text-green-500" : "text-gray-400"
+                }
+              >
+                {formData.resume !== null ? "✓" : "○"}
+              </span>
+              Resume uploaded
+            </li>
+            <li
+              className={`flex items-center gap-2 ${formData.authUS ? "text-green-600" : "text-gray-500"}`}
+            >
+              <span
+                className={formData.authUS ? "text-green-500" : "text-gray-400"}
+              >
+                {formData.authUS ? "✓" : "○"}
+              </span>
+              Work authorization
+            </li>
+            <li
+              className={`flex items-center gap-2 ${formData.sponsorship ? "text-green-600" : "text-gray-500"}`}
+            >
+              <span
+                className={
+                  formData.sponsorship ? "text-green-500" : "text-gray-400"
+                }
+              >
+                {formData.sponsorship ? "✓" : "○"}
+              </span>
+              Sponsorship question
+            </li>
+            <li
+              className={`flex items-center gap-2 ${formData.i9 ? "text-green-600" : "text-gray-500"}`}
+            >
+              <span
+                className={formData.i9 ? "text-green-500" : "text-gray-400"}
+              >
+                {formData.i9 ? "✓" : "○"}
+              </span>
+              I-9 documentation
+            </li>
+          </ul>
+        </div>
       </div>
     </form>
   );
