@@ -282,6 +282,19 @@ export default function CareerApplicationForm({
       <input type="hidden" name="form-name" value="careerApplication" />
       <input type="hidden" name="subject" value="" />
       <input type="hidden" name="role applied for" value={currentRole} />
+
+      {/* Hidden inputs for unchecked checkboxes - these will be overridden by checked checkboxes */}
+      <input
+        type="hidden"
+        name="authorized to work in the United States"
+        value="false"
+      />
+      <input type="hidden" name="require employer sponsorship" value="false" />
+      <input
+        type="hidden"
+        name="able to provide I-9 documentation by start date"
+        value="false"
+      />
       <p className="hidden">
         <label>
           Don't fill this out if you're human: <input name="bot-field" />
@@ -411,6 +424,7 @@ export default function CareerApplicationForm({
           <Checkbox
             id="authUS"
             name="authorized to work in the United States"
+            value="true"
             checked={formData.authUS}
             onCheckedChange={checked =>
               handleCheckboxChange("authUS", checked as boolean)
@@ -431,6 +445,7 @@ export default function CareerApplicationForm({
           <Checkbox
             id="sponsorship"
             name="require employer sponsorship"
+            value="true"
             checked={formData.sponsorship}
             onCheckedChange={checked =>
               handleCheckboxChange("sponsorship", checked as boolean)
@@ -453,6 +468,7 @@ export default function CareerApplicationForm({
           <Checkbox
             id="i9"
             name="able to provide I-9 documentation by start date"
+            value="true"
             checked={formData.i9}
             onCheckedChange={checked =>
               handleCheckboxChange("i9", checked as boolean)
@@ -479,8 +495,11 @@ export default function CareerApplicationForm({
           htmlFor="coverLetter"
           className="mb-1 block text-sm font-medium text-[#0D2B46]"
         >
-          Upload cover letter <small> (PDF, DOC, DOCX, TXT, RTF)</small>
+          Upload cover letter
         </Label>
+        <small className="text-xs text-gray-500">
+          (PDF, DOC, DOCX, TXT, RTF)
+        </small>
         <Input
           id="coverLetter"
           name="cover letter"
@@ -497,11 +516,14 @@ export default function CareerApplicationForm({
           htmlFor="resume"
           className="mb-1 block text-sm font-medium text-[#0D2B46]"
         >
-          Upload resume / CSV <small> (PDF, DOC, DOCX, TXT, RTF)</small>
-          <span className="text-red-600" aria-hidden="true">
-            *
-          </span>
+          Upload resume / CSV
         </Label>
+        <small className="text-xs text-gray-500">
+          (PDF, DOC, DOCX, TXT, RTF)
+        </small>
+        <span className="text-red-600" aria-hidden="true">
+          *
+        </span>
         <Input
           id="resume"
           name="resume"
