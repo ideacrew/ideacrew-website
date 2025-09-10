@@ -243,6 +243,28 @@ export default function CareerApplicationForm({
       subjectInput.value = `${currentRole} Application - ${formData.lastName}`;
     }
 
+    // Update checkbox values before submission
+    const authUSInput = document.querySelector(
+      'input[name="authorized to work in the United States"]'
+    ) as HTMLInputElement;
+    if (authUSInput) {
+      authUSInput.value = formData.authUS.toString();
+    }
+
+    const sponsorshipInput = document.querySelector(
+      'input[name="require employer sponsorship"]'
+    ) as HTMLInputElement;
+    if (sponsorshipInput) {
+      sponsorshipInput.value = formData.sponsorship.toString();
+    }
+
+    const i9Input = document.querySelector(
+      'input[name="able to provide I-9 documentation by start date"]'
+    ) as HTMLInputElement;
+    if (i9Input) {
+      i9Input.value = formData.i9.toString();
+    }
+
     try {
       // Use the actual form element to get all form data including hidden fields
       const form = e.target as HTMLFormElement;
@@ -423,8 +445,6 @@ export default function CareerApplicationForm({
         <div className="flex items-start gap-3">
           <Checkbox
             id="authUS"
-            name="authorized to work in the United States"
-            value="true"
             checked={formData.authUS}
             onCheckedChange={checked =>
               handleCheckboxChange("authUS", checked as boolean)
@@ -444,8 +464,6 @@ export default function CareerApplicationForm({
         <div className="flex items-start gap-3">
           <Checkbox
             id="sponsorship"
-            name="require employer sponsorship"
-            value="true"
             checked={formData.sponsorship}
             onCheckedChange={checked =>
               handleCheckboxChange("sponsorship", checked as boolean)
@@ -467,8 +485,6 @@ export default function CareerApplicationForm({
         <div className="flex items-start gap-3">
           <Checkbox
             id="i9"
-            name="able to provide I-9 documentation by start date"
-            value="true"
             checked={formData.i9}
             onCheckedChange={checked =>
               handleCheckboxChange("i9", checked as boolean)
