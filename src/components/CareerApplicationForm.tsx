@@ -235,6 +235,14 @@ export default function CareerApplicationForm({
 
     setIsSubmitting(true);
 
+    // Update the subject field value before submission
+    const subjectInput = document.querySelector(
+      'input[name="subject"]'
+    ) as HTMLInputElement;
+    if (subjectInput) {
+      subjectInput.value = `${currentRole} Application - ${formData.lastName}`;
+    }
+
     try {
       const formDataToSubmit = new FormData();
       formDataToSubmit.append("form-name", "careerApplication");
@@ -295,11 +303,7 @@ export default function CareerApplicationForm({
       onSubmit={handleSubmit}
     >
       <input type="hidden" name="form-name" value="careerApplication" />
-      <input
-        type="hidden"
-        name="subject"
-        value={`${currentRole} Application - ${formData.lastName}`}
-      />
+      <input type="hidden" name="subject" value="" />
       <input type="hidden" name="role applied for" value={currentRole} />
       <p className="hidden">
         <label>
