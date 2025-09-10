@@ -298,7 +298,7 @@ export default function CareerApplicationForm({
       <input
         type="hidden"
         name="subject"
-        value={`${currentRole} Application - ${formData.lastName} (%{submissionId})`}
+        value={`${currentRole} Application - ${formData.lastName}`}
       />
       <input type="hidden" name="role applied for" value={currentRole} />
       <p className="hidden">
