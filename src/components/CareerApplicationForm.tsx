@@ -282,24 +282,6 @@ export default function CareerApplicationForm({
       <input type="hidden" name="form-name" value="careerApplication" />
       <input type="hidden" name="subject" value="" />
       <input type="hidden" name="role applied for" value={currentRole} />
-      <input type="hidden" name="first name" value={formData.firstName} />
-      <input type="hidden" name="last name" value={formData.lastName} />
-      <input type="hidden" name="email" value={formData.email} />
-      <input
-        type="hidden"
-        name="authorized to work in the United States"
-        value={formData.authUS.toString()}
-      />
-      <input
-        type="hidden"
-        name="require employer sponsorship"
-        value={formData.sponsorship.toString()}
-      />
-      <input
-        type="hidden"
-        name="able to provide I-9 documentation by start date"
-        value={formData.i9.toString()}
-      />
       <p className="hidden">
         <label>
           Don't fill this out if you're human: <input name="bot-field" />
@@ -409,8 +391,6 @@ export default function CareerApplicationForm({
             maxLength={14}
             className={errors.phone ? "border-red-500" : ""}
           />
-          {/* Hidden input for the actual phone number value */}
-          <input type="hidden" name="phone" value={formData.phone} />
           {errors.phone && (
             <p className="mt-1 text-sm text-red-600" aria-live="polite">
               {errors.phone}
@@ -430,6 +410,7 @@ export default function CareerApplicationForm({
         <div className="flex items-start gap-3">
           <Checkbox
             id="authUS"
+            name="authorized to work in the United States"
             checked={formData.authUS}
             onCheckedChange={checked =>
               handleCheckboxChange("authUS", checked as boolean)
@@ -449,6 +430,7 @@ export default function CareerApplicationForm({
         <div className="flex items-start gap-3">
           <Checkbox
             id="sponsorship"
+            name="require employer sponsorship"
             checked={formData.sponsorship}
             onCheckedChange={checked =>
               handleCheckboxChange("sponsorship", checked as boolean)
@@ -470,6 +452,7 @@ export default function CareerApplicationForm({
         <div className="flex items-start gap-3">
           <Checkbox
             id="i9"
+            name="able to provide I-9 documentation by start date"
             checked={formData.i9}
             onCheckedChange={checked =>
               handleCheckboxChange("i9", checked as boolean)
