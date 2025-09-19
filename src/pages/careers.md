@@ -13,7 +13,8 @@ benefits:
   heading: Why Work With Us
   items:
     - title: Remote-First Culture
-      description: Work from anywhere in the US with flexible hours and a healthy
+      description:
+        Work from anywhere in the US with flexible hours and a healthy
         work-life balance.
     - title: Competitive Benefits
       description: Comprehensive health coverage, 401(k) matching, and generous PTO.
@@ -50,6 +51,6 @@ teamPhotos:
       alt: Picture of the trophy winner again Picture of the trophy winner
     - image: /src/assets/images/team/team1010.jpg
       alt: Picture of us go karting
-    - image: /images/team/all-hands-q3-2025.jpeg
+    - image: /src/assets/images/team/all-hands-q3-2025.jpeg
       alt: Team activity at Terrapin Aventures
 ---
