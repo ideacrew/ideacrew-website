@@ -50,5 +50,6 @@ teamPhotos:
       alt: Picture of the trophy winner again Picture of the trophy winner
     - image: /src/assets/images/team/team1010.jpg
       alt: Picture of us go karting
-    - alt: Team activity at Terrapin Aventures
+    - image: /images/team/all-hands-q3-2025.jpeg
+      alt: Team activity at Terrapin Aventures
 ---
