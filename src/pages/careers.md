@@ -52,5 +52,5 @@ teamPhotos:
     - image: /src/assets/images/team/team1010.jpg
       alt: Picture of us go karting
     - image: /src/assets/images/team/all-hands-q3-2025.jpeg
-      alt: Team activity at Terrapin Aventures
+      alt: Team activity at Terrapin Adventures
 ---
