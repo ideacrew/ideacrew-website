@@ -1,14 +1,13 @@
 ---
-name: Trevor garner
-position: COO & CFO
+name: Trevor Garner
+position: President
+active: true
 photo:
   src: /images/leaders/trevor-garner.jpg
   alt: Trevor Garner - COO & CFO
 linkedin: https://www.linkedin.com/in/trevor-w-garner-7416277
 sortOrder: 2
-active: true
 ---
-
 Trevor Garner is a proven Technology and Financial Services Executive with over 31 years’ Mr. Garner is a seasoned Technology and Financial Services Executive with over 31 years of experience, recognized for consistently exceeding goals in P&L, operations, and talent management. Since joining IdeaCrew in 2018 as its first C-suite executive, he has focused on enhancing operational policies to support growth. He leads a management team of 10 VPs and oversees various functions, including Finance, HR, Business Development, Marketing, Operations, Project Management, and Legal, while also managing key client and vendor relationships.
 
 He holds an MBA from the University of Maryland and a BA from The College of Wooster. Mr. Garner has completed the Senior Leadership Development Program at the University of Michigan and the Learning as Leadership Executive Program in Sausalito, CA.
