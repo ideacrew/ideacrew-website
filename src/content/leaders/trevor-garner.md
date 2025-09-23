@@ -4,7 +4,7 @@ position: President
 active: true
 photo:
   src: /images/leaders/trevor-garner.jpg
-  alt: Trevor Garner - COO & CFO
+  alt: Trevor Garner - President
 linkedin: https://www.linkedin.com/in/trevor-w-garner-7416277
 sortOrder: 2
 ---
