@@ -333,6 +333,7 @@ content:
               - { name: href, label: Button URL, type: string, required: true }
       - name: modules
         label: Marketplace Modules
+        required: true
         type: object
         fields:
           - { name: heading, label: Section Heading, type: string, required: true, hidden: true }
