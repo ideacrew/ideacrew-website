@@ -81,7 +81,11 @@ content:
       - { name: slug, label: Slug, type: string }
       - { name: featured, label: Featured, type: boolean }
       - { name: draft, label: Draft, type: boolean }
-      - { name: tags, label: Tags, type: string, list: true }
+      - name: tags
+        label: Tags
+        type: string
+        list:
+          collapsible: true
       - { name: description, label: Description, type: text }
       - { name: body, label: Body, type: rich-text, required: true }
   - name: leaders
@@ -132,6 +136,9 @@ content:
             list:
               min: 1
               max: 2
+              collapsible:
+                collapsed: true
+                summary: "{fields.text}"
             fields:
               - { name: text, label: Button Text, type: string, required: true }
               - { name: href, label: Button URL, type: string, required: true }
@@ -155,6 +162,9 @@ content:
             type: object
             list:
               max: 4
+              collapsible:
+                collapsed: true
+                summary: "{fields.name}"
             fields:
               - { name: name, label: Service Name, type: string, required: true }
           - name: button
@@ -177,6 +187,7 @@ content:
             list:
               min: 4
               max: 4
+              collapsible: true
           - name: button
             label: Learn More Link
             type: object
@@ -196,6 +207,7 @@ content:
             type: image
             list:
               max: 12
+              collapsible: true
   - name: about
     label: About page
     type: file
@@ -229,6 +241,9 @@ content:
         list:
           min: 4
           max: 4
+          collapsible:
+            collapsed: true
+            summary: "{fields.name}"
         fields:
           - { name: name, label: Service Name, type: string, description: "This is used as the service name in the about section", required: true }
           - name: icon
@@ -246,6 +261,7 @@ content:
             list:
               min: 3
               max: 4
+              collapsible: true
       - name: values
         label: Values Section
         type: object
@@ -257,6 +273,9 @@ content:
             list:
               min: 3
               max: 3
+              collapsible:
+                collapsed: true
+                summary: "{fields.title}"
             fields:
               - { name: title, label: Value Name, type: string, description: "This is used as the title in the values section", required: true }
               - { name: description, label: Description, type: text, description: "This is used as the description in the values section", required: true }
@@ -310,6 +329,9 @@ content:
             list:
               min: 1
               max: 2
+              collapsible:
+                collapsed: true
+                summary: "{fields.text}"
             fields:
               - { name: text, label: Button Text, type: string, required: true }
               - { name: href, label: Button URL, type: string, required: true }
@@ -321,7 +343,10 @@ content:
           - name: items
             label: Module Items
             type: object
-            list: true
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{fields.title}"
             fields:
               - { name: title, label: Module Title, type: string, required: true }
               - { name: content, label: Module Content, type: text, required: true }
@@ -330,6 +355,9 @@ content:
                 type: object
                 list:
                   max: 3
+                  collapsible:
+                    collapsed: true
+                    summary: "{fields.text}"
                 fields:
                   - { name: text, label: Button Text, type: string, required: true }
                   - { name: href, label: Button URL, type: string, required: true, pattern: "^https?://.*$" }
@@ -410,7 +438,10 @@ content:
           - name: items
             label: Benefits
             type: object
-            list: true
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{fields.title}"
             fields:
               - { name: title, label: Title, type: string, required: true }
               - { name: description, label: Description, type: text, required: true }
@@ -427,7 +458,10 @@ content:
           - name: photos
             label: Photos
             type: object
-            list: true
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{fields.alt}"
             fields:
               - name: image
                 label: Photo
