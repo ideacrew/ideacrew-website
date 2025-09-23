@@ -354,7 +354,7 @@ content:
                     summary: "{fields.text}"
                 fields:
                   - { name: text, label: Button Text, type: string, required: true }
-                  - { name: href, label: Button URL, type: string, required: true, pattern: "^https?://.*$" }
+                  - { name: href, label: Button URL, type: string, required: true }
   - name: projects
     label: Client Projects page
     type: file
