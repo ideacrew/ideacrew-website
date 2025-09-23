@@ -344,19 +344,7 @@ content:
             fields:
               - { name: title, label: Module Title, type: string, required: true }
               - { name: content, label: Module Content, type: text, required: true }
-              - name: buttons
-                label: Module Buttons
-                type: object
-                required: false
-                list:
-                  min: 0
-                  max: 3
-                  collapsible:
-                    collapsed: true
-                    summary: "{fields.text}"
-                fields:
-                  - { name: text, label: Button Text, type: string, required: true }
-                  - { name: href, label: Button URL, type: string, required: true, pattern: "^https?://.*$" }
+
   - name: projects
     label: Client Projects page
     type: file
