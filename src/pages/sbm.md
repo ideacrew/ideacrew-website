@@ -5,12 +5,8 @@ seo:
   description:
 hero:
   title: State Based Marketplace
-  description: IdeaCrew pioneered the modular approach to developing Health
-    Insurance Exchanges. At initial launch, states and the Federal Marketplace
-    relied on big bang deployments. These deployments, which ran into the tens and
-    even hundreds of millions of dollars, failed almost universally. Whether a
-    state survived depended on how it reacted to these failures. The DC Exchange
-    chose IdeaCrew to build a replacement Exchange over time, module-by-module. As
+  description: >-
+    IdeaCrew pioneered the modular approach to developing Health Insurance Exchanges. At initial launch, states and the Federal Marketplace relied on big bang deployments. These deployments, which ran into the tens and even hundreds of millions of dollars, failed almost universally. Whether a state survived depended on how it reacted to these failures. The DC Exchange chose IdeaCrew to build a replacement Exchange over time, module-by-module. As
   buttons:
     - text: DC HealthLink
       href: https://www.dchealthlink.com
@@ -22,12 +18,8 @@ modules:
   heading: Marketplace Modules
   items:
     - title: Anonymous Tools
-      content:
-        Our Anonymous Tools allow consumers to browse and compare plans, check
-        eligibility for Medicaid or subsidies, search providers and formulary
-        through integration with Consumers' Checkbook. We also offer individuals
-        an HRA affordability calculator and employer quoting tool that allows
-        employers to explore their health insurance options quickly and simply.
+      content: >-
+        Our Anonymous Tools allow consumers to browse and compare plans, check eligibility for Medicaid or subsidies, search providers and formulary through integration with Consumers' Checkbook. We also offer individuals an HRA affordability calculator and employer quoting tool that allows employers to explore their health insurance options quickly and simply.
       buttons:
         - text: DC Anonymous Browsing Tool
           href: https://example.com
@@ -38,8 +30,8 @@ modules:
     - title: Portals
       content: Our portals provide a tailored user experience for Individuals, Employers, Employees, Brokers, Navigators, Assisters, Carriers and marketplace Administrators. Our role-based portals manage registration, authentication and authorized access to wide range of self-service features, navigation and help support depending on the user role. Common features accessed include communications through secure message center, uploaded documents, payments, and transaction history.
     - title: Eligibility & Enrollment
-      content: The core module that determines consumer eligibility for various
-        programs and facilitates enrollment in health insurance plans.
+      content: >-
+        The core module that determines consumer eligibility for various programs and facilitates enrollment in health insurance plans.
       buttons:
         - text: Learn More
           href: https://example.com
