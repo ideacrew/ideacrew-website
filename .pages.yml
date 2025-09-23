@@ -347,6 +347,7 @@ content:
                 label: Module Buttons
                 type: object
                 list:
+                  min: 0
                   max: 3
                   collapsible:
                     collapsed: true
