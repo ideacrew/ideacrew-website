@@ -347,7 +347,6 @@ content:
                 label: Module Buttons
                 type: object
                 required: false
-                default: []
                 list:
                   min: 0
                   max: 3
