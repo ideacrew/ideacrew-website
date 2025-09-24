@@ -107,8 +107,15 @@ const isInAboutSection =
               </button>
               <ul
                 id="about-submenu-mobile"
-                class={`about-submenu-mobile mx-auto mt-2 ${isInAboutSection ? "flex" : "hidden"} w-80 max-w-[90%] flex-col space-y-2 overflow-hidden rounded-lg border border-gray-300 bg-gray-50/80 p-3 text-center text-base shadow-sm sm:hidden`}
+                class={`about-submenu-mobile mx-auto mt-2 ${isInAboutSection ? "flex" : "hidden"} w-80 max-w-[90%] max-h-max flex-col space-y-2 overflow-hidden rounded-lg border border-gray-300 bg-gray-50/80 p-3 text-center text-base shadow-sm sm:hidden`}
               >
+                <li>
+                  <a
+                    href="/about"
+                    class={`block rounded px-4 py-3 hover:bg-white/70 ${isAboutPage ? "underline decoration-wavy decoration-2 underline-offset-4" : ""}`}
+                    >About
+                  </a>
+                </li>
                 <li>
                   <a
                     href="/philanthropy"
@@ -332,6 +339,17 @@ const isInAboutSection =
             mobileSubmenu.style.padding = "12px"; // Tailwind p-3 ~ 12px
             mobileSubmenu.style.borderWidth = "1px";
             mobileSubmenu.style.opacity = "1";
+
+            // After the expand transition completes, allow content to define height
+            const onExpandEnd = (ev: TransitionEvent) => {
+              if (ev.propertyName !== "max-height") return;
+              mobileSubmenu.style.maxHeight = "max-content";
+              mobileSubmenu.removeEventListener(
+                "transitionend",
+                onExpandEnd as any
+              );
+            };
+            mobileSubmenu.addEventListener("transitionend", onExpandEnd as any);
           }
         }
         const chevron = aboutToggle.querySelector(
@@ -350,7 +368,8 @@ const isInAboutSection =
       ) {
         mobileSubmenu.classList.remove("hidden");
         mobileSubmenu.classList.add("flex");
-        mobileSubmenu.style.maxHeight = mobileSubmenu.scrollHeight + "px";
+        // Let content define height from the start
+        mobileSubmenu.style.maxHeight = "max-content";
       }
     }
 
