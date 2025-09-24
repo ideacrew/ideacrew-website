@@ -26,7 +26,7 @@ const resolveVariant = (
 ): "default" | "outline" | "secondary" | "link" => {
   if (!variant) return "default";
   if (variant === "primary") return "default";
-  if (variant === "secondary") return "outline";
+  if (variant === "secondary") return "secondary";
   return variant as any as "default" | "outline" | "secondary" | "link";
 };
 

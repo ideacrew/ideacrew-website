@@ -26,12 +26,7 @@ const {
 } = Astro.props;
 
 // Map legacy variants to button.tsx variants
-const resolvedVariant =
-  variant === "primary"
-    ? "default"
-    : variant === "secondary"
-      ? "outline"
-      : variant;
+const resolvedVariant = variant === "primary" ? "default" : variant;
 
 const variantStyles: Record<string, string> = {
   default: "bg-[#466CB2] text-white shadow hover:bg-[#466CB2]/90",
