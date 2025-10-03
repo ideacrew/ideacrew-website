@@ -41,7 +41,6 @@ export default function CareerApplicationForm({
     phone: false,
     resume: false,
     authUS: false,
-    sponsorship: false,
     i9: false,
   };
 
@@ -114,7 +113,6 @@ export default function CareerApplicationForm({
         }
         break;
       case "authUS":
-      case "sponsorship":
       case "i9":
         if (!value) {
           error = "This field is required.";
@@ -154,7 +152,6 @@ export default function CareerApplicationForm({
       name === "resume" ||
       name === "coverLetter" ||
       name === "authUS" ||
-      name === "sponsorship" ||
       name === "i9"
     ) {
       return;
@@ -196,7 +193,6 @@ export default function CareerApplicationForm({
       ) &&
       formData.phone.length === 10 &&
       formData.authUS &&
-      formData.sponsorship &&
       formData.i9 &&
       formData.resume !== null;
 
@@ -439,7 +435,8 @@ export default function CareerApplicationForm({
           Employment Authorization <span className="text-red-600">*</span>
         </legend>
         <p className="mb-4 text-xs text-gray-600">
-          All checkboxes below are required to complete your application.
+          The first and third checkboxes below are required to complete your
+          application.
         </p>
 
         <div className="flex items-start gap-3">
@@ -468,7 +465,6 @@ export default function CareerApplicationForm({
             onCheckedChange={checked =>
               handleCheckboxChange("sponsorship", checked as boolean)
             }
-            className={errors.sponsorship ? "border-red-500" : ""}
           />
           <Label htmlFor="sponsorship" className="text-sm text-[#0D2B46]">
             Will you now or in the future require employer sponsorship for
@@ -476,11 +472,6 @@ export default function CareerApplicationForm({
             work visa sponsorship)?
           </Label>
         </div>
-        {errors.sponsorship && (
-          <p className="mt-1 text-sm text-red-600" aria-live="polite">
-            {errors.sponsorship}
-          </p>
-        )}
 
         <div className="flex items-start gap-3">
           <Checkbox
@@ -668,7 +659,7 @@ export default function CareerApplicationForm({
               >
                 {formData.sponsorship ? "✓" : "○"}
               </span>
-              Sponsorship question
+              Sponsorship question (optional)
             </li>
             <li
               className={`flex items-center gap-2 ${formData.i9 ? "text-green-600" : "text-gray-500"}`}
@@ -681,6 +672,16 @@ export default function CareerApplicationForm({
               I-9 documentation
             </li>
           </ul>
+        </div>
+
+        {/* Equal Opportunity Employer Statement */}
+        <div className="w-full rounded-md border border-gray-200 bg-gray-50 p-4 md:flex-1 md:self-start">
+          <p className="text-sm text-gray-700">
+            <strong>IdeaCrew, Inc. is an Equal Opportunity Employer.</strong> We
+            consider all qualified applicants without regard to legally
+            protected characteristics and provide reasonable accommodations as
+            required by law.
+          </p>
         </div>
       </div>
     </form>
