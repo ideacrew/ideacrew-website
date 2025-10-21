@@ -55,6 +55,25 @@ export default function CareerApplicationForm({
     }
   };
 
+  // Sanitize URL to prevent XSS attacks
+  const sanitizeUrl = (url: string): string => {
+    try {
+      const urlObj = new URL(url, window.location.origin);
+      // If it's a same-origin URL, return the pathname + search + hash
+      if (urlObj.origin === window.location.origin) {
+        return urlObj.pathname + urlObj.search + urlObj.hash;
+      }
+      // If it's a relative path, ensure it starts with /
+      if (url.startsWith("/")) {
+        return url;
+      }
+      // Fallback to safe default
+      return "/careers";
+    } catch {
+      return "/careers";
+    }
+  };
+
   // Update role from URL parameters and page title
   useEffect(() => {
     const updateRoleFromQuery = () => {
@@ -71,7 +90,7 @@ export default function CareerApplicationForm({
         if (bcRole) {
           const from = params.get("from");
           if (from && isValidUrl(from)) {
-            bcRole.href = from;
+            bcRole.href = sanitizeUrl(from);
           } else if (from) {
             // If invalid URL provided, use a safe fallback
             bcRole.href = "/careers";
