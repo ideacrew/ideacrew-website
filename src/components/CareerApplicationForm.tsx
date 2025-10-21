@@ -60,7 +60,23 @@ export default function CareerApplicationForm({
         if (bcRole) {
           const from = params.get("from");
           if (from) {
-            bcRole.href = from;
+            // Only allow relative URLs or your domain, block dangerous schemes
+            try {
+              // If from starts with '/', treat as relative and safe
+              if (from.startsWith('/')) {
+                bcRole.href = from;
+              } else {
+                // Optionally, check for absolute URLs to your own domain
+                // For example, "https://yourdomain.com/..."
+                const url = new URL(from, window.location.origin);
+                if (url.origin === window.location.origin && url.pathname.startsWith('/')) {
+                  bcRole.href = url.href;
+                }
+                // Otherwise, do not set the href or set to a safe default
+              }
+            } catch (e) {
+              // Malformed URL - don't set bcRole.href
+            }
           }
           bcRole.textContent = roleFromQuery;
         }
