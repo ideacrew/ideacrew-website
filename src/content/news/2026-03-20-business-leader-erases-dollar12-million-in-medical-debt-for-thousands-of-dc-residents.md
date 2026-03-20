@@ -7,6 +7,10 @@ title: Business Leader Erases $12 Million in Medical Debt for Thousands of D.C.
 slug: business-leader-erases-12-million-in-medical-debt-for-thousands-of-dc-residents
 featured: true
 draft: false
+tags:
+  - charity
+  - washington-dc
+  - medical-debt
 description: Trevor Garner, a C-suite executive at IdeaCrew, is making waves in
   the Washington, D.C. community by purchasing $12 million worth of medical debt
   — wiping the slate clean for over 12,000 local residents. Inspired by his late
