@@ -6,7 +6,7 @@ description: IdeaCrew is looking for a skilled Quality Assurance Tester to join
   testing strategies for their healthcare technology solutions.
 type: Full-Time
 location: Washington, DC / Remote
-active: false
+active: true
 featured: true
 salary:
   salaryLow: 100000
