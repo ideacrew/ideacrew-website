@@ -1,7 +1,7 @@
 ---
 author: Brad Bodine
-pubDatetime: 2026-04-20
-modDatetime: 2026-04-20
+pubDatetime: 2026-04-20T12:00:00
+modDatetime: 2026-04-20T12:00:00
 title: IdeaCrew President Helps Drive Support for Alzheimer's Research at Memory Ball
 slug: ideacrew-president-supports-alzheimers-research-at-memory-ball
 featured: true
