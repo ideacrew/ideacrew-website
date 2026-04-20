@@ -37,14 +37,16 @@ Watch the video:
 
 <figure class="my-6">
   <div class="w-full max-w-[916px] overflow-hidden rounded-lg shadow-md">
-    <iframe
-      src="https://www.youtube.com/embed/air8uxDFRj8"
-      title="IdeaCrew Memory Ball video"
-      class="aspect-video w-full"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
-    ></iframe>
+    <div class="aspect-video">
+      <iframe
+        src="https://www.youtube.com/embed/air8uxDFRj8"
+        title="IdeaCrew Memory Ball video"
+        class="h-full w-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
   </div>
 </figure>
 
