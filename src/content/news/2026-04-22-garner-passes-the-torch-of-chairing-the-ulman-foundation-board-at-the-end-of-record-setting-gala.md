@@ -1,7 +1,7 @@
 ---
 author: Brad Bodine
-pubDatetime: 2026-04-22T12:00:00
-modDatetime: 2026-04-22T12:00:00
+pubDatetime: 2026-03-07T12:00:00
+modDatetime: 2026-03-07T12:00:00
 title: Garner passes the torch of chairing the Ulman Foundation Board at the end of record setting gala
 slug: garner-passes-the-torch-of-chairing-the-ulman-foundation-board-at-the-end-of-record-setting-gala
 featured: true
